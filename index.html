@@ -38,7 +38,8 @@ body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset
 button{font:inherit;color:inherit;cursor:pointer}
 :focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:6px}
 
-header.top{display:grid;gap:2px;padding-block:6px 14px}
+header.top{display:grid;grid-template-columns:minmax(0,1fr) auto;column-gap:12px;row-gap:2px;padding-block:6px 14px}
+header.top h1,header.top .upd{grid-column:1}
 header.top h1{font-size:1.25rem;font-weight:700;margin:0;letter-spacing:-.01em}
 header.top .upd{margin:0;font-size:.78rem;color:var(--muted);font-variant-numeric:tabular-nums}
 header.top .upd b{color:var(--must);font-weight:700}
@@ -86,8 +87,8 @@ header.top h1,.sheet .hd h2,.contact h3{font-family:var(--font-display);font-wei
 .card:active{transform:scale(.97)}
 .cell{position:relative;min-width:0}
 .cell .card{width:100%}
-.heart{position:absolute;top:2px;right:2px;width:30px;height:30px;border:0;background:transparent;display:grid;place-items:center;color:#9aa19c;border-radius:50%}
-.heart svg{width:17px;height:17px}
+.heart{position:absolute;top:3px;right:3px;width:26px;height:26px;border:0;background:transparent;display:grid;place-items:center;color:#9aa19c;border-radius:50%}
+.heart svg{width:15px;height:15px}
 .heart[aria-pressed="true"]{color:var(--heart)}
 .heart[aria-pressed="true"] svg{animation:pop .25s ease-out}
 @keyframes pop{50%{transform:scale(1.3)}}
@@ -96,7 +97,7 @@ header.top h1,.sheet .hd h2,.contact h3{font-family:var(--font-display);font-wei
 .card:hover{border-color:var(--accent)}
 .mono{width:52px;height:52px;flex:none;border-radius:12px;display:grid;place-items:center;background:var(--plate);border:1px solid var(--line);padding:6px}
 .mono img,.logo img{max-width:100%;max-height:100%;object-fit:contain;display:block}
-.logo{position:absolute;inset:16%;display:flex;align-items:center;justify-content:center;min-width:0;overflow:hidden}
+.logo{position:absolute;inset:29% 12% 11% 12%;display:flex;align-items:center;justify-content:center;min-width:0;overflow:hidden}
 .logo img{width:auto;height:auto}
 .card .nm{font-size:.82rem;font-weight:600;line-height:1.3;word-break:keep-all;min-height:2.6em;display:flex;align-items:center}
 .card .ct{font-size:.7rem;color:var(--muted)}
@@ -146,8 +147,8 @@ mark{background:var(--notice-line);color:inherit;border-radius:3px;padding:0 1px
 
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:999px;font-size:.85rem;z-index:30;opacity:0;transition:.2s;pointer-events:none;white-space:nowrap}
 .toast.on{opacity:1;transform:translate(-50%,0)}
-.visits{margin:20px 2px 0;text-align:center;font-size:.78rem;color:var(--muted);font-variant-numeric:tabular-nums}
-.visits b{color:var(--fg);font-weight:700}
+.visits{grid-column:2;grid-row:1 / span 2;align-self:center;display:grid;gap:1px;text-align:right;font-size:.62rem;line-height:1.3;color:var(--muted);font-variant-numeric:tabular-nums;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:3px 7px}
+.visits b{color:var(--fg);font-weight:600;margin-left:3px}
 .foot{margin-top:24px;font-size:.75rem;color:var(--muted);text-align:center}
 
 /* tablet & PC */
@@ -180,7 +181,8 @@ mark{background:var(--notice-line);color:inherit;border-radius:3px;padding:0 1px
 <div class="wrap">
   <header class="top">
     <h1>완전판매 모니터링</h1>
-    <p class="upd">제작·관리 <b>보람</b> · v1.4 (2026.10.22)</p>
+    <p class="upd">제작·관리 <b>보람</b> · v1.2 (2026.10.22)</p>
+    <div class="visits" id="visits" hidden aria-label="방문자 수"><span>투데이 <b id="vToday">-</b></span><span>누적 <b id="vTotal">-</b></span></div>
   </header>
 
   <section class="notices" id="notices" aria-label="공지사항"></section>
@@ -198,7 +200,6 @@ mark{background:var(--notice-line);color:inherit;border-radius:3px;padding:0 1px
 
   <p class="meta" id="meta"></p>
   <div class="grid" id="grid"></div>
-  <p class="visits" id="visits" hidden>방문자 · 투데이 <b id="vToday">-</b> · 누적 <b id="vTotal">-</b></p>
   
 </div>
 
