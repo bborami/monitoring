@@ -180,7 +180,7 @@ mark{background:var(--notice-line);color:inherit;border-radius:3px;padding:0 1px
 <div class="wrap">
   <header class="top">
     <h1>완전판매 모니터링</h1>
-    <p class="upd">제작·관리 <b>보람</b> · v1.3 (2026.10.22)</p>
+    <p class="upd">제작·관리 <b>보람</b> · v1.4 (2026.10.22)</p>
   </header>
 
   <section class="notices" id="notices" aria-label="공지사항"></section>
@@ -607,13 +607,20 @@ render();
 /* visitor counter (GoatCounter). Runs only when the deployed page defines window.GC_CODE */
 (function(){
   const code = window.GC_CODE; if(!code) return;
-  const base = "https://"+code+".goatcounter.com/counter/"+encodeURIComponent(location.pathname)+".json";
+  $("#visits").hidden = false;
+  const url = (path,q) => "https://"+code+".goatcounter.com/counter/"+encodeURIComponent(path)+".json"+(q||"");
+  const get = u => fetch(u).then(r=>r.ok?r.json():Promise.reject()).then(j=>j.count);
   const d = new Date(Date.now()+9*3600*1000).toISOString().slice(0,10); // Asia/Seoul date
-  const get = url => fetch(url).then(r=>r.ok?r.json():Promise.reject()).then(j=>j.count);
-  const put = (id,v) => { $("#"+id).textContent=v; $("#visits").hidden=false; };
-  setTimeout(()=>{
-    get(base).then(v=>put("vTotal",v)).catch(()=>{});
-    get(base+"?start="+d).then(v=>put("vToday",v)).catch(()=>{});
+  const pn = location.pathname;
+  const paths = [...new Set([pn, pn.replace(/\/+$/,"")||"/", pn.replace(/\/*$/,"/")])];
+  setTimeout(async()=>{
+    for(const p of paths){
+      try{
+        $("#vTotal").textContent = await get(url(p));
+        get(url(p,"?start="+d)).then(v=>{ $("#vToday").textContent=v; }).catch(()=>{});
+        return;
+      }catch(e){}
+    }
   },1500);
 })();
 </script>
