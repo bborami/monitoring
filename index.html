@@ -4,6 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<script>window.GC_CODE="bborami";</script>
+<script data-goatcounter="https://bborami.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <title>완전판매 모니터링</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -144,6 +146,8 @@ mark{background:var(--notice-line);color:inherit;border-radius:3px;padding:0 1px
 
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:999px;font-size:.85rem;z-index:30;opacity:0;transition:.2s;pointer-events:none;white-space:nowrap}
 .toast.on{opacity:1;transform:translate(-50%,0)}
+.visits{margin:20px 2px 0;text-align:center;font-size:.78rem;color:var(--muted);font-variant-numeric:tabular-nums}
+.visits b{color:var(--fg);font-weight:700}
 .foot{margin-top:24px;font-size:.75rem;color:var(--muted);text-align:center}
 
 /* tablet & PC */
@@ -176,7 +180,7 @@ mark{background:var(--notice-line);color:inherit;border-radius:3px;padding:0 1px
 <div class="wrap">
   <header class="top">
     <h1>완전판매 모니터링</h1>
-    <p class="upd">제작·관리 <b>보람</b> · v1.2 (2026.10.22)</p>
+    <p class="upd">제작·관리 <b>보람</b> · v1.3 (2026.10.22)</p>
   </header>
 
   <section class="notices" id="notices" aria-label="공지사항"></section>
@@ -194,6 +198,7 @@ mark{background:var(--notice-line);color:inherit;border-radius:3px;padding:0 1px
 
   <p class="meta" id="meta"></p>
   <div class="grid" id="grid"></div>
+  <p class="visits" id="visits" hidden>방문자 · 투데이 <b id="vToday">-</b> · 누적 <b id="vTotal">-</b></p>
   
 </div>
 
@@ -598,6 +603,19 @@ $("#sheet").addEventListener("touchstart",e=>{ if($("#sBody").scrollTop<=0) y0=e
 $("#sheet").addEventListener("touchend",e=>{ if(y0!==null && e.changedTouches[0].clientY-y0>90) closeSheet(); y0=null; });
 
 render();
+
+/* visitor counter (GoatCounter). Runs only when the deployed page defines window.GC_CODE */
+(function(){
+  const code = window.GC_CODE; if(!code) return;
+  const base = "https://"+code+".goatcounter.com/counter/"+encodeURIComponent(location.pathname)+".json";
+  const d = new Date(Date.now()+9*3600*1000).toISOString().slice(0,10); // Asia/Seoul date
+  const get = url => fetch(url).then(r=>r.ok?r.json():Promise.reject()).then(j=>j.count);
+  const put = (id,v) => { $("#"+id).textContent=v; $("#visits").hidden=false; };
+  setTimeout(()=>{
+    get(base).then(v=>put("vTotal",v)).catch(()=>{});
+    get(base+"?start="+d).then(v=>put("vToday",v)).catch(()=>{});
+  },1500);
+})();
 </script>
 
 </body>
