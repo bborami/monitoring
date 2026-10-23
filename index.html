@@ -257,7 +257,9 @@ const CONTACTS = {
  "aia": {
   "inbound": "1588-2513",
   "outbound": "1588-9898",
-  "center": "1588-9898"
+  "center": "1588-9898",
+  "mobile": "https://aiaplus.aia.co.kr/ko/login/login-selector/loginSelector.html",
+  "mobileNote": "모바일로 한번도 진행하지 않았을때"
  },
  "db-l": {
   "inbound": "1588-3131",
@@ -488,6 +490,8 @@ $("#notices").addEventListener("click",e=>{
   box.querySelector(".body").hidden=!open;
 });
 
+const lblOf = f => f.label + (current.c[f.key+"Note"] ? ` (${current.c[f.key+"Note"]})` : "");
+
 /* filtering */
 const match = it => {
   if(!inCat(it,cat)) return false;
@@ -559,7 +563,7 @@ function openSheet(id){
             : f.type==="tel" ? `<a class="tel" href="tel:${v.split("(")[0].replace(/[^0-9]/g,"")}"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg><span id="v-${f.key}">${hl(v)}</span></a>`
             : `<a class="url" href="${esc(v)}" target="_blank" rel="noopener"><span id="v-${f.key}">${hl(v)}</span></a>`;
           return `<li>
-            <div class="lbl">${f.label}${f.note?` <small>(${f.note})</small>`:""}</div>
+            <div class="lbl">${f.label}${f.note?` <small>(${f.note})</small>`:""}${current.c[f.key+"Note"]?` <small>(${esc(current.c[f.key+"Note"])})</small>`:""}</div>
             <div class="val">${val}${v?`<button class="mini" type="button" data-k="${f.key}">복사</button>`:""}</div>
           </li>`;}).join("")}
       </ul>
@@ -591,12 +595,12 @@ $("#sBody").addEventListener("click",e=>{
   const k=e.target.closest("[data-k]");
   if(k){
     const f=FIELDS.find(x=>x.key===k.dataset.k), v=current.c[f.key];
-    const line = f.type==="tel" ? `${f.icon} ${f.label}  ${v}` : `${f.icon} ${f.label}\n${v}`;
+    const line = f.type==="tel" ? `${f.icon} ${f.label}  ${v}` : `${f.icon} ${lblOf(f)}\n${v}`;
     copyText(`[${current.name}] 완전판매 모니터링\n\n${line}`,k,$("#v-"+f.key)); return; }
   if(e.target.closest("#copyAll")){
     const ff=FIELDS.filter(f=>current.c[f.key]);
     const tels=ff.filter(f=>f.type==="tel").map(f=>`${f.icon} ${f.label}  ${current.c[f.key]}`);
-    const urls=ff.filter(f=>f.type==="url").map(f=>`${f.icon} ${f.label}\n${current.c[f.key]}`);
+    const urls=ff.filter(f=>f.type==="url").map(f=>`${f.icon} ${lblOf(f)}\n${current.c[f.key]}`);
     const txt=[`[${current.name}] 완전판매 모니터링`, tels.join("\n"), urls.join("\n")].filter(Boolean).join("\n\n");
     copyText(txt,null,$("#sBody .rows"));
   }
