@@ -47,9 +47,11 @@ header.top .upd b{color:var(--must);font-weight:700}
 /* notices */
 .notices{display:grid;gap:8px}
 .notice{background:var(--notice);border:1px solid var(--notice-line);border-radius:var(--r);overflow:hidden}
+.notice > .row{display:flex;gap:10px;align-items:center;padding:12px 14px}
+.notice.static .ttl{white-space:normal;overflow:visible;text-overflow:clip;line-height:1.45}
 .notice > button{all:unset;box-sizing:border-box;display:flex;gap:10px;align-items:center;width:100%;padding:12px 14px;cursor:pointer}
 .notice .tag{flex:none;font-size:.7rem;font-weight:700;letter-spacing:.04em;padding:2px 7px;border-radius:5px;background:var(--fg);color:var(--bg)}
-.notice .tag.info{background:var(--info);color:#fff}
+.notice .tag.lite{background:var(--info);color:#fff}
 header.top h1,.sheet .hd h2,.contact h3{font-family:var(--font-display);font-weight:800;letter-spacing:-.02em}
 .tab,.copyall,.notice .tag{font-family:var(--font-display);font-weight:600}
 .tab[aria-selected="true"]{font-weight:800}
@@ -114,9 +116,6 @@ header.top h1,.sheet .hd h2,.contact h3{font-family:var(--font-display);font-wei
 .sheet .hd .sub{display:block;font-size:.75rem;color:var(--muted);font-weight:400}
 .icon-btn{border:0;background:var(--sunk);border-radius:50%;width:34px;height:34px;display:grid;place-items:center;flex:none}
 .sheet .bd{overflow-y:auto;padding:14px max(16px,env(safe-area-inset-right,0px)) calc(20px + env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));display:grid;gap:12px}
-.info{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;font-size:.85rem;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:12px 14px}
-.info dt{color:var(--muted)}
-.info dd{margin:0;font-family:var(--font-mono);font-variant-numeric:tabular-nums;min-width:0;overflow-wrap:anywhere;display:flex;align-items:center;gap:6px;justify-content:space-between}
 .mini{border:1px solid var(--line);background:var(--bg);border-radius:6px;font-size:.7rem;padding:2px 7px;font-family:var(--font-body)}
 .block{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
 .block .bh{display:flex;align-items:center;gap:8px;padding:10px 10px 10px 14px;border-bottom:1px solid var(--line)}
@@ -147,7 +146,7 @@ mark{background:var(--notice-line);color:inherit;border-radius:3px;padding:0 1px
 
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:999px;font-size:.85rem;z-index:30;opacity:0;transition:.2s;pointer-events:none;white-space:nowrap}
 .toast.on{opacity:1;transform:translate(-50%,0)}
-.visits{grid-column:2;grid-row:1 / span 2;align-self:center;display:grid;gap:1px;text-align:right;font-size:.62rem;line-height:1.3;color:var(--muted);font-variant-numeric:tabular-nums;background:var(--surface);border:1px solid var(--line);border-radius:6px;padding:3px 7px}
+.visits{margin:28px 0 0;text-align:center;font-size:.72rem;color:var(--muted);font-variant-numeric:tabular-nums}
 .visits b{color:var(--fg);font-weight:600;margin-left:3px}
 .foot{margin-top:24px;font-size:.75rem;color:var(--muted);text-align:center}
 
@@ -161,7 +160,8 @@ mark{background:var(--notice-line);color:inherit;border-radius:3px;padding:0 1px
   header.top .upd{font-size:.85rem}
   .controls{grid-template-columns:minmax(0,1fr) auto;align-items:center}
   .controls .search{order:2;width:300px}
-  .notices{grid-template-columns:repeat(3,minmax(0,1fr));align-items:start}
+  .notices{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}
+  .notice.must{grid-row:1 / span 2}
   .grid{grid-template-columns:repeat(6,minmax(0,1fr));gap:14px}
   .heart{top:6px;right:6px}
   .sheet{left:50%;right:auto;top:50%;bottom:auto;width:480px;max-height:80vh;border-radius:18px;transform:translate(-50%,-46%);opacity:0;transition:transform .2s,opacity .2s;margin:0}
@@ -181,8 +181,7 @@ mark{background:var(--notice-line);color:inherit;border-radius:3px;padding:0 1px
 <div class="wrap">
   <header class="top">
     <h1>완전판매 모니터링</h1>
-    <p class="upd">제작·관리 <b>보람</b> · v1.2 (2026.10.22)</p>
-    <div class="visits" id="visits" hidden aria-label="방문자 수"><span>투데이 <b id="vToday">-</b></span><span>누적 <b id="vTotal">-</b></span></div>
+    <p class="upd">제작·관리 <b>보람</b> · v1.3 (2026.10.23)</p>
   </header>
 
   <section class="notices" id="notices" aria-label="공지사항"></section>
@@ -200,6 +199,7 @@ mark{background:var(--notice-line);color:inherit;border-radius:3px;padding:0 1px
 
   <p class="meta" id="meta"></p>
   <div class="grid" id="grid"></div>
+  <p class="visits" id="visits" hidden>누적 방문 <b id="vTotal">-</b></p>
   
 </div>
 
@@ -220,11 +220,11 @@ mark{background:var(--notice-line);color:inherit;border-radius:3px;padding:0 1px
 
 <script>
 const NOTICES = [
-  {tag:"필독", title:"모니터링 링크, 인콜·아웃콜 전화번호만 공유 가능합니다.", date:"2026.10.22",
-   body:["업무 참고용 자료이니 최종 확인 후 고객에게 전달해주세요."]},
-  {tag:"안내", title:"계약 완료 후 모니터링은 3시간 후부터 진행 가능합니다", date:"2026.10.22",
+  {tag:"필독", title:"모니터링 링크, 인콜·아웃콜 전화번호만 공유 가능합니다.", date:"2026.10.23",
+   body:["업무 참고용 자료이니 최종 확인 후 고객에게 전달해주세요.","오류사항 생겼을 시 이보람 총무에게 카톡 남겨주세요."]},
+  {tag:"안내1", title:"계약 완료 후 모니터링은 3시간 후부터 진행 가능합니다.", date:"2026.10.22",
    body:[]},
-  {tag:"안내", title:"오류사항 생겼을 시 이보람 총무에게 카톡 남겨주세요.", date:"2026.10.22",
+  {tag:"안내2", title:"모바일 모니터링은 미성년자와 65세이상 고연령자 불가입니다.", date:"2026.10.23",
    body:[]}
 ];
 
@@ -466,10 +466,13 @@ function toggleFav(id){
 const inCat = (it,c) => c==="all" ? true : c==="fav" ? favs.has(it.id) : it.cat===c;
 
 /* notices */
-$("#notices").innerHTML = NOTICES.map((n,i)=>`
+$("#notices").innerHTML = NOTICES.map((n,i)=> !n.body.length ? `
+  <div class="notice static">
+    <div class="row"><span class="tag lite">${n.tag}</span><span class="ttl">${esc(n.title)}</span></div>
+  </div>` : `
   <div class="notice ${n.tag==="필독"?"must":""}" aria-expanded="${i===0}">
     <button type="button" id="nt${i}" aria-controls="nb${i}" aria-expanded="${i===0}">
-      <span class="tag ${n.tag==="필독"?"":"info"}">${n.tag}</span>
+      <span class="tag ${n.tag==="필독"?"":"lite"}">${n.tag}</span>
       <span class="ttl">${esc(n.title)}</span>
       <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg>
     </button>
@@ -611,14 +614,12 @@ render();
   $("#visits").hidden = false;
   const url = (path,q) => "https://"+code+".goatcounter.com/counter/"+encodeURIComponent(path)+".json"+(q||"");
   const get = u => fetch(u).then(r=>r.ok?r.json():Promise.reject()).then(j=>j.count);
-  const d = new Date(Date.now()+9*3600*1000).toISOString().slice(0,10); // Asia/Seoul date
   const pn = location.pathname;
   const paths = [...new Set([pn, pn.replace(/\/+$/,"")||"/", pn.replace(/\/*$/,"/")])];
   setTimeout(async()=>{
     for(const p of paths){
       try{
         $("#vTotal").textContent = await get(url(p));
-        get(url(p,"?start="+d)).then(v=>{ $("#vToday").textContent=v; }).catch(()=>{});
         return;
       }catch(e){}
     }
