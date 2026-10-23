@@ -560,7 +560,7 @@ function openSheet(id){
             : `<a class="url" href="${esc(v)}" target="_blank" rel="noopener"><span id="v-${f.key}">${hl(v)}</span></a>`;
           return `<li>
             <div class="lbl">${f.label}${f.note?` <small>(${f.note})</small>`:""}</div>
-            <div class="val">${val}${v?`<button class="mini" type="button" data-k="${f.key}">개별복사</button>`:""}</div>
+            <div class="val">${val}${v?`<button class="mini" type="button" data-k="${f.key}">복사</button>`:""}</div>
           </li>`;}).join("")}
       </ul>
       <button class="copyall" type="button" id="copyAll" ${filled.length?"":"disabled"}>
