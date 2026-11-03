@@ -761,6 +761,7 @@ function openSheet(id){
   requestAnimationFrame(()=>{ $("#scrim").classList.add("on"); $("#sheet").classList.add("on"); $("#sClose").focus(); });
   document.body.style.overflow="hidden";
 }
+const plainHd = () => current.cat==="mutual" || current.cat==="digital";
 function closeSheet(){
   $("#scrim").classList.remove("on"); $("#sheet").classList.remove("on");
   document.body.style.overflow="";
@@ -782,12 +783,12 @@ $("#sBody").addEventListener("click",e=>{
   if(k){
     const f=FIELDS.find(x=>x.key===k.dataset.k), v=current.c[f.key];
     const line = f.type!=="url" ? `${f.icon} ${f.label}  ${v}` : `${f.icon} ${lblOf(f)}\n${v}`;
-    copyText(f.g ? `[${current.name}]\n${line}` : `[${current.name}] 완전판매 모니터링\n\n${line}`,k,$("#v-"+f.key)); return; }
+    copyText((f.g || plainHd()) ? `[${current.name}]\n${line}` : `[${current.name}] 완전판매 모니터링\n\n${line}`,k,$("#v-"+f.key)); return; }
   if(e.target.closest("#copyAll")){
     const ff=FIELDS.filter(f=>!f.g && current.c[f.key]);
     const tels=ff.filter(f=>f.type!=="url").map(f=>`${f.icon} ${f.label}  ${current.c[f.key]}`);
     const urls=ff.filter(f=>f.type==="url").map(f=>`${f.icon} ${lblOf(f)}\n${current.c[f.key]}`);
-    const txt=[`[${current.name}] 완전판매 모니터링`, tels.join("\n"), urls.join("\n")].filter(Boolean).join("\n\n");
+    const txt=[plainHd() ? `[${current.name}]` : `[${current.name}] 완전판매 모니터링`, tels.join("\n"), urls.join("\n")].filter(Boolean).join("\n\n");
     copyText(txt,null,$("#sBody .rows"));
   }
 });
