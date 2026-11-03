@@ -193,7 +193,7 @@ mark{background:var(--notice-line);color:inherit;border-radius:3px;padding:0 1px
 <div class="wrap">
   <header class="top">
     <h1>완전판매 모니터링</h1>
-    <p class="upd">제작·관리 <b>보람</b> · v1.4 (2026.11.03)</p>
+    <p class="upd">제작·관리 <b>보람</b> · v2.0 (2026.11.03)</p>
   </header>
 
   <section class="notices" id="notices" aria-label="공지사항"></section>
@@ -232,8 +232,8 @@ mark{background:var(--notice-line);color:inherit;border-radius:3px;padding:0 1px
 
 <script>
 const NOTICES = [
-  {tag:"필독", title:"모니터링 링크, 인콜·아웃콜 전화번호만 공유 가능합니다.", date:"2026.10.23",
-   body:["업무 참고용 자료이니 최종 확인 후 고객에게 전달해주세요.","오류사항 생겼을 시 이보람 총무에게 카톡 남겨주세요."]},
+  {tag:"필독", title:"모니터링 인콜/아웃콜/링크 공유합니다", date:"2026.11.03",
+   body:["보험사 헬프데스크와 보험금 청구서 추가됐습니다.","업무 시 참고해 주세요.","(오류사항 생겼을 시 이보람 총무에게 연락해 주세요.)"]},
   {tag:"안내1", title:"계약 완료 후 모니터링은 3시간 후부터 진행 가능합니다.", date:"2026.10.22",
    body:[]},
   {tag:"안내2", title:"모바일 모니터링은 미성년자와 65세이상 고연령자 불가입니다.", date:"2026.10.23",
@@ -753,6 +753,7 @@ function openSheet(id){
       <ul class="rows">${claim.map(row).join("")}</ul>
     </section>` : ""}`;
   $("#scrim").hidden=false; $("#sheet").hidden=false;
+  $("#sBody").scrollTop=0;
   requestAnimationFrame(()=>{ $("#scrim").classList.add("on"); $("#sheet").classList.add("on"); $("#sClose").focus(); });
   document.body.style.overflow="hidden";
 }
