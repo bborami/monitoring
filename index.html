@@ -778,7 +778,7 @@ $("#sBody").addEventListener("click",e=>{
   if(k){
     const f=FIELDS.find(x=>x.key===k.dataset.k), v=current.c[f.key];
     const line = f.type!=="url" ? `${f.icon} ${f.label}  ${v}` : `${f.icon} ${lblOf(f)}\n${v}`;
-    copyText(`[${current.name}] 완전판매 모니터링\n\n${line}`,k,$("#v-"+f.key)); return; }
+    copyText(f.g==="claim" ? `[${current.name}]\n${line}` : `[${current.name}] 완전판매 모니터링\n\n${line}`,k,$("#v-"+f.key)); return; }
   if(e.target.closest("#copyAll")){
     const ff=FIELDS.filter(f=>f.g!=="claim" && current.c[f.key]);
     const tels=ff.filter(f=>f.type!=="url").map(f=>`${f.icon} ${f.label}  ${current.c[f.key]}`);
