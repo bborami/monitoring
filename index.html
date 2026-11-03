@@ -259,7 +259,7 @@ const FIELDS = [
   {key:"rep",      label:"대표전화", type:"tel", icon:"📞"},
   {key:"center",   label:"고객센터", type:"tel", icon:"📞"},
   {g:"claim",key:"claimTel", label:"보험금청구 문의", type:"tel", icon:"📞"},
-  {g:"claim",key:"help",     label:"헬프데스크", type:"tel", icon:"📞"},
+  {g:"help",key:"help",     label:"헬프데스크", type:"tel", icon:"📞"},
   {g:"claim",key:"fax",      label:"보험금청구 팩스", type:"text", icon:"📠"},
   {key:"monitor",  label:"모니터링", type:"url", icon:"🔗"},
   {key:"mobile",   label:"모바일 모니터링", type:"url", icon:"📱"},
@@ -724,7 +724,7 @@ function openSheet(id){
   paintFav();
   $("#sTitle").innerHTML=`${esc(current.name)}<span class="sub">${CATS.find(c=>c.id===current.cat).sec}</span>`;
   const filled = FIELDS.filter(f=>current.c[f.key]);
-  const main = filled.filter(f=>f.g!=="claim"), claim = filled.filter(f=>f.g==="claim");
+  const main = filled.filter(f=>!f.g), help = filled.filter(f=>f.g==="help"), claim = filled.filter(f=>f.g==="claim");
   const PHONE = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>`;
   const FAX = `<svg class="faxic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M7 9V3h8l2 2v4"/><rect x="3" y="9" width="18" height="11" rx="2"/><path d="M7 14h6M7 17h4"/><circle cx="17" cy="14.5" r=".6" fill="currentColor"/><circle cx="17" cy="17" r=".6" fill="currentColor"/></svg>`;
   const row = f=>{
@@ -748,8 +748,12 @@ function openSheet(id){
         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="6" y="4" width="12" height="17" rx="2"/><path d="M9 4V3h6v1M9 10h6M9 14h6"/></svg>
         전체내용복사</button>
     </section>
+    ${help.length ? `<section class="contact">
+      <h3>헬프데스크</h3>
+      <ul class="rows">${help.map(row).join("")}</ul>
+    </section>` : ""}
     ${claim.length ? `<section class="contact">
-      <h3>헬프데스크 · 보험금청구</h3>
+      <h3>보험금청구</h3>
       <ul class="rows">${claim.map(row).join("")}</ul>
     </section>` : ""}`;
   $("#scrim").hidden=false; $("#sheet").hidden=false;
@@ -778,9 +782,9 @@ $("#sBody").addEventListener("click",e=>{
   if(k){
     const f=FIELDS.find(x=>x.key===k.dataset.k), v=current.c[f.key];
     const line = f.type!=="url" ? `${f.icon} ${f.label}  ${v}` : `${f.icon} ${lblOf(f)}\n${v}`;
-    copyText(f.g==="claim" ? `[${current.name}]\n${line}` : `[${current.name}] 완전판매 모니터링\n\n${line}`,k,$("#v-"+f.key)); return; }
+    copyText(f.g ? `[${current.name}]\n${line}` : `[${current.name}] 완전판매 모니터링\n\n${line}`,k,$("#v-"+f.key)); return; }
   if(e.target.closest("#copyAll")){
-    const ff=FIELDS.filter(f=>f.g!=="claim" && current.c[f.key]);
+    const ff=FIELDS.filter(f=>!f.g && current.c[f.key]);
     const tels=ff.filter(f=>f.type!=="url").map(f=>`${f.icon} ${f.label}  ${current.c[f.key]}`);
     const urls=ff.filter(f=>f.type==="url").map(f=>`${f.icon} ${lblOf(f)}\n${current.c[f.key]}`);
     const txt=[`[${current.name}] 완전판매 모니터링`, tels.join("\n"), urls.join("\n")].filter(Boolean).join("\n\n");
