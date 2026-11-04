@@ -165,6 +165,14 @@ mark{background:var(--notice-line);color:inherit;border-radius:3px;padding:0 1px
 
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:999px;font-size:.85rem;z-index:30;opacity:0;transition:.2s;pointer-events:none;white-space:nowrap}
 .toast.on{opacity:1;transform:translate(-50%,0)}
+.banners{display:grid;gap:10px;margin-top:28px}
+@media (min-width:768px){.banners{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.bnr{display:grid;justify-items:start;gap:6px;padding:16px 18px;background:var(--surface);border:1px solid var(--line);border-radius:14px;color:var(--fg);text-decoration:none}
+.bnr[href]{cursor:pointer}
+.bnr[href]:hover{border-color:var(--accent)}
+.bnr-tag{display:inline-flex;align-items:center;gap:4px;padding:3px 9px;border-radius:999px;background:var(--accent-soft);color:var(--accent);font-size:.72rem;font-weight:700}
+.bnr-t{font-family:var(--font-display);font-weight:800;font-size:1rem;letter-spacing:-.01em}
+.bnr-d{font-size:.85rem;color:var(--muted)}
 .visits{margin:28px 0 0;text-align:center;font-size:.72rem;color:var(--muted);font-variant-numeric:tabular-nums}
 .visits b{color:var(--fg);font-weight:600;margin-left:3px}
 .foot{margin-top:24px;font-size:.75rem;color:var(--muted);text-align:center}
@@ -218,8 +226,22 @@ mark{background:var(--notice-line);color:inherit;border-radius:3px;padding:0 1px
     <div class="tabs" id="tabs" role="tablist"></div>
   </div>
 
+
   <p class="meta" id="meta"></p>
   <div class="groups" id="grid"></div>
+  <section class="banners" aria-label="바로가기">
+    <a class="bnr" id="bnrCard" href="https://www.bss-a.co.kr/common_popup/card.html" target="_blank" rel="noopener">
+      <span class="bnr-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4 11 13M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>외부 링크</span>
+      <strong class="bnr-t">카드사 무이자 할부</strong>
+      <span class="bnr-d">보험료 카드 무이자 할부 정보</span>
+    </a>
+    <!-- 매달 같은 이름(자동차무이자.png)의 파일을 index.html 옆에 덮어쓰면 됩니다 -->
+    <a class="bnr" id="bnrCar" href="자동차무이자.png" target="_blank" rel="noopener">
+      <span class="bnr-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4 11 13M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>외부 링크</span>
+      <strong class="bnr-t">자동차보험 카드 무이자 할부</strong>
+      <span class="bnr-d">이번 달 자동차보험 무이자카드 안내표</span>
+    </a>
+  </section>
   <p class="visits" id="visits" hidden>누적 방문 <b id="vTotal">-</b></p>
   
 </div>
