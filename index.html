@@ -170,6 +170,14 @@ mark{background:var(--notice-line);color:inherit;border-radius:3px;padding:0 1px
 .bcard-row{display:flex;align-items:center;gap:12px}
 .bcard-row > span{display:grid;gap:3px}
 .bcard-ic{flex:none;color:var(--accent)}
+.viewer{position:fixed;inset:0;z-index:40;background:var(--bg);display:flex;flex-direction:column}
+.vw-hd{display:flex;align-items:center;gap:8px;padding:calc(8px + env(safe-area-inset-top,0px)) 10px 8px;border-bottom:1px solid var(--line);background:var(--surface)}
+.vw-hd strong{flex:1;min-width:0;text-align:center;font-family:var(--font-display);font-weight:800;font-size:1rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vw-x{border:0;background:var(--sunk);border-radius:50%;width:40px;height:40px;display:grid;place-items:center;flex:none}
+.vw-bd{flex:1;overflow:auto;-webkit-overflow-scrolling:touch;background:#fff;touch-action:pan-x pan-y pinch-zoom}
+.vw-bd img{display:block;width:100%;height:auto;max-width:none;cursor:zoom-in}
+.vw-bd.zoom img{width:auto;cursor:zoom-out}
+.vw-tip{margin:0;padding:8px 12px calc(8px + env(safe-area-inset-bottom,0px));text-align:center;font-size:.75rem;color:var(--muted);background:var(--surface);border-top:1px solid var(--line)}
 .banners{display:grid;gap:10px;margin-top:8px}
 @media (min-width:768px){.banners{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .bnr{display:grid;justify-items:start;gap:6px;padding:16px 18px;background:var(--surface);border:1px solid var(--line);border-radius:14px;color:var(--fg);text-decoration:none}
@@ -229,7 +237,7 @@ mark{background:var(--notice-line);color:inherit;border-radius:3px;padding:0 1px
       <span class="bnr-d">보험료 카드 무이자 할부 정보</span>
     </a>
     <!-- 매달 같은 이름(자동차무이자.png)의 파일을 index.html 옆에 덮어쓰면 됩니다 -->
-    <a class="bnr" id="bnrCar" href="자동차무이자.png" target="_blank" rel="noopener">
+    <a class="bnr" id="bnrCar" href="자동차무이자.png">
       <span class="bnr-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4 11 13M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>외부 링크</span>
       <strong class="bnr-t">자동차보험 카드 무이자 할부</strong>
       <span class="bnr-d">이번 달 자동차보험 무이자카드 안내표</span>
@@ -266,6 +274,15 @@ mark{background:var(--notice-line);color:inherit;border-radius:3px;padding:0 1px
     </button>
   </div>
   <div class="bd" id="sBody"></div>
+</div>
+<div class="viewer" id="viewer" role="dialog" aria-modal="true" aria-label="자동차보험 카드 무이자 할부" hidden>
+  <div class="vw-hd">
+    <button class="vw-x" id="vwBack" type="button" aria-label="뒤로가기"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M15 5l-7 7 7 7"/></svg></button>
+    <strong>자동차보험 카드 무이자 할부</strong>
+    <button class="vw-x" id="vwClose" type="button" aria-label="닫기"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+  </div>
+  <div class="vw-bd" id="vwBody"><img id="vwImg" alt="자동차보험 카드 무이자 할부 안내표"></div>
+  <p class="vw-tip">이미지를 누르면 크게 / 작게 볼 수 있어요</p>
 </div>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
@@ -877,6 +894,22 @@ $("#sheet").addEventListener("touchend",e=>{ if(y0!==null && e.changedTouches[0]
 /* 로고 이미지 저장·드래그 막기 */
 document.addEventListener("contextmenu",e=>{ if(e.target.closest(".card,.mono")) e.preventDefault(); });
 document.addEventListener("dragstart",e=>{ if(e.target.closest && e.target.closest(".card,.mono")) e.preventDefault(); });
+
+/* 자동차 무이자 안내표 뷰어: 뒤로가기 버튼/휴대폰 뒤로가기/X/Esc 로 닫기 */
+function openViewer(src){
+  const v=$("#viewer"); $("#vwImg").src=src; $("#vwBody").classList.remove("zoom"); $("#vwBody").scrollTo(0,0);
+  v.hidden=false; document.body.style.overflow="hidden";
+  try{ history.pushState({viewer:1},""); }catch(e){}
+  $("#vwClose").focus();
+}
+function hideViewer(){ $("#viewer").hidden=true; document.body.style.overflow=""; $("#bnrCar").focus(); }
+function closeViewer(){ if($("#viewer").hidden) return; if(history.state && history.state.viewer){ history.back(); } else hideViewer(); }
+window.addEventListener("popstate",()=>{ if(!$("#viewer").hidden) hideViewer(); });
+$("#bnrCar").addEventListener("click",e=>{ e.preventDefault(); openViewer($("#bnrCar").getAttribute("href")); });
+$("#vwClose").addEventListener("click",closeViewer);
+$("#vwBack").addEventListener("click",closeViewer);
+$("#vwImg").addEventListener("click",()=>$("#vwBody").classList.toggle("zoom"));
+document.addEventListener("keydown",e=>{ if(e.key==="Escape") closeViewer(); });
 
 render();
 
