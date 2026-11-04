@@ -165,7 +165,12 @@ mark{background:var(--notice-line);color:inherit;border-radius:3px;padding:0 1px
 
 .toast{position:fixed;left:50%;bottom:calc(24px + env(safe-area-inset-bottom,0px));transform:translate(-50%,20px);background:var(--fg);color:var(--bg);padding:10px 16px;border-radius:999px;font-size:.85rem;z-index:30;opacity:0;transition:.2s;pointer-events:none;white-space:nowrap}
 .toast.on{opacity:1;transform:translate(-50%,0)}
-.banners{display:grid;gap:10px;margin-top:28px}
+.bcard{display:grid;align-content:center;justify-items:start;gap:10px;padding:16px 18px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);color:var(--fg);text-decoration:none}
+.bcard:hover{border-color:var(--accent)}
+.bcard-row{display:flex;align-items:center;gap:12px}
+.bcard-row > span{display:grid;gap:3px}
+.bcard-ic{flex:none;color:var(--accent)}
+.banners{display:grid;gap:10px;margin-top:8px}
 @media (min-width:768px){.banners{grid-template-columns:repeat(2,minmax(0,1fr))}}
 .bnr{display:grid;justify-items:start;gap:6px;padding:16px 18px;background:var(--surface);border:1px solid var(--line);border-radius:14px;color:var(--fg);text-decoration:none}
 .bnr[href]{cursor:pointer}
@@ -188,7 +193,9 @@ mark{background:var(--notice-line);color:inherit;border-radius:3px;padding:0 1px
   .controls{grid-template-columns:minmax(0,1fr) auto;align-items:center}
   .controls .search{order:2;width:300px}
   .notices{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}
-  .notice.must{grid-row:1 / span 2}
+  .notices{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:stretch}
+  .notice{grid-column:1}
+  .bcard{grid-column:2;grid-row:1 / span 3}
   .grid{grid-template-columns:repeat(6,minmax(0,1fr));gap:14px}
   .heart{top:5px;right:5px;width:34px;height:34px}
   .logo{inset:29% 12% 11% 12%}
@@ -215,6 +222,20 @@ mark{background:var(--notice-line);color:inherit;border-radius:3px;padding:0 1px
 
   <section class="notices" id="notices" aria-label="공지사항"></section>
 
+  <section class="banners" aria-label="바로가기">
+    <a class="bnr" id="bnrCard" href="https://www.bss-a.co.kr/common_popup/card.html" target="_blank" rel="noopener">
+      <span class="bnr-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4 11 13M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>외부 링크</span>
+      <strong class="bnr-t">카드사 무이자 할부</strong>
+      <span class="bnr-d">보험료 카드 무이자 할부 정보</span>
+    </a>
+    <!-- 매달 같은 이름(자동차무이자.png)의 파일을 index.html 옆에 덮어쓰면 됩니다 -->
+    <a class="bnr" id="bnrCar" href="자동차무이자.png" target="_blank" rel="noopener">
+      <span class="bnr-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4 11 13M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>외부 링크</span>
+      <strong class="bnr-t">자동차보험 카드 무이자 할부</strong>
+      <span class="bnr-d">이번 달 자동차보험 무이자카드 안내표</span>
+    </a>
+  </section>
+
   <div class="controls">
     <label class="search" for="q">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
@@ -229,19 +250,6 @@ mark{background:var(--notice-line);color:inherit;border-radius:3px;padding:0 1px
 
   <p class="meta" id="meta"></p>
   <div class="groups" id="grid"></div>
-  <section class="banners" aria-label="바로가기">
-    <a class="bnr" id="bnrCard" href="https://www.bss-a.co.kr/common_popup/card.html" target="_blank" rel="noopener">
-      <span class="bnr-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4 11 13M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>외부 링크</span>
-      <strong class="bnr-t">카드사 무이자 할부</strong>
-      <span class="bnr-d">보험료 카드 무이자 할부 정보</span>
-    </a>
-    <!-- 매달 같은 이름(자동차무이자.png)의 파일을 index.html 옆에 덮어쓰면 됩니다 -->
-    <a class="bnr" id="bnrCar" href="자동차무이자.png" target="_blank" rel="noopener">
-      <span class="bnr-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4 11 13M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>외부 링크</span>
-      <strong class="bnr-t">자동차보험 카드 무이자 할부</strong>
-      <span class="bnr-d">이번 달 자동차보험 무이자카드 안내표</span>
-    </a>
-  </section>
   <p class="visits" id="visits" hidden>누적 방문 <b id="vTotal">-</b></p>
   
 </div>
@@ -678,6 +686,14 @@ $("#notices").innerHTML = NOTICES.map((n,i)=> !n.body.length ? `
       <span class="date">${n.date}</span>
     </div>
   </div>`).join("");
+$("#notices").insertAdjacentHTML("beforeend",`
+  <a class="bcard" href="https://bborami.github.io/BusinessCard/" target="_blank" rel="noopener">
+    <span class="bnr-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4 11 13M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>바로가기</span>
+    <span class="bcard-row">
+      <svg class="bcard-ic" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><circle cx="8.5" cy="11" r="2.2"/><path d="M5.2 16.2c.6-1.6 1.8-2.4 3.3-2.4s2.7.8 3.3 2.4M14.5 10h4M14.5 13.5h3"/></svg>
+      <span><strong class="bnr-t">무료 디지털 명함 만들기</strong><span class="bnr-d">나만의 모바일 명함을 무료로 만들고 고객에게 공유해 보세요</span></span>
+    </span>
+  </a>`);
 $("#notices").addEventListener("click",e=>{
   const b=e.target.closest("button"); if(!b) return;
   const box=b.parentElement, open=box.getAttribute("aria-expanded")!=="true";
