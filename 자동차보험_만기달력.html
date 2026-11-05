@@ -1,0 +1,534 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>자동차보험 만기 달력</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+<style>
+:root{
+  --bg:#f5f6f8; --panel:#fff; --line:#e3e6ea; --text:#1f2328; --muted:#6b7280;
+  --accent:#2563eb; --accent-bg:#e8efff;
+  --exp:#dc2626; --exp-bg:#fdecec;
+  --ren:#c2410c; --ren-bg:#fff1e6;
+  --sun:#dc2626; --sat:#2563eb; --today:#fff7d6;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    --bg:#15171a; --panel:#1e2125; --line:#33373d; --text:#e6e8eb; --muted:#9aa1ab;
+    --accent:#6b9bff; --accent-bg:#1f2b45;
+    --exp:#f87171; --exp-bg:#3a1f22;
+    --ren:#fb923c; --ren-bg:#3a2a1c;
+    --sun:#f87171; --sat:#7aa7ff; --today:#3a3520;
+  }
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:-apple-system,"Malgun Gothic","Apple SD Gothic Neo","Noto Sans KR",sans-serif;font-size:14px}
+header{background:var(--panel);border-bottom:1px solid var(--line);padding:12px 16px;display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+header h1{font-size:18px;margin:0 12px 0 0}
+select,input[type=text],button{font:inherit;padding:6px 10px;border:1px solid var(--line);border-radius:6px;background:var(--panel);color:var(--text)}
+button{cursor:pointer}
+button.primary{background:var(--accent);color:#fff;border-color:var(--accent)}
+label.f{display:flex;align-items:center;gap:6px;color:var(--muted)}
+.spacer{flex:1}
+main{display:grid;grid-template-columns:1fr 320px;gap:16px;padding:16px;max-width:1500px;margin:0 auto}
+@media (max-width:900px){main{grid-template-columns:1fr}}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px}
+.calhead{display:flex;align-items:center;gap:8px;padding:12px 14px;border-bottom:1px solid var(--line)}
+.calhead h2{margin:0;font-size:20px}
+.ym{position:relative}
+#title{border:none;background:none;font-size:20px;font-weight:700;padding:4px 10px;min-width:150px}
+#title:hover{background:var(--accent-bg)}
+#title::after{content:" ▾";font-size:14px;color:var(--muted)}
+.picker{position:absolute;top:calc(100% + 6px);left:50%;transform:translateX(-50%);z-index:10;background:var(--panel);border:1px solid var(--line);border-radius:10px;box-shadow:0 8px 24px rgba(0,0,0,.15);padding:12px;width:260px}
+.picker[hidden]{display:none}
+.py{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.py select{font-weight:700}
+.pm{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.pm button{padding:8px 0}
+.pm button.on{background:var(--accent);color:#fff;border-color:var(--accent)}
+.legend{display:flex;gap:12px;margin-left:auto;color:var(--muted);font-size:12px;flex-wrap:wrap}
+.legend span::before{content:"";display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:4px;vertical-align:-1px}
+.legend .l1::before{background:var(--exp)} .legend .l2::before{background:var(--ren)}
+.grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr))}
+.dow{padding:8px;text-align:center;font-weight:600;border-bottom:1px solid var(--line);font-size:13px}
+.dow:first-child{color:var(--sun)} .dow:last-child{color:var(--sat)}
+.cell{min-height:118px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:4px;overflow:hidden}
+.cell:nth-child(7n){border-right:none}
+.cell.other{opacity:.4}
+.cell.today{background:var(--today)}
+.dnum{font-size:12px;font-weight:600;margin-bottom:3px}
+.cell.sun .dnum{color:var(--sun)} .cell.sat .dnum{color:var(--sat)}
+.chip{display:block;width:100%;text-align:left;font-size:12px;padding:2px 5px;margin:2px 0;border-radius:4px;border:none;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;cursor:pointer}
+.chip.exp{background:var(--exp-bg);color:var(--exp);border-left:3px solid var(--exp)}
+.chip.ren{background:var(--ren-bg);color:var(--ren);border-left:3px solid var(--ren)}
+.tag{display:inline-block;font-size:10px;font-weight:700;line-height:1;padding:2px 3px;margin-right:4px;border-radius:3px;color:#fff;vertical-align:1px}
+.chip.exp .tag{background:var(--exp)} .chip.ren .tag{background:var(--ren)}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .tag{color:#1e2125}}
+.chip.done,.item.done .nm,.card.done td b{text-decoration:line-through;opacity:.55}
+.item.done{opacity:.6}
+.donebox{display:flex;align-items:center;gap:8px;padding:8px 10px;background:var(--accent-bg);font-weight:600;cursor:pointer}
+.donebox input{width:18px;height:18px}
+.addgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.addgrid label{display:flex;flex-direction:column;gap:4px;font-size:12px;color:var(--muted)}
+.addgrid input{font:inherit;padding:6px 8px;border:1px solid var(--line);border-radius:6px;background:var(--panel);color:var(--text)}
+@media (max-width:600px){.addgrid{grid-template-columns:1fr}}
+.dlg-f{padding:12px 16px;border-top:1px solid var(--line);text-align:right}
+.cardfoot{padding:6px 10px;text-align:right;border-top:1px solid var(--line)}
+.cardfoot button{font-size:12px;padding:3px 8px;color:var(--exp)}
+.more{font-size:11px;color:var(--muted);background:none;border:none;padding:1px 4px;cursor:pointer}
+.side h3{margin:0;padding:12px 14px;border-bottom:1px solid var(--line);font-size:15px}
+.side .sub{color:var(--muted);font-size:12px;font-weight:400}
+.list{max-height:70vh;overflow:auto}
+.item{display:flex;gap:8px;align-items:center;padding:9px 14px;border-bottom:1px solid var(--line);cursor:pointer}
+.item:hover{background:var(--accent-bg)}
+.dd{font-weight:700;min-width:48px;text-align:center;border-radius:5px;padding:3px 4px;font-size:12px;background:var(--ren-bg);color:var(--ren)}
+.dd.urgent{background:var(--exp-bg);color:var(--exp)}
+.item .nm{font-weight:600} .item .meta{color:var(--muted);font-size:12px}
+.empty{padding:20px 14px;color:var(--muted)}
+.tabs{display:flex;border-bottom:1px solid var(--line)}
+.tabs button{flex:1;border:none;border-radius:0;border-bottom:2px solid transparent;background:none;padding:10px}
+.tabs button.on{border-bottom-color:var(--accent);color:var(--accent);font-weight:600}
+dialog{border:1px solid var(--line);border-radius:12px;padding:0;background:var(--panel);color:var(--text);width:min(560px,calc(100vw - 32px))}
+dialog::backdrop{background:rgba(0,0,0,.4)}
+.dlg-h{display:flex;align-items:center;padding:14px 16px;border-bottom:1px solid var(--line)}
+.dlg-h h3{margin:0;font-size:17px} .dlg-h button{margin-left:auto}
+.dlg-b{padding:12px 16px;max-height:70vh;overflow:auto}
+.card{border:1px solid var(--line);border-radius:8px;margin-bottom:10px;overflow:hidden}
+.card table{width:100%;border-collapse:collapse}
+.card th{width:110px;text-align:left;font-weight:500;color:var(--muted);background:var(--bg);padding:6px 10px;border-bottom:1px solid var(--line)}
+.card td{padding:6px 10px;border-bottom:1px solid var(--line)}
+.card tr:last-child th,.card tr:last-child td{border-bottom:none}
+.badge{display:inline-block;font-size:11px;padding:1px 6px;border-radius:10px;margin-left:6px;background:var(--ren-bg);color:var(--ren)}
+.badge.urgent{background:var(--exp-bg);color:var(--exp)}
+.badge.past{background:var(--line);color:var(--muted)}
+.status{color:var(--muted);font-size:12px}
+@media (max-width:600px){.cell{min-height:80px}.chip{font-size:11px;padding:1px 3px}header h1{font-size:16px}}
+</style>
+</head>
+<body>
+<header>
+  <h1>🚗 자동차보험 만기 달력</h1>
+  <label class="f">지점(팀) <select id="selBranch"></select></label>
+  <label class="f">수금사원 <select id="selStaff"></select></label>
+  <input type="text" id="q" placeholder="계약자/차량번호 검색" size="16">
+  <div class="spacer"></div>
+  <span class="status" id="status"></span>
+  <button id="btnAdd">＋ 직접 입력</button>
+  <button id="btnClear" title="지점을 선택하면 그 지점 데이터만, 전체 지점이면 모든 데이터를 삭제합니다">데이터 삭제</button>
+  <button id="btnUpload" class="primary">＋ 엑셀/CSV 추가</button>
+  <input type="file" id="file" accept=".csv,.xlsx,.xls" multiple hidden>
+</header>
+<main>
+  <section class="panel">
+    <div class="calhead">
+      <button id="prev">◀</button>
+      <div class="ym"><h2><button id="title" title="연도·월 선택"></button></h2>
+        <div class="picker" id="picker" hidden>
+          <div class="py"><button id="pyPrev">◀</button><select id="pyYear"></select><button id="pyNext">▶</button></div>
+          <div class="pm" id="pm"></div>
+        </div></div>
+      <button id="next">▶</button>
+      <button id="today">오늘</button>
+      <div class="legend">
+        <label class="f"><input type="checkbox" id="showExp" checked><span class="l1">만기일</span></label>
+        <label class="f"><input type="checkbox" id="showRen" checked><span class="l2">갱신확인 (만기 30일 전)</span></label>
+      </div>
+    </div>
+    <div class="grid" id="grid"></div>
+  </section>
+  <aside class="panel side">
+    <div class="tabs">
+      <button id="tabSoon" class="on">갱신 대상 (30일 이내)</button>
+      <button id="tabMonth">이번 달 만기</button>
+    </div>
+    <div class="list" id="list"></div>
+  </aside>
+</main>
+
+<dialog id="dlgAdd">
+  <form id="addForm" method="dialog">
+  <div class="dlg-h"><h3>누락 계약 직접 입력</h3><button type="button" id="addClose">닫기</button></div>
+  <div class="dlg-b addgrid">
+    <label>지점(팀) *<input name="지점명" list="dlBranch" required></label>
+    <label>수금사원 *<input name="수금사원" list="dlStaff" required></label>
+    <label>계약자명 *<input name="계약자명" required></label>
+    <label>피보험자명<input name="피보험자명" placeholder="비우면 계약자명과 동일"></label>
+    <label>피보험자번호<input name="피보험자번호" placeholder="예: 700101-1******"></label>
+    <label>차량번호<input name="차량번호"></label>
+    <label>보험사<input name="보험사명" list="dlCompany"></label>
+    <label>증권번호<input name="증권번호"></label>
+    <label>보험시작일<input name="보험시작일자" type="date"></label>
+    <label>보험종료일(만기일) *<input name="보험종료일자" type="date" required></label>
+    <label>보험료<input name="보험료" inputmode="numeric"></label>
+    <label>갱신보험료/메모<input name="갱신보험료"></label>
+    <datalist id="dlBranch"></datalist><datalist id="dlStaff"></datalist><datalist id="dlCompany"></datalist>
+  </div>
+  <div class="dlg-f"><button type="submit" class="primary">저장</button></div>
+  </form>
+</dialog>
+
+<dialog id="dlg">
+  <div class="dlg-h"><h3 id="dlgTitle"></h3><button id="dlgClose">닫기</button></div>
+  <div class="dlg-b" id="dlgBody"></div>
+</dialog>
+
+<script>
+const RENEW_DAYS = 30;
+const HEADERS = ["지점명","수금사원","계약자명","피보험자명","피보험자번호","차량번호","보험사명","증권번호","보험종목명","보험시작일자","보험종료일자","계약일자","갱신보험료","보험료","처리완료"];
+const SAMPLE = [];
+const SAMPLE_NAME = "";
+
+let contracts = [];
+let view = new Date(); view.setDate(1);
+let tab = "soon";
+const $ = id => document.getElementById(id);
+const pad = n => String(n).padStart(2,"0");
+const key = d => `${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+const today0 = () => { const t=new Date(); t.setHours(0,0,0,0); return t; };
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+
+function parseDate(v){
+  if (v == null || v === "") return null;
+  if (v instanceof Date) return new Date(v.getFullYear(), v.getMonth(), v.getDate());
+  if (typeof v === "number") { // 엑셀 날짜 일련번호
+    if (v > 19000000) v = String(v);
+    else { const d = new Date(Math.round((v - 25569) * 86400000)); return new Date(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()); }
+  }
+  const s = String(v).trim();
+  let m = s.match(/^(\d{4})(\d{2})(\d{2})$/) || s.match(/^(\d{4})[-./ ]\s*(\d{1,2})[-./ ]\s*(\d{1,2})/);
+  if (!m) return null;
+  return new Date(+m[1], +m[2]-1, +m[3]);
+}
+const fmt = d => d ? `${d.getFullYear()}.${pad(d.getMonth()+1)}.${pad(d.getDate())}` : "";
+
+function toContracts(rows){
+  // rows: 2차원 배열. 첫 행에서 헤더 위치를 찾아 매핑
+  // 헤더 이름 정리: "계약자명:STRING(256)" 같은 시스템 다운로드 형식도 인식
+  const norm = c => String(c ?? "").replace(/^\uFEFF/,"").replace(/:.*$/,"").replace(/\s/g,"");
+  const ALIAS = {"수금사원명":"수금사원","보험사":"보험사명","종목명":"보험종목명","보험시작일":"보험시작일자","보험종료일":"보험종료일자","만기일":"보험종료일자","만기일자":"보험종료일자",
+    "팀":"지점명","지점":"지점명","계약자":"계약자명","갱신보혐료":"갱신보험료"}; // 금프 만기현황 엑셀 양식
+  let hi = rows.findIndex(r => r.some(c => (ALIAS[norm(c)] || norm(c)) === "계약자명"));
+  if (hi < 0) throw new Error("'계약자명' 열을 찾을 수 없습니다. 헤더 행을 확인하세요.");
+  const h = rows[hi].map(c => { const n = norm(c); return ALIAS[n] || n; });
+  const idx = name => h.indexOf(name);
+  const col = {};
+  HEADERS.forEach(n => col[n] = idx(n));
+  if (col["보험종료일자"] < 0) throw new Error("'보험종료일자' 열을 찾을 수 없습니다.");
+  const out = [];
+  for (const r of rows.slice(hi+1)) {
+    const g = n => col[n] >= 0 ? String(r[col[n]] ?? "").trim() : "";
+    const end = parseDate(col["보험종료일자"] >= 0 ? r[col["보험종료일자"]] : null);
+    let name = g("계약자명"); if (!name || name === "동일") name = g("피보험자명"); // 비어 있거나 "동일"이면 피보험자명
+    if (!name && g("차량번호")) name = `(이름없음) ${g("차량번호")}`;
+    if (!name || !end) continue;
+    const renew = new Date(end); renew.setDate(renew.getDate() - RENEW_DAYS);
+    out.push({
+      branch: g("지점명") || "(지점없음)", staff: g("수금사원") || "(미지정)",
+      name, insured: g("피보험자명"), insuredNo: g("피보험자번호"),
+      car: g("차량번호"), company: g("보험사명"), policy: g("증권번호"), kind: g("보험종목명"),
+      start: parseDate(col["보험시작일자"] >= 0 ? r[col["보험시작일자"]] : null),
+      signed: parseDate(col["계약일자"] >= 0 ? r[col["계약일자"]] : null), end, renew,
+      renewPremium: g("갱신보험료"), premium: g("보험료"), done: g("처리완료")
+    });
+  }
+  return out;
+}
+
+function filtered(){
+  const b = $("selBranch").value, s = $("selStaff").value, q = $("q").value.trim().toLowerCase();
+  return contracts.filter(c =>
+    (!b || c.branch === b) && (!s || c.staff === s) &&
+    (!q || (c.name + " " + c.insured + " " + c.car.replace(/\s/g,"")).toLowerCase().includes(q.replace(/\s/g,""))));
+}
+
+function fillBranches(){
+  const cur = $("selBranch").value;
+  const bs = [...new Set(contracts.map(c => c.branch))].sort((a,b)=>a.localeCompare(b,"ko"));
+  $("selBranch").innerHTML = `<option value="">전체 지점 (${contracts.length})</option>` +
+    bs.map(b => `<option value="${esc(b)}">${esc(b)} (${contracts.filter(c=>c.branch===b).length})</option>`).join("");
+  if (bs.includes(cur)) $("selBranch").value = cur;
+  fillStaff();
+}
+function fillStaff(){
+  const b = $("selBranch").value, cur = $("selStaff").value;
+  const pool = contracts.filter(c => !b || c.branch === b);
+  const ss = [...new Set(pool.map(c => c.staff))].sort((a,b)=>a.localeCompare(b,"ko"));
+  $("selStaff").innerHTML = `<option value="">전체 수금사원</option>` +
+    ss.map(s => `<option value="${esc(s)}">${esc(s)} (${pool.filter(c=>c.staff===s).length})</option>`).join("");
+  if (ss.includes(cur)) $("selStaff").value = cur;
+}
+
+// 같은 날짜·같은 계약자는 한 칸으로 묶음
+function groupByDay(list, field){
+  const m = new Map();
+  for (const c of list) {
+    const k = key(c[field]) + "|" + c.name + "|" + c.staff;
+    if (!m.has(k)) m.set(k, { day: key(c[field]), name: c.name, items: [] });
+    m.get(k).items.push(c);
+  }
+  const byDay = {};
+  for (const g of m.values()) (byDay[g.day] ||= []).push(g);
+  return byDay;
+}
+
+let groupStore = [];
+function render(){
+  const list = filtered();
+  const y = view.getFullYear(), mo = view.getMonth();
+  $("title").textContent = `${y}년 ${mo+1}월`;
+  const exp = $("showExp").checked ? groupByDay(list, "end") : {};
+  const ren = $("showRen").checked ? groupByDay(list, "renew") : {};
+  const first = new Date(y, mo, 1);
+  const start = new Date(first); start.setDate(1 - first.getDay());
+  const tk = key(today0());
+  groupStore = [];
+  let html = ["일","월","화","수","목","금","토"].map(d=>`<div class="dow">${d}</div>`).join("");
+  const weeks = Math.ceil((first.getDay() + new Date(y, mo+1, 0).getDate()) / 7);
+  for (let i = 0; i < weeks*7; i++) {
+    const d = new Date(start); d.setDate(start.getDate() + i);
+    const k = key(d);
+    const cls = ["cell", d.getMonth()!==mo?"other":"", k===tk?"today":"", d.getDay()===0?"sun":"", d.getDay()===6?"sat":""].join(" ");
+    const chips = [
+      ...(exp[k]||[]).map(g => ({g, t:"exp"})),
+      ...(ren[k]||[]).map(g => ({g, t:"ren"}))
+    ];
+    const MAX = 4;
+    let inner = chips.slice(0, MAX).map(({g,t}) => {
+      const id = groupStore.push({g,t}) - 1;
+      const tag = t==="ren" ? "갱신" : "만기일";
+      const label = g.name + (g.items.length>1 ? ` ×${g.items.length}` : "");
+      const done = g.items.every(c => c.done);
+      return `<button class="chip ${t}${done?" done":""}" data-g="${id}" title="[${tag}] ${esc(label)} · ${esc(g.items[0].staff)}"><span class="tag">${tag}</span>${esc(label)}</button>`;
+    }).join("");
+    if (chips.length > MAX) {
+      const id = groupStore.push({day:k, chips}) - 1;
+      inner += `<button class="more" data-day="${id}">+${chips.length-MAX}건 더보기</button>`;
+    }
+    html += `<div class="${cls}"><div class="dnum">${d.getDate()}</div>${inner}</div>`;
+  }
+  $("grid").innerHTML = html;
+  renderList(list);
+}
+
+function dday(c){ return Math.round((c.end - today0()) / 86400000); }
+function badge(c){
+  const n = dday(c);
+  if (n < 0) return `<span class="badge past">만기경과</span>`;
+  return `<span class="badge ${n<=7?"urgent":""}">D-${n}</span>`;
+}
+
+function renderList(list){
+  const t = today0();
+  let items;
+  if (tab === "soon") {
+    items = list.filter(c => { const n = dday(c); return n >= 0 && n <= RENEW_DAYS; });
+  } else {
+    items = list.filter(c => c.end.getFullYear()===view.getFullYear() && c.end.getMonth()===view.getMonth());
+  }
+  items.sort((a,b) => a.end - b.end || a.name.localeCompare(b.name,"ko"));
+  $("tabSoon").textContent = `갱신 대상 (30일 이내 ${list.filter(c=>{const n=dday(c);return n>=0&&n<=RENEW_DAYS}).length})`;
+  $("tabMonth").textContent = `${view.getMonth()+1}월 만기`;
+  if (!items.length) { $("list").innerHTML = `<div class="empty">해당하는 계약이 없습니다.</div>`; return; }
+  $("list").innerHTML = items.map((c,i) => {
+    const n = dday(c);
+    return `<div class="item${c.done?" done":""}" data-i="${contracts.indexOf(c)}">
+      <div class="dd ${n<=7?"urgent":""}">${n<0?"경과":"D-"+n}</div>
+      <div><div class="nm">${esc(c.name)} <span class="meta">${esc(c.car)}</span></div>
+      <div class="meta">${fmt(c.end)} 만기 · ${esc(c.company)} · ${esc(c.branch)} / ${esc(c.staff)}</div></div></div>`;
+  }).join("");
+}
+
+function card(c){
+  return `<div class="card${c.done?" done":""}">
+    <label class="donebox"><input type="checkbox" class="donechk" data-i="${contracts.indexOf(c)}"${c.done?" checked":""}> 만기처리 완료</label><table>
+    <tr><th>계약자명</th><td><b>${esc(c.name)}</b>${badge(c)}</td></tr>
+    <tr><th>피보험자명</th><td>${esc(c.insured)}</td></tr>
+    <tr><th>피보험자번호</th><td>${esc(c.insuredNo)}</td></tr>
+    <tr><th>차량번호</th><td>${esc(c.car)}</td></tr>
+    <tr><th>보험사</th><td>${esc(c.company)}${c.kind?` <span class="meta">(${esc(c.kind)})</span>`:""}</td></tr>
+    <tr><th>증권번호</th><td>${esc(c.policy)}</td></tr>
+    <tr><th>보험시작일</th><td>${c.start ? fmt(c.start) : (c.signed ? `<span class="meta">(만기리스트에 없음 · 계약일 ${fmt(c.signed)})</span>` : "")}</td></tr>
+    <tr><th>보험종료일</th><td>${fmt(c.end)} <span class="meta">(갱신확인 ${fmt(c.renew)})</span></td></tr>
+    ${c.premium ? `<tr><th>보험료</th><td>${/^\d+$/.test(c.premium) ? Number(c.premium).toLocaleString("ko-KR")+"원" : esc(c.premium)}</td></tr>` : ""}
+    ${c.renewPremium ? `<tr><th>갱신보험료</th><td style="white-space:pre-line">${esc(c.renewPremium)}</td></tr>` : ""}
+    <tr><th>지점 / 사원</th><td>${esc(c.branch)} / ${esc(c.staff)}</td></tr>
+  </table><div class="cardfoot"><button class="delone" data-i="${contracts.indexOf(c)}">이 계약 삭제</button></div></div>`;
+}
+function openDlg(title, items){
+  $("dlgTitle").textContent = title;
+  $("dlgBody").innerHTML = items.map(card).join("");
+  $("dlg").showModal();
+}
+$("dlgBody").addEventListener("click", e => {
+  if (!e.target.classList.contains("delone")) return;
+  const c = contracts[+e.target.dataset.i];
+  if (!confirm(`${c.name} (${c.car || "차량번호 없음"}) 계약을 삭제할까요?`)) return;
+  contracts = contracts.filter(x => x !== c);
+  $("dlg").close(); save(); refresh();
+});
+// ---- 누락 계약 직접 입력 ----
+$("btnAdd").onclick = () => {
+  const uniq = f => [...new Set(contracts.map(c => c[f]).filter(Boolean))].sort((a,b)=>a.localeCompare(b,"ko")).map(v=>`<option value="${esc(v)}">`).join("");
+  $("dlBranch").innerHTML = uniq("branch"); $("dlStaff").innerHTML = uniq("staff"); $("dlCompany").innerHTML = uniq("company");
+  $("addForm").reset();
+  if ($("selBranch").value) $("addForm").elements["지점명"].value = $("selBranch").value;
+  if ($("selStaff").value) $("addForm").elements["수금사원"].value = $("selStaff").value;
+  $("dlgAdd").showModal();
+};
+$("addClose").onclick = () => $("dlgAdd").close();
+$("addForm").addEventListener("submit", e => {
+  e.preventDefault();
+  const fd = new FormData(e.target);
+  if (!fd.get("피보험자명")) fd.set("피보험자명", fd.get("계약자명"));
+  fd.set("보험료", String(fd.get("보험료")||"").replace(/[^\d]/g,""));
+  const head = [...fd.keys()];
+  const r = merge(toContracts([head, head.map(k => String(fd.get(k)).trim())]));
+  save(); refresh();
+  const end = parseDate(fd.get("보험종료일자")); view = new Date(end.getFullYear(), end.getMonth(), 1); render();
+  $("dlgAdd").close();
+  alert(r.updated ? "같은 계약(차량번호·만기일·피보험자)이 있어 내용을 고쳤습니다." : `${fd.get("계약자명")} 계약을 추가했습니다.`);
+});
+$("dlgBody").addEventListener("change", e => {
+  if (!e.target.classList.contains("donechk")) return;
+  const c = contracts[+e.target.dataset.i];
+  c.done = e.target.checked ? "Y" : "";
+  e.target.closest(".card").classList.toggle("done", !!c.done);
+  save(); render();
+});
+
+$("grid").addEventListener("click", e => {
+  const chip = e.target.closest(".chip"), more = e.target.closest(".more");
+  if (chip) {
+    const {g,t} = groupStore[+chip.dataset.g];
+    openDlg(`${g.name} ${t==="ren" ? "· 갱신 확인" : "· 만기"} (${g.items.length}건)`, g.items);
+  } else if (more) {
+    const {day, chips} = groupStore[+more.dataset.day];
+    openDlg(`${day.replace(/-/g,".")} 전체 (${chips.reduce((s,x)=>s+x.g.items.length,0)}건)`, chips.flatMap(x => x.g.items));
+  }
+});
+$("list").addEventListener("click", e => {
+  const it = e.target.closest(".item"); if (!it) return;
+  const c = contracts[+it.dataset.i];
+  openDlg(`${c.name} 계약 상세`, [c]);
+});
+$("dlgClose").onclick = () => $("dlg").close();
+$("dlg").addEventListener("click", e => { if (e.target === $("dlg")) $("dlg").close(); });
+$("prev").onclick = () => { view.setMonth(view.getMonth()-1); render(); };
+$("next").onclick = () => { view.setMonth(view.getMonth()+1); render(); };
+let pickYear;
+function drawPicker(){
+  const ys=[]; for(let y=pickYear-10;y<=pickYear+10;y++) ys.push(y);
+  $("pyYear").innerHTML=ys.map(y=>`<option value="${y}"${y===pickYear?" selected":""}>${y}년</option>`).join("");
+  $("pm").innerHTML=Array.from({length:12},(_,m)=>`<button data-m="${m}" class="${pickYear===view.getFullYear()&&m===view.getMonth()?"on":""}">${m+1}월</button>`).join("");
+}
+$("title").onclick=e=>{e.stopPropagation(); const p=$("picker"); if(p.hidden){pickYear=view.getFullYear(); drawPicker(); p.hidden=false;} else p.hidden=true;};
+$("picker").addEventListener("click",e=>{e.stopPropagation(); const b=e.target.closest("[data-m]"); if(b){view=new Date(pickYear,+b.dataset.m,1); $("picker").hidden=true; render();}});
+$("pyPrev").onclick=()=>{pickYear--;drawPicker();};
+$("pyNext").onclick=()=>{pickYear++;drawPicker();};
+$("pyYear").onchange=e=>{pickYear=+e.target.value;drawPicker();};
+document.addEventListener("click",()=>{$("picker").hidden=true;});
+document.addEventListener("keydown",e=>{if(e.key==="Escape")$("picker").hidden=true;});
+$("today").onclick = () => { view = new Date(); view.setDate(1); render(); };
+$("selBranch").onchange = () => { $("selStaff").value = ""; fillStaff(); render(); };
+$("selStaff").onchange = render;
+$("q").oninput = render;
+$("showExp").onchange = render; $("showRen").onchange = render;
+$("tabSoon").onclick = () => { tab="soon"; $("tabSoon").classList.add("on"); $("tabMonth").classList.remove("on"); render(); };
+$("tabMonth").onclick = () => { tab="month"; $("tabMonth").classList.add("on"); $("tabSoon").classList.remove("on"); render(); };
+
+// ---- 파일 불러오기 (CSV: UTF-8/EUC-KR 자동 인식, 엑셀 xlsx/xls) ----
+function parseCSV(text){
+  const rows = []; let row = [], cur = "", q = false;
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    if (q) { if (ch === '"') { if (text[i+1] === '"') { cur += '"'; i++; } else q = false; } else cur += ch; }
+    else if (ch === '"') q = true;
+    else if (ch === ",") { row.push(cur); cur = ""; }
+    else if (ch === "\n") { row.push(cur); rows.push(row); row = []; cur = ""; }
+    else if (ch !== "\r") cur += ch;
+  }
+  if (cur || row.length) { row.push(cur); rows.push(row); }
+  return rows;
+}
+function decode(buf){
+  try { return new TextDecoder("utf-8", {fatal:true}).decode(buf).replace(/^﻿/,""); }
+  catch { return new TextDecoder("euc-kr").decode(buf); }
+}
+const SAVE_KEY = "carExpiryCalendar.v2";
+const ymd = d => d ? `${d.getFullYear()}${pad(d.getMonth()+1)}${pad(d.getDate())}` : "";
+const toRow = c => [c.branch,c.staff,c.name,c.insured,c.insuredNo,c.car,c.company,c.policy,c.kind,ymd(c.start),ymd(c.end),ymd(c.signed),c.renewPremium,c.premium,c.done];
+// 같은 계약 판단: 차량번호 + 보험종료일 + 피보험자명 (공백 무시, 증권번호 없는 양식과도 맞추기 위해)
+const ckey = c => [c.car,ymd(c.end),c.insured].map(s=>String(s).replace(/\s/g,"").toUpperCase()).join("|");
+let files = [];
+
+function save(){
+  try { localStorage.setItem(SAVE_KEY, JSON.stringify({rows: contracts.map(toRow), files})); } catch {}
+}
+function refresh(){
+  $("status").textContent = contracts.length ? `총 ${contracts.length}건 · 불러온 파일 ${files.length}개` : "데이터 없음 · 엑셀/CSV를 추가하세요";
+  $("status").title = files.join("\n");
+  fillBranches(); render();
+}
+function merge(newOnes){
+  const map = new Map(contracts.map(c => [ckey(c), c]));
+  let added = 0, updated = 0;
+  for (const c of newOnes) {
+    const k = ckey(c);
+    if (map.has(k)) updated++; else added++;
+    const old = map.get(k);
+    if (old) for (const f in c) if (c[f] === "" || c[f] == null) c[f] = old[f]; // 새 파일에 없는 항목은 기존 값 유지
+    map.set(k, c);
+  }
+  contracts = [...map.values()];
+  return {added, updated};
+}
+async function readFile(f){
+  const buf = await f.arrayBuffer();
+  if (/\.csv$/i.test(f.name)) return parseCSV(decode(buf));
+  if (typeof XLSX === "undefined") throw new Error("엑셀 읽기 모듈을 불러오지 못했습니다(인터넷 연결 확인). CSV로 저장해서 올려주세요.");
+  const wb = XLSX.read(buf, {type:"array"});
+  // 여러 시트 중 '계약자' 헤더가 있는 시트를 사용
+  const sheets = wb.SheetNames.map(n => XLSX.utils.sheet_to_json(wb.Sheets[n], {header:1, raw:true, defval:""}));
+  return sheets.find(rows => { try { return toContracts(rows).length; } catch { return false; } }) || sheets[0];
+}
+$("btnUpload").onclick = () => $("file").click();
+$("file").onchange = async e => {
+  const msgs = [];
+  for (const f of e.target.files) {
+    try {
+      const r = merge(toContracts(await readFile(f)));
+      files.push(f.name);
+      msgs.push(`✔ ${f.name}: ${r.added}건 추가${r.updated ? `, ${r.updated}건은 이미 있어 최신 내용으로 덮어씀` : ""}`);
+    } catch (err) { msgs.push(`✘ ${f.name}: ${err.message}`); }
+  }
+  e.target.value = "";
+  save(); refresh();
+  if (msgs.length) alert(msgs.join("\n") + `\n\n현재 총 ${contracts.length}건`);
+};
+$("btnClear").onclick = () => {
+  const b = $("selBranch").value;
+  if (b) {
+    const n = contracts.filter(c => c.branch === b).length;
+    if (!confirm(`'${b}' 지점 데이터 ${n}건을 삭제할까요?`)) return;
+    contracts = contracts.filter(c => c.branch !== b);
+  } else {
+    if (!confirm(`전체 데이터 ${contracts.length}건을 모두 삭제할까요?`)) return;
+    contracts = []; files = [];
+  }
+  save(); refresh();
+};
+
+// 시작: 이 브라우저에 저장된 데이터가 있으면 사용, 없으면 파일에 포함된 기본 데이터
+(function init(){
+  let saved = null;
+  try { saved = JSON.parse(localStorage.getItem(SAVE_KEY) || "null"); } catch {}
+  try {
+    if (saved && saved.rows) { contracts = toContracts([HEADERS, ...saved.rows]); files = saved.files || []; }
+    else if (SAMPLE.length) { contracts = toContracts([HEADERS, ...SAMPLE]); files = [SAMPLE_NAME]; }
+  } catch { contracts = []; }
+  refresh();
+})();
+</script>
+</body>
+</html>

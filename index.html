@@ -167,6 +167,9 @@ mark{background:var(--notice-line);color:inherit;border-radius:3px;padding:0 1px
 .toast.on{opacity:1;transform:translate(-50%,0)}
 .bcard{display:grid;align-content:center;justify-items:start;gap:10px;padding:16px 18px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);color:var(--fg);text-decoration:none}
 .bcard:hover{border-color:var(--accent)}
+.side-col{display:flex;flex-direction:column;gap:8px}
+.side-col .bcard{flex:1}
+.side-col .bcard.dl{flex:none;align-content:start}
 .bcard-row{display:flex;align-items:center;gap:12px}
 .bcard-row > span{display:grid;gap:3px}
 .bcard-ic{flex:none;color:var(--accent)}
@@ -203,7 +206,7 @@ mark{background:var(--notice-line);color:inherit;border-radius:3px;padding:0 1px
   .notices{grid-template-columns:repeat(2,minmax(0,1fr));align-items:start}
   .notices{grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:stretch}
   .notice{grid-column:1}
-  .bcard{grid-column:2;grid-row:1 / span 3}
+  .side-col{grid-column:2;grid-row:1 / span 3}
   .grid{grid-template-columns:repeat(6,minmax(0,1fr));gap:14px}
   .heart{top:5px;right:5px;width:34px;height:34px}
   .logo{inset:29% 12% 11% 12%}
@@ -704,13 +707,22 @@ $("#notices").innerHTML = NOTICES.map((n,i)=> !n.body.length ? `
     </div>
   </div>`).join("");
 $("#notices").insertAdjacentHTML("beforeend",`
+  <div class="side-col">
   <a class="bcard" href="https://bborami.github.io/BusinessCard/" target="_blank" rel="noopener">
     <span class="bnr-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 4h6v6M20 4 11 13M18 14v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h5"/></svg>바로가기</span>
     <span class="bcard-row">
       <svg class="bcard-ic" width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><circle cx="8.5" cy="11" r="2.2"/><path d="M5.2 16.2c.6-1.6 1.8-2.4 3.3-2.4s2.7.8 3.3 2.4M14.5 10h4M14.5 13.5h3"/></svg>
       <span><strong class="bnr-t">무료 디지털 명함 만들기</strong><span class="bnr-d">나만의 모바일 명함을 무료로 만들고 고객에게 공유해 보세요</span></span>
     </span>
-  </a>`);
+  </a>
+  <a class="bcard dl" href="자동차보험_만기달력.html" download="자동차보험_만기달력.html">
+    <span class="bnr-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>PC 다운로드</span>
+    <span class="bcard-row">
+      <svg class="bcard-ic" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18M8 3v4M16 3v4M7.5 14h2M11 14h2M14.5 14h2M7.5 17.5h2M11 17.5h2"/></svg>
+      <span><strong class="bnr-t">자동차보험 만기달력</strong><span class="bnr-d">메가전산에서 만기리스트 업로드 시 달력에 표시<br>자세한 사용법은 개인톡 주세요.</span></span>
+    </span>
+  </a>
+  </div>`);
 $("#notices").addEventListener("click",e=>{
   const b=e.target.closest("button"); if(!b) return;
   const box=b.parentElement, open=box.getAttribute("aria-expanded")!=="true";
