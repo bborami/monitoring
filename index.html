@@ -157,6 +157,7 @@ mark{background:var(--notice-line);color:inherit;border-radius:3px;padding:0 1px
 .linkbtn svg{flex:none}
 .val .txt{font-size:.95rem;font-weight:600;display:inline-flex;align-items:center;gap:6px}
 .val .txt .faxic{flex:none;color:var(--muted)}
+.val .txt.ml{display:block;font-size:.9rem;font-weight:500;line-height:1.55;white-space:pre-line;min-width:0}
 .val .txt.num{font-size:1.2rem;font-variant-numeric:tabular-nums}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
 .cnote{margin:0 0 6px;padding:8px 12px;border-radius:8px;background:var(--must-bg);color:var(--must-ink);font-size:.82rem;font-weight:600}
@@ -325,6 +326,7 @@ const FIELDS = [
   {key:"monitor",  label:"모니터링", type:"url", icon:"🔗"},
   {key:"mobile",   label:"모바일 모니터링", type:"url", icon:"📱"},
   {key:"web",      label:"홈페이지 모니터링", type:"url", icon:"💻"},
+  {key:"mobileAuto", label:"모바일 모니터링", note:"자동발송", type:"text", icon:"📱"},
   {g:"link",key:"kidi",     label:"개발원 바로가기", type:"url", icon:"🚗"},
   {g:"link",key:"megaInstall",label:"메가전산 설치하기", type:"url", icon:"💻"},
   {g:"claim",key:"claimForm",label:"보험금청구서", type:"url", icon:"📄"}
@@ -494,6 +496,7 @@ const CONTACTS = {
   "inbound": "1577-1112",
   "outbound": "1577-1112",
   "center": "1577-1112",
+  "mobileAuto": "청약일 포함 5일간 하루 2번씩 총 10번 자동발송\n(아침 9시 / 오후 5시 30분 자동 재발송)\nURL은 발송 당일만 사용 가능\n청약일+10일까지 모니터링 가능 (틀린 경우 콜로만 보완 가능)",
   "fax": "고객센터 문의",
   "claimForm": "https://hanalife.co.kr/csc/accidentGuideRenew/accidentPaymentDocument.do",
   "help": "02-3709-8602"
@@ -846,7 +849,7 @@ function openSheet(id){
   const row = f=>{
     const v=current.c[f.key];
     const val = f.type==="tel" ? `<a class="tel" href="tel:${v.split("(")[0].replace(/[^0-9]/g,"")}">${PHONE}<span id="v-${f.key}">${hl(v)}</span></a>`
-      : f.type==="text" ? `<span class="txt${/[0-9]{3,}/.test(v)?" num":""}">${f.key==="fax"?FAX:""}<span id="v-${f.key}">${hl(v)}</span></span>`
+      : f.type==="text" ? `<span class="txt${v.includes("\n")?" ml":/[0-9]{3,}/.test(v)?" num":""}">${f.key==="fax"?FAX:""}<span id="v-${f.key}">${hl(v)}</span></span>`
       : `<a class="linkbtn" href="${esc(v)}" target="_blank" rel="noopener"><span>${f.icon} ${f.label}</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M8 7h9v9"/></svg></a><span class="sr" id="v-${f.key}">${esc(v)}</span>`;
     return `<li>
       <div class="lbl">${f.label}${f.note?` <small>(${f.note})</small>`:""}${current.c[f.key+"Note"]?` <small>(${esc(current.c[f.key+"Note"])})</small>`:""}</div>
@@ -903,12 +906,13 @@ $("#sBody").addEventListener("click",e=>{
   const k=e.target.closest("[data-k]");
   if(k){
     const f=FIELDS.find(x=>x.key===k.dataset.k), v=current.c[f.key];
-    const line = f.type!=="url" ? `${f.icon} ${f.label}  ${v}` : `${f.icon} ${lblOf(f)}\n${v}`;
+    const line = f.type!=="url" ? `${f.icon} ${f.label}${v.includes("\n")?"\n":"  "}${v}` : `${f.icon} ${lblOf(f)}\n${v}`;
     copyText((f.g || plainHd()) ? `[${current.name}]\n${line}` : `[${current.name}] 완전판매 모니터링\n\n${line}`,k,$("#v-"+f.key)); return; }
   if(e.target.closest("#copyAll")){
     const ff=FIELDS.filter(f=>!f.g && current.c[f.key]);
-    const tels=ff.filter(f=>f.type!=="url").map(f=>`${f.icon} ${f.label}  ${current.c[f.key]}`);
-    const urls=ff.filter(f=>f.type==="url").map(f=>`${f.icon} ${lblOf(f)}\n${current.c[f.key]}`);
+    const ml=f=>f.type==="url"||current.c[f.key].includes("\n");
+    const tels=ff.filter(f=>!ml(f)).map(f=>`${f.icon} ${f.label}  ${current.c[f.key]}`);
+    const urls=ff.filter(ml).map(f=>`${f.icon} ${lblOf(f)}\n${current.c[f.key]}`);
     const txt=[plainHd() ? `[${current.name}]` : `[${current.name}] 완전판매 모니터링`, tels.join("\n"), urls.join("\n")].filter(Boolean).join("\n\n");
     copyText(txt,null,$("#sBody .rows"));
   }
