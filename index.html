@@ -7,6 +7,23 @@
 <script>window.GC_CODE="bborami";</script>
 <script data-goatcounter="https://bborami.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
 <title>완전판매 모니터링</title>
+<meta name="robots" content="noindex, nofollow, noarchive">
+<meta name="googlebot" content="noindex, nofollow">
+<meta name="description" content="보험사별 완전판매 모니터링 인콜·아웃콜, 헬프데스크, 보험금 청구 정보를 한 곳에서 확인하세요.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="완전판매 모니터링">
+<meta property="og:description" content="보험사별 모니터링 번호·링크, 헬프데스크, 보험금 청구 정보를 한 곳에서">
+<meta property="og:image" content="https://bborami.github.io/monitoring/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://bborami.github.io/monitoring/">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="favicon-32.png" sizes="32x32" type="image/png">
+<link rel="icon" href="favicon-48.png" sizes="48x48" type="image/png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<meta name="theme-color" content="#0a1530">
+<meta name="apple-mobile-web-app-title" content="완판모니터링">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -426,6 +443,16 @@ mark{background:#f9e79f;color:#1a1a1a}
  .news li:nth-child(2){border-top:0}
 }
 </style>
+<style id="v4-additions">
+.side-col .bcard.dl .mega-badge{position:absolute;top:6px;left:6px;height:24px;width:auto;object-fit:contain}
+@media (min-width:768px){.side-col .bcard.dl .mega-badge{top:10px;left:10px;height:26px}}
+.sheet .checked{margin:14px 2px 4px;font-size:.75rem;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
+.contact .txt.nocall{display:inline-flex;align-items:center;gap:6px}
+.contact .txt.nocall svg{opacity:.45}
+
+
+.news-ft .sync-err{color:#e5243b;font-weight:700;margin-left:6px}
+</style>
 </head>
 <body>
 
@@ -433,7 +460,7 @@ mark{background:#f9e79f;color:#1a1a1a}
 <div class="wrap">
   <header class="top">
     <h1>완전판매 모니터링</h1>
-    <p class="upd">제작·관리 <b>보람</b> · v3.0 (2026.11.08)</p>
+    <p class="upd">제작·관리 <b>보람</b> · v3.1 (2026.11.09)</p>
   </header>
 
   <section class="notices" id="notices" aria-label="공지사항"></section>
@@ -562,7 +589,7 @@ const CONTACTS = {
  "im": {
   "inbound": "1588-4770",
   "outbound": "02-1588-4770",
-  "center": "1588-5580",
+  "rep": "1588-4770",
   "fax": "0505-083-5420",
   "help": "02-2087-9594"
  },
@@ -603,7 +630,7 @@ const CONTACTS = {
   "outbound": "1544-4000",
   "center": "1544-4000",
   "mobile": "https://m.nhlife.co.kr/mo/ma/61/00/MOMA6100M00",
-  "web": "https://v4gat.app.goo.gl/hZ9p",
+  "web": "https://m.nhlife.co.kr/mo/ma/61/00/MOMA6100M00",
   "fax": "02-6971-6040",
   "help": "02-3786-8800"
  },
@@ -753,7 +780,7 @@ const CONTACTS = {
   "outbound": "02-1644-9600",
   "center": "1644-9000",
   "mobile": "https://m.nhfire.co.kr/mhwr/web/html/emonitoring/eMonitoring01_web.html",
-  "web": "https://nhfire.co.kr/wizvera/veraport/install20/install_nhfire.html",
+  "web": "https://m.nhfire.co.kr/mhwr/web/html/emonitoring/eMonitoring01_web.html",
   "fax": "0505-060-7000",
   "claimForm": "https://www.nhfire.co.kr/customer/bilgdcm/retrieveBilgDcmList.nhfire",
   "help": "1644-0096"
@@ -879,6 +906,8 @@ const CONTACTS = {
   "megaInstall": "https://mega.megafn.com/"
  }
 };
+/* 보험사별 최종 확인일 — 연락처를 고치면 해당 회사 날짜도 같이 바꿔 주세요 */
+const CHECKED = {"abl": "2026.11.09", "aia": "2026.11.09", "db-l": "2026.11.09", "im": "2026.11.09", "ibk": "2026.11.09", "kb-l": "2026.11.09", "kdb": "2026.11.09", "kyobo": "2026.11.09", "nh-l": "2026.11.09", "dongyang": "2026.11.09", "lina-l": "2026.11.09", "metlife": "2026.11.09", "mirae": "2026.11.09", "samsung-l": "2026.11.09", "shinhan": "2026.11.09", "chubb": "2026.11.09", "cardif": "2026.11.09", "hanwha-l": "2026.11.09", "heungkuk-l": "2026.11.09", "fubon": "2026.11.09", "hana-l": "2026.11.09", "aig": "2026.11.09", "db-f": "2026.11.09", "kb-f": "2026.11.09", "yebyeol": "2026.11.09", "nh-f": "2026.11.09", "lina-f": "2026.11.09", "lotte": "2026.11.09", "meritz": "2026.11.09", "samsung-f": "2026.11.09", "hana-f": "2026.11.09", "hanwha-f": "2026.11.09", "hyundai": "2026.11.09", "heungkuk-f": "2026.11.09", "cu": "2026.11.09", "epost": "2026.11.09", "kfcc": "2026.11.09", "suhyup": "2026.11.09", "thek": "2026.11.09", "axa": "2026.11.09", "carrot": "2026.11.09", "hana-oneday": "2026.11.09", "kakaopay": "2026.11.09", "lifeplanet": "2026.11.09", "shinhan-ez": "2026.11.09", "kidi": "2026.11.09", "mega": "2026.11.09"};
 const ITEMS = [{"id": "abl", "name": "ABL생명", "cat": "life", "alias": "에이비엘생명"}, {"id": "aia", "name": "AIA생명", "cat": "life", "alias": "에이아이에이생명"}, {"id": "db-l", "name": "DB생명", "cat": "life", "alias": "디비생명"}, {"id": "im", "name": "iM라이프", "cat": "life", "alias": "아이엠라이프 IM라이프"}, {"id": "ibk", "name": "IBK연금보험", "cat": "life", "alias": "IBK 아이비케이"}, {"id": "kb-l", "name": "KB라이프", "cat": "life", "alias": "KB생명보험 KB생명 케이비라이프 케이비생명"}, {"id": "kdb", "name": "KDB생명", "cat": "life", "alias": "케이디비생명"}, {"id": "kyobo", "name": "교보생명", "cat": "life", "alias": ""}, {"id": "nh-l", "name": "NH농협생명", "cat": "life", "alias": "농협생명 엔에이치생명"}, {"id": "dongyang", "name": "동양생명", "cat": "life", "alias": ""}, {"id": "lina-l", "name": "라이나생명", "cat": "life", "alias": "LINA"}, {"id": "metlife", "name": "메트라이프생명", "cat": "life", "alias": "MetLife"}, {"id": "mirae", "name": "미래에셋생명", "cat": "life", "alias": "Mirae Asset"}, {"id": "samsung-l", "name": "삼성생명", "cat": "life", "alias": ""}, {"id": "shinhan", "name": "신한라이프", "cat": "life", "alias": ""}, {"id": "chubb", "name": "처브라이프", "cat": "life", "alias": ""}, {"id": "cardif", "name": "BNP파리바카디프생명", "cat": "life", "alias": "카디프 카디브"}, {"id": "hanwha-l", "name": "한화생명", "cat": "life", "alias": ""}, {"id": "heungkuk-l", "name": "흥국생명", "cat": "life", "alias": ""}, {"id": "fubon", "name": "푸본현대생명", "cat": "life", "alias": "푸본 현대라이프 Fubon"}, {"id": "hana-l", "name": "하나생명", "cat": "life", "alias": ""}, {"id": "aig", "name": "AIG손해보험", "cat": "nonlife", "alias": "AIG 에이아이지"}, {"id": "db-f", "name": "DB손해보험", "cat": "nonlife", "alias": "DB손보 디비손보 디비손해보험"}, {"id": "kb-f", "name": "KB손해보험", "cat": "nonlife", "alias": "KB손보 케이비손보 케이비손해보험"}, {"id": "yebyeol", "name": "예별손해보험", "cat": "nonlife", "alias": "MG손보 MG손해보험"}, {"id": "nh-f", "name": "NH농협손해보험", "cat": "nonlife", "alias": "농협손보 엔에이치손보"}, {"id": "lina-f", "name": "라이나손해보험", "cat": "nonlife", "alias": "라이나손보 LINA"}, {"id": "lotte", "name": "롯데손해보험", "cat": "nonlife", "alias": "롯데손보 let 렛"}, {"id": "meritz", "name": "메리츠화재", "cat": "nonlife", "alias": "meritz"}, {"id": "samsung-f", "name": "삼성화재", "cat": "nonlife", "alias": ""}, {"id": "hana-f", "name": "하나손해보험", "cat": "nonlife", "alias": "하나손보"}, {"id": "hanwha-f", "name": "한화손해보험", "cat": "nonlife", "alias": "한화손보"}, {"id": "hyundai", "name": "현대해상", "cat": "nonlife", "alias": ""}, {"id": "heungkuk-f", "name": "흥국화재", "cat": "nonlife", "alias": ""}, {"id": "cu", "name": "신협", "cat": "mutual", "alias": "신협공제 신용협동조합 CU"}, {"id": "epost", "name": "우체국보험", "cat": "mutual", "alias": "우체국 우정사업본부 epost"}, {"id": "kfcc", "name": "MG새마을금고", "cat": "mutual", "alias": "새마을금고 새마을금고공제 MG공제"}, {"id": "suhyup", "name": "수협", "cat": "mutual", "alias": "수협공제 수협은행"}, {"id": "thek", "name": "더케이손해보험", "cat": "mutual", "alias": "더케이 The-K THE K 교직원공제회 하나손보 하나손해보험"}, {"id": "axa", "name": "AXA손해보험", "cat": "mutual", "alias": "악사 악사손보 AXA손보 다이렉트"}, {"id": "carrot", "name": "캐롯손해보험", "cat": "mutual", "alias": "캐롯 carrot 한화손해보험 퍼마일"}, {"id": "hana-oneday", "name": "하나 원데이보험", "cat": "mutual", "alias": "원데이 하나손해보험 하나손보"}, {"id": "kakaopay", "name": "카카오페이손해보험", "cat": "mutual", "alias": "카카오페이 카카오 카카오손보"}, {"id": "lifeplanet", "name": "교보라이프플래닛", "cat": "mutual", "alias": "라이프플래닛 lifeplanet 교보"}, {"id": "shinhan-ez", "name": "신한EZ손해보험", "cat": "mutual", "alias": "신한EZ 신한이지 신한EZ손보"}, {"id": "kidi", "name": "자동차보험정보고객센터", "cat": "etc", "alias": "자동차 개발원 보험개발원 자동차보험정보 KIDI"}, {"id": "mega", "name": "메가전산", "cat": "etc", "alias": "메가 MEGA 메가전산바로가기 전산"}].map(it=>({...it, c: CONTACTS[it.id]||{}}));
 
 const $ = s => document.querySelector(s);
@@ -928,7 +957,8 @@ $("#notices").insertAdjacentHTML("beforeend",`
     </span>
   </a>
   <a class="bcard dl" href="자동차보험_만기달력.html" download="자동차보험_만기달력.html">
-    <span class="bnr-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>PC 다운로드</span>
+    <img class="mega-badge" src="data:image/png;base64,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" alt="메가전산" draggable="false">
+    <span class="bnr-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>PC 다운</span>
     <span class="bcard-row">
       <svg class="bcard-ic" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18M8 3v4M16 3v4M7.5 14h2M11 14h2M14.5 14h2M7.5 17.5h2M11 17.5h2"/></svg>
       <span><strong class="bnr-t">자동차보험 만기달력</strong><span class="bnr-d">메가전산에서 만기리스트 다운 후 업로드 시 달력에 표시<br>자세한 사용법은 개인톡 주세요.</span></span>
@@ -1048,7 +1078,8 @@ function openSheet(id){
   const FAX = `<svg class="faxic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M7 9V3h8l2 2v4"/><rect x="3" y="9" width="18" height="11" rx="2"/><path d="M7 14h6M7 17h4"/><circle cx="17" cy="14.5" r=".6" fill="currentColor"/><circle cx="17" cy="17" r=".6" fill="currentColor"/></svg>`;
   const row = f=>{
     const v=current.c[f.key];
-    const val = f.type==="tel" ? `<a class="tel" href="tel:${v.split("(")[0].replace(/[^0-9]/g,"")}">${PHONE}<span id="v-${f.key}">${hl(v)}</span></a>`
+    const val = f.type==="tel" && f.key==="outbound" ? `<span class="txt num nocall">${PHONE}<span id="v-${f.key}">${hl(v)}</span></span>`
+      : f.type==="tel" ? `<a class="tel" href="tel:${v.split("(")[0].replace(/[^0-9]/g,"")}">${PHONE}<span id="v-${f.key}">${hl(v)}</span></a>`
       : f.type==="text" ? `<span class="txt${v.includes("\n")?" ml":/[0-9]{3,}/.test(v)?" num":""}">${f.key==="fax"?FAX:""}<span id="v-${f.key}">${hl(v)}</span></span>`
       : `<a class="linkbtn" href="${esc(v)}" target="_blank" rel="noopener"><span>${f.icon} ${f.label}</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="M7 17 17 7M8 7h9v9"/></svg></a><span class="sr" id="v-${f.key}">${esc(v)}</span>`;
     return `<li>
@@ -1079,7 +1110,8 @@ function openSheet(id){
     ${claim.length ? `<section class="contact">
       <h3>보험금청구</h3>
       <ul class="rows">${claim.map(row).join("")}</ul>
-    </section>` : ""}`;
+    </section>` : ""}
+    ${CHECKED[current.id] ? `<p class="checked">최종 확인일 ${CHECKED[current.id]}</p>` : ""}`;
   $("#scrim").hidden=false; $("#sheet").hidden=false;
   $("#sBody").scrollTop=0;
   requestAnimationFrame(()=>{ $("#scrim").classList.add("on"); $("#sheet").classList.add("on"); $("#sClose").focus(); });
@@ -1188,7 +1220,7 @@ const NEWS_SNAPSHOT={"updated":"2026-11-08","tabs":[{"id":"ai","label":"AI뉴스
  const CLS={'제도':'c1','법인·상속':'c5','건강':'c2','상품':'c6','생명보험':'c2','소비자':'c7','손해보험':'c3','경제·시장':'c4'};
  const esc=t=>String(t??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
  const stars=n=>{n=Math.max(0,Math.min(5,+n||0));return `<span class="stb">★★★★★</span><span class="stf" style="width:${n*20}%">★★★★★</span>`};
- let D=null,TAB='insurance',CAT='전체';
+ let D=null,TAB='insurance',CAT='전체',SYNCERR=false;
  function draw(){
   const tabs=ORDER.map(id=>D.tabs.find(t=>t.id===id)).filter(Boolean).concat(D.tabs.filter(t=>!ORDER.includes(t.id)));
   const t=tabs.find(x=>x.id===TAB)||tabs[0]; TAB=t.id;
@@ -1202,12 +1234,22 @@ const NEWS_SNAPSHOT={"updated":"2026-11-08","tabs":[{"id":"ai","label":"AI뉴스
    `<div class="news-hd"><h3>${esc(String(t.insight||t.label).replace(/TOP\s*\d+/i,'TOP'+N))}</h3><span class="rank">${esc(t.rank||'')}</span></div>`+
    `<div class="news-chips">${cats.map(c=>`<button type="button" class="nchip" data-c="${esc(c)}" aria-pressed="${c===CAT}">${esc(c)}</button>`).join('')}</div>`+
    '<ol>'+list.map((it,i)=>`<li><a href="${esc(it.url)}" target="_blank" rel="noopener"><span class="rk">${i+1}</span><span><span class="nt"><span class="cb ${CLS[it.cat]||'c4'}">${esc(it.cat)}</span>${esc(it.title)}</span><span class="sm">${esc(it.summary)}</span><span class="ns">${esc(it.source)} · ${esc(it.date)}</span></span><span class="st" aria-label="별점 ${esc(it.stars)}">${stars(it.stars)}</span></a></li>`).join('')+'</ol>'+
-   `<div class="news-ft"><span>${esc(D.updated)} 업데이트</span><span>리리 오피스</span></div>`;
+   `<div class="news-ft"><span>${esc(D.updated)} 업데이트${SYNCERR?' <b class="sync-err" role="alert">동기화오류</b>':''}</span><span>리리 오피스</span></div>`;
   sec.querySelectorAll('.ntab').forEach(b=>b.onclick=()=>{TAB=b.dataset.t;CAT='전체';draw()});
   sec.querySelectorAll('.nchip').forEach(b=>b.onclick=()=>{CAT=b.dataset.c;draw()});
  }
+ /* 동기화 오류 판단: 서버(홈페이지)에서 열었을 때만. news.json을 못 읽었거나,
+    한국시간 오전 8시가 지났는데 오늘 날짜가 아니면(동기화는 매일 07:23) 빨간 글씨로 표시 */
+ const LIVE=/^https?:$/.test(location.protocol);
+ function stale(u){
+  const k=new Date(Date.now()+9*3600e3), ymd=d=>d.toISOString().slice(0,10);
+  const today=ymd(k), yday=ymd(new Date(k-864e5));
+  return u<yday || (u<today && k.getUTCHours()>=8);
+ }
  D=NEWS_SNAPSHOT; draw();
- fetch('news.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(j=>{if(j&&Array.isArray(j.tabs)&&j.tabs.length){D=j;draw()}}).catch(()=>{});
+ if(LIVE) fetch('news.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(j=>{
+   if(j&&Array.isArray(j.tabs)&&j.tabs.length){D=j;SYNCERR=stale(String(j.updated||''))}else SYNCERR=true; draw()
+ }).catch(()=>{SYNCERR=true;draw()});
 })();
 </script>
 </body>
