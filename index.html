@@ -1086,7 +1086,7 @@ function openSheet(id){
       : `<a class="linkbtn" href="${esc(v)}" ${/\.exe$/i.test(v)?"download":'target="_blank" rel="noopener"'}><span>${f.icon} ${f.label}</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="${/\.exe$/i.test(v)?"M12 4v11M7 10l5 5 5-5M5 20h14":"M7 17 17 7M8 7h9v9"}"/></svg></a><span class="sr" id="v-${f.key}">${esc(v)}</span>`;
     return `<li>
       <div class="lbl">${f.label}${f.note?` <small>(${f.note})</small>`:""}${current.c[f.key+"Note"]?` <small>(${esc(current.c[f.key+"Note"])})</small>`:""}</div>
-      <div class="val">${val}<button class="mini" type="button" data-k="${f.key}">${f.type==="url"?"링크 복사":"복사"}</button></div>
+      <div class="val">${val}${current.id==="mega"?"":`<button class="mini" type="button" data-k="${f.key}">${f.type==="url"?"링크 복사":"복사"}</button>`}</div>
     </li>`;};
   $("#sBody").innerHTML = `
     ${links.length ? `<section class="contact">
