@@ -1096,7 +1096,7 @@ function openSheet(id){
     </section>` : ""}
     ${showMain ? `<section class="contact">
       <h3>연락처 안내</h3>
-      <p class="hint">전화번호와 모니터링 주소만 한 번에 복사할 수 있어요</p>
+      ${plainHd()?"":`<p class="hint">전화번호와 모니터링 주소만 한 번에 복사할 수 있어요</p>`}
       ${current.c.note?`<p class="cnote">ⓘ ${esc(current.c.note)}</p>`:""}
       <ul class="rows">
         ${main.length ? main.map(row).join("") : `<li><span class="none">아직 등록된 연락처가 없습니다.</span></li>`}
