@@ -452,6 +452,14 @@ mark{background:#f9e79f;color:#1a1a1a}
 
 
 .news-ft .sync-err{color:#e5243b;font-weight:700;margin-left:6px}
+
+/* 카카오톡 채널 타일 */
+.bcard.kakao{background:var(--tint-yellow)}
+.bcard.kakao .bcard-ic{color:#3C1E1E}
+:root[data-theme="dark"] .bcard.kakao .bcard-ic{color:#FEE500}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .bcard.kakao .bcard-ic{color:#FEE500}}
+/* 메가전산 시트 — 링크 아래 설명 */
+.fdesc{margin:6px 2px 0;font-size:.8rem;line-height:1.5;color:var(--muted);word-break:keep-all}
 </style>
 </head>
 <body>
@@ -557,6 +565,7 @@ const FIELDS = [
   {g:"link",key:"kidi",     label:"개발원 바로가기", type:"url", icon:"🚗"},
   {g:"link",key:"megaInstall",label:"메가전산 설치하기", type:"url", icon:"💻"},
   {g:"link",key:"megaViewer",label:"출력뷰어 다운로드", type:"url", icon:"🖨️"},
+  {g:"link",key:"megaCal",label:"자동차보험 만기달력", type:"url", icon:"📅", desc:"메가전산에서 만기리스트 다운 후 업로드 시 달력에 표시<br>자세한 사용법은 개인톡 주세요."},
   {g:"claim",key:"claimForm",label:"보험금청구서", type:"url", icon:"📄"}
 ];
 const CONTACTS = {
@@ -905,11 +914,12 @@ const CONTACTS = {
  },
  "mega": {
   "megaInstall": "https://mega.megafn.com/",
-  "megaViewer": "https://bborami.github.io/monitoring/UbiViewerXUni1.exe"
+  "megaViewer": "https://bborami.github.io/monitoring/UbiViewerXUni1.exe",
+  "megaCal": "https://bborami.github.io/monitoring/자동차보험_만기달력.html"
  }
 };
 /* 보험사별 최종 확인일 — 연락처를 고치면 해당 회사 날짜도 같이 바꿔 주세요 */
-const CHECKED = {"abl": "2026.11.09", "aia": "2026.11.09", "db-l": "2026.11.09", "im": "2026.11.09", "ibk": "2026.11.09", "kb-l": "2026.11.09", "kdb": "2026.11.09", "kyobo": "2026.11.09", "nh-l": "2026.11.09", "dongyang": "2026.11.09", "lina-l": "2026.11.09", "metlife": "2026.11.09", "mirae": "2026.11.09", "samsung-l": "2026.11.09", "shinhan": "2026.11.09", "chubb": "2026.11.09", "cardif": "2026.11.09", "hanwha-l": "2026.11.09", "heungkuk-l": "2026.11.09", "fubon": "2026.11.09", "hana-l": "2026.11.09", "aig": "2026.11.09", "db-f": "2026.11.09", "kb-f": "2026.11.09", "yebyeol": "2026.11.09", "nh-f": "2026.11.09", "lina-f": "2026.11.09", "lotte": "2026.11.09", "meritz": "2026.11.09", "samsung-f": "2026.11.09", "hana-f": "2026.11.09", "hanwha-f": "2026.11.09", "hyundai": "2026.11.09", "heungkuk-f": "2026.11.09", "cu": "2026.11.09", "epost": "2026.11.09", "kfcc": "2026.11.09", "suhyup": "2026.11.09", "thek": "2026.11.09", "axa": "2026.11.09", "carrot": "2026.11.09", "hana-oneday": "2026.11.09", "kakaopay": "2026.11.09", "lifeplanet": "2026.11.09", "shinhan-ez": "2026.11.09", "kidi": "2026.11.09", "mega": "2026.11.10"};
+const CHECKED = {"abl": "2026.11.09", "aia": "2026.11.09", "db-l": "2026.11.09", "im": "2026.11.09", "ibk": "2026.11.09", "kb-l": "2026.11.09", "kdb": "2026.11.09", "kyobo": "2026.11.09", "nh-l": "2026.11.09", "dongyang": "2026.11.09", "lina-l": "2026.11.09", "metlife": "2026.11.09", "mirae": "2026.11.09", "samsung-l": "2026.11.09", "shinhan": "2026.11.09", "chubb": "2026.11.09", "cardif": "2026.11.09", "hanwha-l": "2026.11.09", "heungkuk-l": "2026.11.09", "fubon": "2026.11.09", "hana-l": "2026.11.09", "aig": "2026.11.09", "db-f": "2026.11.09", "kb-f": "2026.11.09", "yebyeol": "2026.11.09", "nh-f": "2026.11.09", "lina-f": "2026.11.09", "lotte": "2026.11.09", "meritz": "2026.11.09", "samsung-f": "2026.11.09", "hana-f": "2026.11.09", "hanwha-f": "2026.11.09", "hyundai": "2026.11.09", "heungkuk-f": "2026.11.09", "cu": "2026.11.09", "epost": "2026.11.09", "kfcc": "2026.11.09", "suhyup": "2026.11.09", "thek": "2026.11.09", "axa": "2026.11.09", "carrot": "2026.11.09", "hana-oneday": "2026.11.09", "kakaopay": "2026.11.09", "lifeplanet": "2026.11.09", "shinhan-ez": "2026.11.09", "kidi": "2026.11.09", "mega": "2026.11.11"};
 const ITEMS = [{"id": "abl", "name": "ABL생명", "cat": "life", "alias": "에이비엘생명"}, {"id": "aia", "name": "AIA생명", "cat": "life", "alias": "에이아이에이생명"}, {"id": "db-l", "name": "DB생명", "cat": "life", "alias": "디비생명"}, {"id": "im", "name": "iM라이프", "cat": "life", "alias": "아이엠라이프 IM라이프"}, {"id": "ibk", "name": "IBK연금보험", "cat": "life", "alias": "IBK 아이비케이"}, {"id": "kb-l", "name": "KB라이프", "cat": "life", "alias": "KB생명보험 KB생명 케이비라이프 케이비생명"}, {"id": "kdb", "name": "KDB생명", "cat": "life", "alias": "케이디비생명"}, {"id": "kyobo", "name": "교보생명", "cat": "life", "alias": ""}, {"id": "nh-l", "name": "NH농협생명", "cat": "life", "alias": "농협생명 엔에이치생명"}, {"id": "dongyang", "name": "동양생명", "cat": "life", "alias": ""}, {"id": "lina-l", "name": "라이나생명", "cat": "life", "alias": "LINA"}, {"id": "metlife", "name": "메트라이프생명", "cat": "life", "alias": "MetLife"}, {"id": "mirae", "name": "미래에셋생명", "cat": "life", "alias": "Mirae Asset"}, {"id": "samsung-l", "name": "삼성생명", "cat": "life", "alias": ""}, {"id": "shinhan", "name": "신한라이프", "cat": "life", "alias": ""}, {"id": "chubb", "name": "처브라이프", "cat": "life", "alias": ""}, {"id": "cardif", "name": "BNP파리바카디프생명", "cat": "life", "alias": "카디프 카디브"}, {"id": "hanwha-l", "name": "한화생명", "cat": "life", "alias": ""}, {"id": "heungkuk-l", "name": "흥국생명", "cat": "life", "alias": ""}, {"id": "fubon", "name": "푸본현대생명", "cat": "life", "alias": "푸본 현대라이프 Fubon"}, {"id": "hana-l", "name": "하나생명", "cat": "life", "alias": ""}, {"id": "aig", "name": "AIG손해보험", "cat": "nonlife", "alias": "AIG 에이아이지"}, {"id": "db-f", "name": "DB손해보험", "cat": "nonlife", "alias": "DB손보 디비손보 디비손해보험"}, {"id": "kb-f", "name": "KB손해보험", "cat": "nonlife", "alias": "KB손보 케이비손보 케이비손해보험"}, {"id": "yebyeol", "name": "예별손해보험", "cat": "nonlife", "alias": "MG손보 MG손해보험"}, {"id": "nh-f", "name": "NH농협손해보험", "cat": "nonlife", "alias": "농협손보 엔에이치손보"}, {"id": "lina-f", "name": "라이나손해보험", "cat": "nonlife", "alias": "라이나손보 LINA"}, {"id": "lotte", "name": "롯데손해보험", "cat": "nonlife", "alias": "롯데손보 let 렛"}, {"id": "meritz", "name": "메리츠화재", "cat": "nonlife", "alias": "meritz"}, {"id": "samsung-f", "name": "삼성화재", "cat": "nonlife", "alias": ""}, {"id": "hana-f", "name": "하나손해보험", "cat": "nonlife", "alias": "하나손보"}, {"id": "hanwha-f", "name": "한화손해보험", "cat": "nonlife", "alias": "한화손보"}, {"id": "hyundai", "name": "현대해상", "cat": "nonlife", "alias": ""}, {"id": "heungkuk-f", "name": "흥국화재", "cat": "nonlife", "alias": ""}, {"id": "cu", "name": "신협", "cat": "mutual", "alias": "신협공제 신용협동조합 CU"}, {"id": "epost", "name": "우체국보험", "cat": "mutual", "alias": "우체국 우정사업본부 epost"}, {"id": "kfcc", "name": "MG새마을금고", "cat": "mutual", "alias": "새마을금고 새마을금고공제 MG공제"}, {"id": "suhyup", "name": "수협", "cat": "mutual", "alias": "수협공제 수협은행"}, {"id": "thek", "name": "더케이손해보험", "cat": "mutual", "alias": "더케이 The-K THE K 교직원공제회 하나손보 하나손해보험"}, {"id": "axa", "name": "AXA손해보험", "cat": "mutual", "alias": "악사 악사손보 AXA손보 다이렉트"}, {"id": "carrot", "name": "캐롯손해보험", "cat": "mutual", "alias": "캐롯 carrot 한화손해보험 퍼마일"}, {"id": "hana-oneday", "name": "하나 원데이보험", "cat": "mutual", "alias": "원데이 하나손해보험 하나손보"}, {"id": "kakaopay", "name": "카카오페이손해보험", "cat": "mutual", "alias": "카카오페이 카카오 카카오손보"}, {"id": "lifeplanet", "name": "교보라이프플래닛", "cat": "mutual", "alias": "라이프플래닛 lifeplanet 교보"}, {"id": "shinhan-ez", "name": "신한EZ손해보험", "cat": "mutual", "alias": "신한EZ 신한이지 신한EZ손보"}, {"id": "kidi", "name": "자동차보험정보고객센터", "cat": "etc", "alias": "자동차 개발원 보험개발원 자동차보험정보 KIDI"}, {"id": "mega", "name": "메가전산", "cat": "etc", "alias": "메가 MEGA 메가전산바로가기 전산"}].map(it=>({...it, c: CONTACTS[it.id]||{}}));
 
 const $ = s => document.querySelector(s);
@@ -949,6 +959,8 @@ $("#notices").innerHTML = NOTICES.map((n,i)=> !n.body.length ? `
       <span class="date">${n.date}</span>
     </div>
   </div>`).join("");
+/* 카카오톡 비즈니스 채널 주소 (4번째 타일) */
+const KAKAO_CH = "https://pf.kakao.com/_xnhINX";
 $("#notices").insertAdjacentHTML("beforeend",`
   <div class="side-col">
   <a class="bcard" href="https://bborami.github.io/BusinessCard/" target="_blank" rel="noopener">
@@ -958,12 +970,10 @@ $("#notices").insertAdjacentHTML("beforeend",`
       <span><strong class="bnr-t">무료 디지털 명함 만들기</strong><span class="bnr-d">나만의 모바일 명함을 무료로 만들고 고객에게 공유해 보세요</span></span>
     </span>
   </a>
-  <a class="bcard dl" href="자동차보험_만기달력.html" download="자동차보험_만기달력.html">
-    <img class="mega-badge" src="data:image/png;base64,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" alt="메가전산" draggable="false">
-    <span class="bnr-tag"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v11M7 10l5 5 5-5M5 20h14"/></svg>PC 다운</span>
+  <a class="bcard kakao" id="bnrKakao" href="${KAKAO_CH}" target="_blank" rel="noopener">
     <span class="bcard-row">
-      <svg class="bcard-ic" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2.5"/><path d="M3 10h18M8 3v4M16 3v4M7.5 14h2M11 14h2M14.5 14h2M7.5 17.5h2M11 17.5h2"/></svg>
-      <span><strong class="bnr-t">자동차보험 만기달력</strong><span class="bnr-d">메가전산에서 만기리스트 다운 후 업로드 시 달력에 표시<br>자세한 사용법은 개인톡 주세요.</span></span>
+      <svg class="bcard-ic" width="30" height="30" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3.5C6.8 3.5 2.6 6.8 2.6 10.9c0 2.6 1.7 4.9 4.3 6.2l-1.1 4c-.1.3.3.6.6.4l4.7-3.1c.3 0 .6.1.9.1 5.2 0 9.4-3.3 9.4-7.4S17.2 3.5 12 3.5z"/></svg>
+      <span><strong class="bnr-t">카카오 문의</strong><span class="bnr-d">카카오톡 채널 바로가기</span></span>
     </span>
   </a>
   </div>`);
@@ -1078,15 +1088,16 @@ function openSheet(id){
   const showMain = main.length || !(help.length||claim.length||links.length);
   const PHONE = `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg>`;
   const FAX = `<svg class="faxic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"><path d="M7 9V3h8l2 2v4"/><rect x="3" y="9" width="18" height="11" rx="2"/><path d="M7 14h6M7 17h4"/><circle cx="17" cy="14.5" r=".6" fill="currentColor"/><circle cx="17" cy="17" r=".6" fill="currentColor"/></svg>`;
+  const isDl = v=>/\.exe$/i.test(v) || (v.startsWith("https://bborami.github.io/monitoring/") && /\.html$/i.test(v));
   const row = f=>{
     const v=current.c[f.key];
     const val = f.type==="tel" && f.key==="outbound" ? `<span class="txt num nocall">${PHONE}<span id="v-${f.key}">${hl(v)}</span></span>`
       : f.type==="tel" ? `<a class="tel" href="tel:${v.split("(")[0].replace(/[^0-9]/g,"")}">${PHONE}<span id="v-${f.key}">${hl(v)}</span></a>`
       : f.type==="text" ? `<span class="txt${v.includes("\n")?" ml":/[0-9]{3,}/.test(v)?" num":""}">${f.key==="fax"?FAX:""}<span id="v-${f.key}">${hl(v)}</span></span>`
-      : `<a class="linkbtn" href="${esc(v)}" ${/\.exe$/i.test(v)?"download":'target="_blank" rel="noopener"'}><span>${f.icon} ${f.label}</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="${/\.exe$/i.test(v)?"M12 4v11M7 10l5 5 5-5M5 20h14":"M7 17 17 7M8 7h9v9"}"/></svg></a><span class="sr" id="v-${f.key}">${esc(v)}</span>`;
+      : `<a class="linkbtn" href="${esc(v)}" ${isDl(v)?"download":'target="_blank" rel="noopener"'}><span>${f.icon} ${f.label}</span><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><path d="${isDl(v)?"M12 4v11M7 10l5 5 5-5M5 20h14":"M7 17 17 7M8 7h9v9"}"/></svg></a><span class="sr" id="v-${f.key}">${esc(v)}</span>`;
     return `<li>
       <div class="lbl">${f.label}${f.note?` <small>(${f.note})</small>`:""}${current.c[f.key+"Note"]?` <small>(${esc(current.c[f.key+"Note"])})</small>`:""}</div>
-      <div class="val">${val}${current.id==="mega"?"":`<button class="mini" type="button" data-k="${f.key}">${f.type==="url"?"링크 복사":"복사"}</button>`}</div>
+      <div class="val">${val}${current.id==="mega"?"":`<button class="mini" type="button" data-k="${f.key}">${f.type==="url"?"링크 복사":"복사"}</button>`}</div>${f.desc?`<p class="fdesc">${f.desc}</p>`:""}
     </li>`;};
   $("#sBody").innerHTML = `
     ${links.length ? `<section class="contact">
@@ -1200,7 +1211,7 @@ render();
 <script>
 (()=>{const col=document.querySelector('.side-col');if(!col)return;
  ['#bnrCard','#bnrCar'].forEach(id=>{const a=document.querySelector(id);if(a)col.appendChild(a)});
- const order=[['BusinessCard','디지털 명함'],['#bnrCard','카드사 무이자'],['#bnrCar','자동차 무이자'],['만기달력','만기달력']];
+ const order=[['BusinessCard','디지털 명함'],['#bnrCard','카드사 무이자'],['#bnrCar','자동차 무이자'],['#bnrKakao','카카오 문의']];
  const tiles=[...col.children];
  order.forEach(([key,label])=>{const t=tiles.find(el=>key[0]==='#'?el.matches(key):(el.getAttribute('href')||'').includes(key));
   if(!t)return;const full=t.querySelector('.bnr-t');t.title=full?full.textContent:label;t.setAttribute('aria-label',t.title);
