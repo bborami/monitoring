@@ -1,51 +1,51 @@
 {
- "updated": "2026-11-13",
+ "updated": "2026-11-14",
  "tabs": [
   {
    "id": "ai", "label": "AI뉴스", "insight": "오늘의 AI 인사이트 TOP5", "rank": "업무활용도 순",
    "cats": ["서비스","일자리","기업·투자","보안","정책"],
    "items": [
-    {"cat":"일자리","title":"AI, 프리랜서 업무 41.3% 전문가 수준 수행…1년 새 급상승","summary":"원격 노동 지수(RLI) 평가에서 클로드 페이블 5.2가 실제 프로젝트 240건 중 41.3%를 납품 가능한 수준으로 해냈대요(작년 최고 2.5%). 보고서 작성·데이터 검색엔 강하지만 파일 형식 미준수 같은 실수도 있어 결과물 검토는 꼭 필요해요.","stars":4.5,"source":"AI타임스","date":"2026-11-12","url":"https://www.aitimes.com/news/articleView.html?idxno=217332"},
-    {"cat":"기업·투자","title":"젠슨 황, 엔비디아 CEO 사임…주가 장중 14% 급락","summary":"12일(현지시간) 황 CEO가 즉시 물러나고 콜레트 크레스 CFO가 임시 CEO를 맡았대요. 17일 실적 발표와 후임 선정이 AI·반도체 흐름의 변수라 고객이 투자 관련 질문을 하면 참고하세요.","stars":4.5,"source":"AI타임스","date":"2026-11-13","url":"https://www.aitimes.com/news/articleView.html?idxno=217348"},
-    {"cat":"서비스","title":"구글 제미나이 라이브, 애플 카플레이 출시","summary":"운전 중 음성으로 안 읽은 메일 요약, 일정 확인, 음성 답장 작성을 할 수 있대요. 한국어 지원 시점은 아직 기사에 나오지 않았지만, 출퇴근길 일정 확인용으로 지켜볼 만해요.","stars":4,"source":"AI타임스","date":"2026-11-12","url":"https://www.aitimes.com/news/articleView.html?idxno=217334"},
-    {"cat":"서비스","title":"구글·삼성 AI 안경 한국 사전예약…12월 10일 출시","summary":"제미나이 기반으로 일정 확인, 70개 이상 언어 실시간 번역 등을 하고 무게 약 41g, 배터리 최대 9시간이래요. 젠틀몬스터 모델은 미국가 449달러(약 60만원)부터예요.","stars":3.5,"source":"AI타임스","date":"2026-11-12","url":"https://www.aitimes.com/news/articleView.html?idxno=217346"},
-    {"cat":"보안","title":"앤트로픽 '미소스', 미국 전력망 보안 점검에 투입","summary":"듀크에너지 등 전력회사가 올여름 말부터 AI로 전력 소프트웨어 취약점을 찾고 있대요. AI가 공격 준비 시간을 크게 줄인다는 분석이 있어 회사 보안 교육 때 참고 사례로 쓸 만해요.","stars":3.5,"source":"AI타임스","date":"2026-11-12","url":"https://www.aitimes.com/news/articleView.html?idxno=217329"},
-    {"cat":"기업·투자","title":"한컴, AI 매출 비중 30% 돌파","summary":"3분기 AI 매출이 148억원으로 전체의 30.7%였고, 20만 곳 넘는 기존 고객이 AI 결합 제품으로 바꿨대요. 한글 문서 작업에도 AI 기능이 빠르게 들어오는 흐름이에요.","stars":3,"source":"AI타임스","date":"2026-11-12","url":"https://www.aitimes.com/news/articleView.html?idxno=217328"}
+    {"cat":"서비스","title":"MS 365 전 세계 장애…아웃룩·팀즈 업무 차질","summary":"12일(현지시간) 과부하로 아웃룩·팀즈·코파일럿이 멈춰 미국에서만 아웃룩 장애 신고가 13만8천 건을 넘었고, 13일에도 일부 장애가 이어졌대요. 메일이 안 될 때를 대비해 급한 공지·서류는 다른 연락 수단도 정해 두면 좋아요.","stars":4.5,"source":"AI타임스","date":"2026-11-13","url":"https://www.aitimes.com/news/articleView.html?idxno=217394"},
+    {"cat":"서비스","title":"구글 검색에 '제미나이 4 하이드로젠' 적용","summary":"AI 모드 기본 모델로 들어가 복잡한 질문을 나눠 검색하고 지도·비교표로 답해 준대요. 이전 고속 모델보다 2.5배 빨라 상품·제도 비교 자료 찾을 때 써 볼 만해요.","stars":4,"source":"AI타임스","date":"2026-11-13","url":"https://www.aitimes.com/news/articleView.html?idxno=217360"},
+    {"cat":"서비스","title":"AI 모델 바꾼 기업 69% \"몇 주 이상 걸려\"","summary":"모델을 교체한 기업 중 설정만 바꾸면 됐다는 곳은 13%뿐이었고, 약 45%는 성능이 떨어져 수정하거나 되돌아갔대요. 페이팔은 업무 지식을 따로 정리해 정확도를 43%에서 95%로 올렸다니, 업무 매뉴얼 정리가 AI 활용의 기본이에요.","stars":4,"source":"AI타임스","date":"2026-11-13","url":"https://www.aitimes.com/news/articleView.html?idxno=217379"},
+    {"cat":"서비스","title":"앤트로픽, 제조업용 '클로드' 출시","summary":"견적 작성·품질 검사·설비 고장 분석 등 17개 스킬을 담았고, 최종 판단은 현장 담당자가 맡는 구조래요. 의료·금융·법률에 이어 업종별 AI가 늘고 있어 보험 업무용 도구도 곧 늘어날 흐름이에요.","stars":3.5,"source":"AI타임스","date":"2026-11-13","url":"https://www.aitimes.com/news/articleView.html?idxno=217361"},
+    {"cat":"정책","title":"미 비영리단체 4곳, 빅테크 5곳에 'AI 개발 중단' 소송","summary":"오픈AI·앤트로픽·구글·스페이스X·메타를 상대로 생물무기·사이버공격에 악용될 수 있는 모델의 개발·배포를 막아 달라고 했대요. 기존 소송과 달리 개발 자체를 멈추려는 점이 달라요.","stars":3.5,"source":"AI타임스","date":"2026-11-13","url":"https://www.aitimes.com/news/articleView.html?idxno=217372"},
+    {"cat":"기업·투자","title":"골드만삭스 \"AI 투자, 2027년 말 연 1865조원\"","summary":"AI 하드웨어·소프트웨어 투자가 미국 GDP의 약 4%까지 커지고 GDP 성장률을 0.6%p 끌어올릴 거란 전망이래요. 고객과 경기 이야기를 나눌 때 배경 지식으로 좋아요.","stars":3,"source":"AI타임스","date":"2026-11-13","url":"https://www.aitimes.com/news/articleView.html?idxno=217382"}
    ]
   },
   {
    "id": "finance", "label": "금융뉴스", "insight": "오늘의 금융 인사이트 TOP5", "rank": "생활·업무 활용도 순",
    "cats": ["금리","대출","일정","제도"],
    "items": [
-    {"cat":"금리","title":"저축은행 정기예금 절반 가까이 연 4% 넘어","summary":"79개 저축은행 12개월 예금 평균은 3.89%로 8월 말보다 0.16%p 올랐고, 최고 4.13% 상품도 있대요. 목돈 굴릴 곳을 묻는 고객에게 예금자보호 한도와 함께 안내해 보세요.","stars":5,"source":"파이낸셜뉴스","date":"2026-11-11","url":"https://www.fnnews.com/news/202611111827442715"},
-    {"cat":"금리","title":"환율 1,330.7원 마감…일주일 새 11.4원 내려","summary":"12일 원/달러는 2.9원 내렸고 국고채 3년은 3.729%, CD 91일은 3.370%였대요. 달러보험이나 대출 금리 상담 때 기준 수치로 쓰기 좋아요.","stars":4,"source":"데일리팝","date":"2026-11-12","url":"http://www.dailypop.kr/news/articleView.html?idxno=104533"},
-    {"cat":"제도","title":"금융지주 지배구조 개선안…'맹탕' 논란","summary":"CEO 연임 때 임추위 4분의 3 찬성, 두 번째 연임부터 주총 출석 4분의 3 찬성 등이 담겼지만, 기존 찬성률이 이미 기준을 넘어 실효성이 약하다는 지적이래요. AFPK 금융규제 공부에 연결해 보세요.","stars":4,"source":"보험매일","date":"2026-11-12","url":"https://www.fins.co.kr/news/articleView.html?idxno=110521"},
-    {"cat":"제도","title":"금융위 \"13일 코스닥 추가대책 발표설, 사실 아냐\"","summary":"가격제한폭 완화·폐지 검토설은 사실무근이고, 풍문 유포는 불공정거래가 될 수 있대요. 정책 정보는 공식 보도자료로만 확인하세요.","stars":4,"source":"데일리안","date":"2026-11-12","url":"https://www.dailian.co.kr/news/view/1714207/%EA%B8%88%EC%9C%B5%EC%9C%84-%EA%B8%88%EC%9A%94%EC%9D%BC-%EC%BD%94%EC%8A%A4%EB%8B%A5-%EC%B6%94%EA%B0%80%EB%8C%80%EC%B1%85-%EB%B0%9C%ED%91%9C-2026"},
-    {"cat":"제도","title":"국고채 담합 과징금 1조6,266억…금융지주 자본비율 부담","summary":"공정위가 국고채전문딜러 15곳에 단일 사건 최대 과징금을 매겼고, 5대 지주 계열사 몫은 7,747억원이래요. 연말 배당·자사주 소각이 줄 수 있다는 분석도 있어요.","stars":3.5,"source":"자본시장뉴스","date":"2026-11-12","url":"https://www.jabon.co.kr/news/articleView.html?idxno=8649"}
+    {"cat":"금리","title":"환율 1,336.7원…5거래일 만에 6원 올라","summary":"13일 15시30분 기준 원/달러는 6.0원 올랐고 국고채 3년은 3.759%(주간 +15bp), CD 91일은 3.370%였대요. 시장금리가 한 주 새 꽤 올라 대출 금리 상담 때 참고하세요.","stars":4.5,"source":"데일리팝","date":"2026-11-13","url":"https://www.dailypop.kr/news/articleView.html?idxno=104589"},
+    {"cat":"일정","title":"다음 주 엔비디아 실적·FOMC 의사록·수능","summary":"17일 미국 소매판매, 18일 오전 6시20분께 엔비디아 실적, 19일 새벽 FOMC 의사록, 20일 한국 생산자물가가 나와요. 19일 수능일엔 증시 개장·폐장이 1시간씩 늦춰져요.","stars":4.5,"source":"SBS Biz","date":"2026-11-13","url":"https://supple.kr/news/cmwedpzwioo9lal9pqui0fc17"},
+    {"cat":"제도","title":"농협금융, 기금형 퇴직연금 대비 TF 가동","summary":"정부가 10월 발표한 퇴직연금 강화 방안의 핵심인 기금형은 전문 수탁법인이 적립금을 맡아 운용하는 방식이래요. 법인 고객 퇴직연금 상담과 AFPK 은퇴설계 공부에 같이 챙겨 두세요.","stars":4,"source":"보험매일","date":"2026-11-13","url":"https://www.fins.co.kr/news/articleView.html?idxno=110554"},
+    {"cat":"제도","title":"자본시장 간담회…저PBR 공표·코스닥 재설계 논의","summary":"주주중심 경영, 코스닥 세그먼트 분리, 의무공개매수 도입 등이 거론됐고, 정부는 의견을 정책 설계에 반영하기로 했대요. 당장 나온 대책은 없어 공식 발표를 기다려야 해요.","stars":4,"source":"스페셜경제","date":"2026-11-13","url":"https://www.speconomy.com/news/articleView.html?idxno=420022"},
+    {"cat":"금리","title":"저축은행 정기예금 절반 가까이 연 4% 넘어","summary":"79개 저축은행 12개월 예금 평균은 3.89%로 8월 말보다 0.16%p 올랐고, 최고 4.13% 상품도 있대요. 목돈 굴릴 곳을 묻는 고객에게 예금자보호 한도와 함께 안내해 보세요.","stars":4,"source":"파이낸셜뉴스","date":"2026-11-11","url":"https://www.fnnews.com/news/202611111827442715"}
    ]
   },
   {
    "id": "stock", "label": "주식뉴스", "insight": "오늘의 주식 인사이트 TOP5", "rank": "투자 참고도 순",
    "cats": ["국내증시","해외증시","종목","반도체·AI"],
    "items": [
-    {"cat":"국내증시","title":"코스피 0.61% 내린 5,342.73…기관이 팔았다","summary":"12일 기관이 7,644억원 순매도했고 외국인은 3거래일째 순매수(1,580억원)였대요. 삼성전자는 20만8,000원(+0.97%), SK하이닉스는 125만4,000원(-1.80%), 코스닥은 696.53으로 700선 아래로 내려왔어요.","stars":5,"source":"자본시장뉴스","date":"2026-11-12","url":"https://www.jabon.co.kr/news/articleView.html?idxno=8645"},
-    {"cat":"해외증시","title":"뉴욕증시, 젠슨 황 사임 여파에 일제히 하락","summary":"12일(현지시간) 다우 0.36%, S&P500 0.35%, 나스닥 0.39% 내리며 마쳤대요. AI 관련주가 약세를 보였어요.","stars":5,"source":"아시아경제","date":"2026-11-13","url":"https://view.asiae.co.kr/article/2026111305130267572"},
-    {"cat":"반도체·AI","title":"엔비디아 젠슨 황 사임…17일 실적 발표 주목","summary":"주가가 장중 최대 14.3% 떨어졌다가 낮 무렵 약 5% 하락까지 줄었고, AMD·브로드컴은 올랐대요. 후임 선정과 17일 실적이 반도체주 변수예요.","stars":4.5,"source":"AI타임스","date":"2026-11-13","url":"https://www.aitimes.com/news/articleView.html?idxno=217348"},
-    {"cat":"반도체·AI","title":"반년 전 공매도 보고서가 경고한 '젠슨 황 리스크'","summary":"5월 컬퍼리서치가 중국 관련 리스크를 지적했고, 그 뒤 엔비디아 주가는 약 20% 내려 시가총액 1조달러 넘게 줄었대요. 공매도 측 주장이라 전부 사실로 볼 순 없다는 단서도 달렸어요.","stars":3.5,"source":"자본시장뉴스","date":"2026-11-13","url":"https://www.jabon.co.kr/news/articleView.html?idxno=8665"},
-    {"cat":"종목","title":"DB손보 3분기 누적 순이익 1조5,605억…10.5%↑","summary":"3분기만 보면 순이익 4,440억원(35.3%↑), 자동차보험은 155억원 흑자로 돌아섰고 K-ICS 비율은 212.0%래요. 투자손익은 줄어 보험손익이 실적을 끌었어요.","stars":3.5,"source":"보험매일","date":"2026-11-12","url":"https://www.fins.co.kr/news/articleView.html?idxno=110531"}
+    {"cat":"국내증시","title":"외국인 7,032억 매도…코스피 0.98% 내린 5,290.53","summary":"13일 장 초반 2% 넘게 올랐다가 하락 전환했고, 코스닥은 0.45% 오른 699.66이었대요. 삼성전자·SK하이닉스도 장 막판 약세로 돌아섰어요.","stars":5,"source":"자본시장뉴스","date":"2026-11-13","url":"https://www.jabon.co.kr/news/articleView.html?idxno=8683"},
+    {"cat":"국내증시","title":"다음 주 코스피 5,200~6,000 예상…엔비디아 실적 주목","summary":"이번 주 코스피는 4.56% 올랐고, NH투자증권은 엔비디아 실적과 연준 발언을 변수로 봤대요. 아세안·APEC 정상회의에서 반도체 수출 통제 논의도 지켜볼 포인트예요.","stars":4.5,"source":"이투데이","date":"2026-11-14","url":"https://supple.kr/news/cmwfh08q1j6dbal9p35desemk"},
+    {"cat":"해외증시","title":"엔비디아 개장 전 2% 반등…MS는 장애로 1%대 하락","summary":"13일(현지시간) 개장 전 엔비디아는 전날 4.3% 급락 뒤 반등했고, 세레브라스는 호실적에 약 10% 올랐대요. 마이크로소프트는 아웃룩·팀즈 장애 여파로 내렸어요.","stars":4,"source":"뉴스핌","date":"2026-11-13","url":"https://www.newspim.com/news/view/20261113001442"},
+    {"cat":"반도체·AI","title":"젠슨 황 떠난 엔비디아, 1년 뒤 주가는","summary":"사임 당일 주가는 4.34% 내렸고, 베어드·번스타인은 목표주가를 200달러로 낮췄대요. CEO 교체 뒤 맥도날드는 1년 새 약 11% 오르고 인텔은 약 11% 내린 사례도 함께 소개됐어요.","stars":4,"source":"자본시장뉴스","date":"2026-11-13","url":"https://www.jabon.co.kr/news/articleView.html?idxno=8669"},
+    {"cat":"종목","title":"삼성생명 누적 순익 2조6,859억…배당이 끌었다","summary":"3분기 누적 순이익은 26.9% 늘었고 투자손익이 40% 증가했지만 보험서비스손익은 2.8% 줄었대요. K-ICS 비율은 209%, 보유 CSM은 14조3천억원이에요.","stars":3.5,"source":"자본시장뉴스","date":"2026-11-13","url":"https://www.jabon.co.kr/news/articleView.html?idxno=8661"},
+    {"cat":"종목","title":"미래에셋증권 3분기 적자 전환…자사주 6,500만주 소각","summary":"스페이스X 지분 평가가치 하락과 환율 하락으로 3분기 4,056억원 순손실을 냈지만 9월까지 누적 순이익은 148% 늘었대요. 자사주는 내년 정기주총 이후 소각해요.","stars":3.5,"source":"자본시장뉴스","date":"2026-11-13","url":"https://www.jabon.co.kr/news/articleView.html?idxno=8656"}
    ]
   },
   {
    "id": "insurance", "label": "보험뉴스", "insight": "오늘의 영업 인사이트 TOP5", "rank": "영업활용도 순",
    "cats": ["건강","법인·상속","상품","생명보험","소비자","손해보험","경제·시장","제도"],
    "items": [
-    {"cat":"제도","title":"GA 정착지원금 74% 급감…1200%룰 영향","summary":"71개 GA의 3분기 정착지원금은 약 549억원으로 2분기보다 74.1% 줄었대요. 7월부터 GA에 적용된 1200%룰과 내년 수수료 분급 영향이라, 위촉·정산 업무 때 지원금 기준 변화를 꼭 확인하세요.","stars":5,"source":"보험매일","date":"2026-11-12","url":"https://www.fins.co.kr/news/articleView.html?idxno=110537"},
-    {"cat":"제도","title":"근로자추정제 논의…GA 설계사 위촉관리 재정비 필요","summary":"입법되면 근로자가 아니라는 입증 책임이 회사로 넘어가요. 출근 강제·일률적 영업 지시가 문제될 수 있어, 교육·상담 기록은 유지하되 계약서와 실제 운영이 맞는지 점검해 두세요.","stars":5,"source":"보험매일","date":"2026-11-12","url":"https://www.fins.co.kr/news/articleView.html?idxno=110536"},
-    {"cat":"손해보험","title":"손보 GA채널 상위 3사 점유율 50.5%로 쏠림","summary":"10월 GA채널 장기보험 신계약은 354억7천만원이었고 메리츠 18.7%, 삼성 16.0%, KB 15.8% 순이래요. 현대해상이 4위로 올라섰고 한화손보는 14.2% 줄었어요.","stars":4.5,"source":"보험매일","date":"2026-11-12","url":"https://www.fins.co.kr/news/articleView.html?idxno=110538"},
-    {"cat":"상품","title":"라이나생명 신경계질환 통합 진단특약, 배타적사용권 6개월","summary":"질병별로 나뉘던 신경계질환(G코드) 진단비를 하나로 묶고 중증도 1~5단계에 따라 가입금액의 2~100%를 누적 지급한대요. 뇌·신경 질환 보장 비교 자료로 쓰기 좋아요.","stars":4.5,"source":"보험매일","date":"2026-11-12","url":"https://www.fins.co.kr/news/articleView.html?idxno=110524"},
-    {"cat":"상품","title":"현대해상, 중입자·CAR-T 담은 다이렉트 암보험 개편","summary":"암 플랜에 중입자 치료, CAR-T 항암, 로봇 수술 보장을 더했고, 어린이보험엔 산전검사 이상 시 최대 70만원 지원 특약이 생겼대요. 고객이 다이렉트 상품과 비교할 때 참고하세요.","stars":4,"source":"보험매일","date":"2026-11-12","url":"https://www.fins.co.kr/news/articleView.html?idxno=110523"},
-    {"cat":"법인·상속","title":"정년 65세 연장 시 퇴직연금 최대 3조5천억 DC로 이동 추정","summary":"보험연구원은 DB형에서 DC형으로 1조6천억~3조5천억원이 옮겨갈 수 있다고 봤대요(정년연장은 아직 논의 단계). 법인 고객 퇴직연금 상담 때 DC·IRP 운용 이야기를 꺼내기 좋아요.","stars":4,"source":"보험매일","date":"2026-11-12","url":"https://www.fins.co.kr/news/articleView.html?idxno=110534"},
-    {"cat":"건강","title":"해외 비만치료제 3개월분 반입 허용…건보 급여화 논의","summary":"12일부터 해외에서 처방받은 위고비·마운자로를 최대 3개월분까지 들여올 수 있대요. 복지부 장관이 고도비만 등 급여화 필요성을 언급해, 비만 관련 보장 문의에 참고하세요.","stars":3.5,"source":"보험매일","date":"2026-11-12","url":"https://www.fins.co.kr/news/articleView.html?idxno=110541"}
+    {"cat":"생명보험","title":"종신보험의 귀환…사망보장 넘어 노후자금 경쟁","summary":"삼성생명 상반기 종신보험 신계약 CSM이 108.6% 늘었고, 10월 GA채널 종신보험은 700종신을 빼면 59.2% 늘었대요. 생활·노후자금 기능을 설명할 때 저축상품으로 오해하지 않게 안내하는 게 중요해요.","stars":5,"source":"보험매일","date":"2026-11-13","url":"https://www.fins.co.kr/news/articleView.html?idxno=110545"},
+    {"cat":"상품","title":"한화생명 '보조기기 지원금특약' 배타적사용권","summary":"보험기간 중 장애인 등록 후 건강보험·의료급여 보조기기를 쓰면 각각 연 1회 보험금을 준대요. 연령 제한 없이 96개 품목이 대상이라 장애·재활 보장 문의에 활용해 보세요.","stars":4.5,"source":"보험매일","date":"2026-11-13","url":"https://www.fins.co.kr/news/articleView.html?idxno=110548"},
+    {"cat":"경제·시장","title":"토스인슈어런스, 신입 설계사에 500만원 지원","summary":"연말까지 직전 3년간 모집 경력이 없는 신입이 교육 수료 후 직영 위촉되면 육성지원금 500만원을 준대요. 설계사 3,300여명 중 20·30대가 59.3%라 GA 리크루팅 경쟁 참고 자료예요.","stars":4.5,"source":"보험매일","date":"2026-11-13","url":"https://www.fins.co.kr/news/articleView.html?idxno=110547"},
+    {"cat":"소비자","title":"해킹당한 금융보안원, 공격 IP 246개 차단","summary":"SMS 인증 우회와 관리자 기능 권한 검증 미흡을 노렸고 해커는 금감원을 사칭했대요. 48개사 130여 개 파일 유출 추정이라 금감원 사칭 연락은 한 번 더 확인하도록 안내해 주세요.","stars":4.5,"source":"보험매일","date":"2026-11-13","url":"https://www.fins.co.kr/news/articleView.html?idxno=110552"},
+    {"cat":"손해보험","title":"현대해상 3분기 순익 9.6%↓…투자손익 적자","summary":"3분기 순이익은 1,657억원으로 보험손익은 63% 늘었지만 투자손익이 278억원 적자로 돌아섰대요. K-ICS 비율은 210.3%, 누적 순익은 7,808억원(23.1%↑)이에요.","stars":4,"source":"보험매일","date":"2026-11-13","url":"https://www.fins.co.kr/news/articleView.html?idxno=110550"},
+    {"cat":"손해보험","title":"삼성화재, 스마트싱스로 주택 화재·누수 위험 진단","summary":"주소·건물 유형·면적을 넣으면 종합 위험등급과 화재·누수 위험도를 알려 준대요. 주택화재·일상배상 상담 때 고객에게 먼저 진단해 보라고 권하기 좋아요.","stars":4,"source":"보험매일","date":"2026-11-13","url":"https://www.fins.co.kr/news/articleView.html?idxno=110549"}
    ]
   }
  ]
