@@ -27,7 +27,7 @@
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Gothic+A1:wght@600;800&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Jua&family=Inter:wght@400;500;600&family=Gothic+A1:wght@600;800&family=IBM+Plex+Sans+KR:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
 /* Layout: sticky search/tab bar over a 3-column tile grid; detail opens as a bottom sheet with per-block copy */
 :root{
@@ -444,6 +444,35 @@ mark{background:#f9e79f;color:#1a1a1a}
 }
 </style>
 <style id="v4-additions">
+.nnew{font-weight:700;color:var(--must-ink)}
+.nbadge{display:inline-block;font-size:.68rem;font-weight:800;color:#fff;background:#e5243b;border-radius:5px;padding:1px 6px;margin-right:6px;vertical-align:2px}
+/* 시험공부 사이트(보험 퀘스트 섬)와 같은 클레이 스타일 */
+.vq-card{display:grid;grid-template-columns:1fr;grid-template-areas:"tx" "go";gap:12px 14px;align-items:center;margin:12px 0 10px;padding:14px;border-radius:24px;text-decoration:none;font-family:'Jua',var(--font-body);color:#5a4a78;background:linear-gradient(160deg,#e6dcff 0%,#ffe1ec 55%,#ffe9d6 100%);box-shadow:8px 10px 20px rgba(120,90,170,.28),inset -5px -5px 10px rgba(160,120,200,.18),inset 5px 5px 10px rgba(255,255,255,.85);transition:transform .15s}
+.vq-card:hover{transform:translateY(-2px)}
+.vq-card:active{box-shadow:inset 5px 5px 12px rgba(90,60,150,.25)}
+.vq-thumb{grid-area:th;width:84px;height:84px;border-radius:20px;overflow:hidden;position:relative;background:#fff6fb;box-shadow:5px 6px 12px rgba(140,110,190,.3),inset -3px -3px 6px rgba(150,110,200,.15),inset 3px 3px 6px #fff;display:flex;align-items:center;justify-content:center}
+.vq-thumb img{position:absolute;bottom:-8%;left:50%;height:215%;width:auto;max-width:none;transform:translateX(-46%)}
+.vq-isl{font-size:40px;display:none}.vq-thumb.noimg .vq-isl{display:block}
+.vq-txt{grid-area:tx;display:flex;flex-direction:column;gap:3px;min-width:0}
+.vq-sub{font-size:.82rem;color:#a28fc4}
+.vq-t{font-weight:400;font-size:1.32rem;color:#7b5cc7;line-height:1.2}
+.vq-chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.vq-chips span,.ss-chips span{font-size:.8rem;padding:3px 10px;border-radius:12px;box-shadow:3px 4px 8px rgba(140,110,190,.22),inset -2px -2px 4px rgba(120,90,190,.15),inset 2px 2px 4px rgba(255,255,255,.8)}
+.k1{background:#c9b6ff;color:#4a3878}.k2{background:#c8f2da;color:#2f6b4d}.k3{background:#ffd9c2;color:#7a4a20}
+.vq-go{grid-area:go;text-align:center;font-size:1.02rem;color:#fff;background:#9b84e8;border-radius:18px;padding:10px 0;box-shadow:6px 6px 14px rgba(120,90,190,.35),inset -4px -4px 8px rgba(60,30,130,.25),inset 4px 4px 8px rgba(255,255,255,.4)}
+@media (min-width:768px){.vq-card{grid-template-columns:1fr auto;grid-template-areas:"tx go";padding:16px 18px}.vq-go{padding:12px 22px}}
+.study-side{display:none}
+@media (min-width:1360px){
+ .study-side{display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px;position:fixed;top:120px;left:calc(50% + 540px + 24px);width:min(190px,calc(50vw - 540px - 40px));padding:22px 14px 18px;border-radius:28px;font-family:'Jua',var(--font-body);color:#5a4a78;text-decoration:none;z-index:5;background:linear-gradient(170deg,#e6dcff 0%,#ffe1ec 55%,#ffe9d6 100%);box-shadow:12px 14px 28px rgba(120,90,170,.3),inset -6px -6px 12px rgba(160,120,200,.18),inset 6px 6px 12px rgba(255,255,255,.85);transition:transform .15s}
+ .study-side:hover{transform:translateY(-3px)}
+ .study-side .ss-new{position:absolute;top:12px;right:12px;font-size:.7rem;color:#fff;background:#e0607e;border-radius:10px;padding:2px 8px;box-shadow:inset -2px -2px 4px rgba(120,20,50,.2),inset 2px 2px 4px rgba(255,255,255,.4)}
+ .study-side .ss-ic{width:64px;height:64px;border-radius:20px;background:#fff6fb;font-size:34px;display:flex;align-items:center;justify-content:center;box-shadow:5px 6px 12px rgba(140,110,190,.3),inset -3px -3px 6px rgba(150,110,200,.15),inset 3px 3px 6px #fff}
+ .study-side .ss-sub{font-size:.8rem;color:#a28fc4;line-height:1.35}
+ .study-side strong{font-weight:400;font-size:1.25rem;color:#7b5cc7}
+ .study-side .ss-chips{display:flex;flex-direction:column;gap:7px;width:100%;margin-top:2px}
+ .study-side .ss-chips span{padding:6px 0;font-size:.85rem}
+ .study-side .ss-go{margin-top:6px;font-size:.95rem;color:#fff;background:#9b84e8;border-radius:16px;padding:9px 0;width:100%;box-shadow:6px 6px 14px rgba(120,90,190,.35),inset -4px -4px 8px rgba(60,30,130,.25),inset 4px 4px 8px rgba(255,255,255,.4)}
+}
 .side-col .bcard.dl .mega-badge{position:absolute;top:6px;left:6px;height:24px;width:auto;object-fit:contain}
 @media (min-width:768px){.side-col .bcard.dl .mega-badge{top:10px;left:10px;height:26px}}
 .sheet .checked{margin:14px 2px 4px;font-size:.75rem;color:var(--muted);text-align:right;font-variant-numeric:tabular-nums}
@@ -468,7 +497,7 @@ mark{background:#f9e79f;color:#1a1a1a}
 <div class="wrap">
   <header class="top">
     <h1>완전판매 모니터링</h1>
-    <p class="upd">제작·관리 <b>보람</b> · v3.1 (2026.11.09)</p>
+    <p class="upd">제작·관리 <b>보람</b> · v4.0 (2026.11.15)</p>
   </header>
 
   <section class="notices" id="notices" aria-label="공지사항"></section>
@@ -525,12 +554,24 @@ mark{background:#f9e79f;color:#1a1a1a}
   <div class="vw-bd" id="vwBody"><img id="vwImg" alt="자동차보험 카드 무이자 할부 안내표"></div>
   <p class="vw-tip">이미지를 누르면 크게 / 작게 볼 수 있어요</p>
 </div>
+<a class="study-side" href="https://bborami.github.io/variable-quest-island/" target="_blank" rel="noopener" aria-label="보험 시험공부 사이트 바로가기 (새 창)">
+  <span class="ss-new">NEW</span>
+  <span class="ss-ic">🏝️</span>
+  <span class="ss-sub">게임처럼 재밌게<br>자격시험 공부</span>
+  <strong>보험 퀘스트 섬</strong>
+  <span class="ss-chips"><span class="k1">변액보험</span><span class="k2">생명보험</span><span class="k3">손해보험</span></span>
+  <span class="ss-go">바로가기 →</span>
+</a>
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
 <script>
 const NOTICES = [
-  {tag:"필독", tel:"063-285-1882", fax:"063-285-1885", title:"모니터링 인콜/아웃콜/링크 공유합니다", date:"2026.11.03",
-   body:["보험사 헬프데스크와 보험금 청구서 추가됐습니다.","업무 시 참고해 주세요.","(오류사항 생겼을 시 이보람 총무에게 연락해 주세요.)"]}, 
+  {tag:"필독", tel:"063-285-1882", fax:"063-285-1885", title:"모니터링 인콜/아웃콜/링크 공유합니다", date:"2026.11.15",
+   body:["헬프데스크 / 보험금청구팩스 / 약관 바로가기 추가",
+         {new:"변액보험 생명보험 손해보험 시험공부 할 수 있는 사이트 오픈했습니다."},
+         {link:{href:"https://bborami.github.io/variable-quest-island/", label:"시험공부 사이트 바로가기"}},
+         "많은 이용 부탁드립니다.",
+         "(오류사항 생겼을 시 이보람 총무에게 연락해 주세요.)"]}, 
   {tag:"안내1", title:"계약 완료 후 모니터링은 3시간 후부터 진행 가능합니다.", date:"2026.10.22",
    body:[]},
   {tag:"안내2", title:"모바일 모니터링은 미성년자와 65세이상 고연령자 불가입니다.", date:"2026.10.23",
@@ -986,7 +1027,12 @@ $("#notices").innerHTML = NOTICES.map((n,i)=> !n.body.length ? `
       <svg class="chev" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="m6 9 6 6 6-6"/></svg>
     </button>
     <div class="body" id="nb${i}" ${i===0?"":"hidden"}>
-      ${n.body.map(p=>`<p>${esc(p)}</p>`).join("")}
+      ${n.body.map(p=>typeof p==="string" ? `<p>${esc(p)}</p>`
+        : p.new ? `<p class="nnew"><span class="nbadge">NEW</span>${esc(p.new)}</p>`
+        : p.link ? `<a class="vq-card" href="${esc(p.link.href)}" target="_blank" rel="noopener" aria-label="${esc(p.link.label)} (새 창)">
+          <span class="vq-txt"><span class="vq-sub">게임처럼 재밌게 자격시험 공부</span><b class="vq-t">보험 퀘스트 섬</b>
+            <span class="vq-chips"><span class="k1">변액보험</span><span class="k2">생명보험</span><span class="k3">손해보험</span></span></span>
+          <span class="vq-go">시험공부 바로가기 →</span></a>` : "").join("")}
       ${n.tel||n.fax ? `<div class="ncontact">
         ${n.tel?`<a class="nc" href="tel:${n.tel.replace(/[^0-9]/g,"")}"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1z"/></svg><span class="nc-l">사무실</span>${n.tel}</a>`:""}
         ${n.fax?`<span class="nc"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round" aria-hidden="true"><path d="M7 9V3h8l2 2v4"/><rect x="3" y="9" width="18" height="11" rx="2"/><path d="M7 14h6M7 17h4"/><circle cx="17" cy="14.5" r=".6" fill="currentColor"/><circle cx="17" cy="17" r=".6" fill="currentColor"/></svg><span class="nc-l">팩스</span>${n.fax}</span>`:""}
