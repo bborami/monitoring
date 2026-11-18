@@ -1406,7 +1406,7 @@ const NEWS_SNAPSHOT={"updated":"2026-11-18","tabs":[{"id":"ai","label":"AI뉴스
  const shortD=s=>{const x=ymd(s);return (x.getUTCMonth()+1)+'/'+x.getUTCDate()};
  const longD=s=>{const x=ymd(s);return `${x.getUTCMonth()+1}월 ${x.getUTCDate()}일 ${DOW[x.getUTCDay()]}요일`};
  const short=l=>String(l||'').replace('뉴스','');
- let D=null,TABS=[],CARDS=[],STARTS={},cur=0,pending=null,pt,SYNCERR=false;
+ let D=null,TABS=[],CARDS=[],SEL='all',cur=0,pending=null,pt,SYNCERR=false;
  const say=m=>{ if(typeof toast==='function') toast(m); };
 
  sec.innerHTML=
@@ -1424,17 +1424,16 @@ const NEWS_SNAPSHOT={"updated":"2026-11-18","tabs":[{"id":"ai","label":"AI뉴스
   TABS=ORDER.map(id=>D.tabs.find(t=>t.id===id)).filter(Boolean).concat(D.tabs.filter(t=>!ORDER.includes(t.id)));
   TABS.forEach(t=>t.items=[...(t.items||[])].sort((a,b)=>(b.stars||0)-(a.stars||0)).slice(0,5));
   $$('cn-when').textContent=longD(D.updated)+' 아침 정리';
-  let h=`<section class="cn-card cn-cover" data-sec="all"><div class="d">${esc(longD(D.updated))}</div><h4>오늘의<br>카드뉴스</h4>
+  let h=SEL!=='all'?'':`<section class="cn-card cn-cover" data-sec="all"><div class="d">${esc(longD(D.updated))}</div><h4>오늘의<br>카드뉴스</h4>
    <ul>${TABS.map(t=>`<li><b>${esc(short(t.label))} 1위</b>${esc(t.items[0]?t.items[0].title:'')}</li>`).join('')}</ul>
    <div class="hint">옆으로 넘겨 보세요 ›</div></section>`;
-  let i=1; STARTS={};
-  TABS.forEach(t=>{
+  if(SEL!=='all'&&!TABS.some(t=>t.id===SEL)) SEL='all';
+  TABS.filter(t=>SEL==='all'||t.id===SEL).forEach(t=>{
    const cls=esc(t.id);
-   STARTS[t.id]=i++;
    h+=`<section class="cn-card cn-intro ${cls}" data-sec="${cls}"><span class="cn-tag">${esc(short(t.label))} TOP${t.items.length}</span>
     <h4>${esc(String(t.insight||t.label).replace(/\s*TOP\s*\d+/i,''))}</h4><div class="sub">${esc(t.rank||'')}</div>
     <ol>${t.items.map(n=>`<li>${esc(n.title)}</li>`).join('')}</ol></section>`;
-   t.items.forEach((n,k)=>{ i++;
+   t.items.forEach((n,k)=>{
     h+=`<section class="cn-card ${cls}" data-sec="${cls}"><span class="cn-tag">${esc(short(t.label))} · ${ICON[n.cat]||''} ${esc(n.cat)}</span>
      <div class="cn-no">${k+1}</div><h4>${esc(n.title)}</h4><p>${esc(n.summary)}</p>
      <div class="cn-foot"><span class="cn-stars" role="img" aria-label="활용도 별 ${esc(n.stars)}개">${starTxt(n.stars)}</span>
@@ -1442,8 +1441,8 @@ const NEWS_SNAPSHOT={"updated":"2026-11-18","tabs":[{"id":"ai","label":"AI뉴스
    });
   });
   track.innerHTML=h; CARDS=[...track.children];
-  $$('cn-chips').innerHTML=`<button type="button" data-sec="all" data-go="0" aria-pressed="true">전체</button>`+
-   TABS.map(t=>`<button type="button" data-sec="${esc(t.id)}" data-go="${STARTS[t.id]}" aria-pressed="false">${esc(short(t.label))}</button>`).join('');
+  $$('cn-chips').innerHTML=`<button type="button" data-sec="all" aria-pressed="${SEL==='all'}">전체</button>`+
+   TABS.map(t=>`<button type="button" data-sec="${esc(t.id)}" aria-pressed="${SEL===t.id}">${esc(short(t.label))}</button>`).join('');
   $$('cn-ft').innerHTML=`<span>${esc(D.updated)} 업데이트${SYNCERR?' <b class="sync-err" role="alert">동기화오류</b>':''}</span><span>리리 오피스</span>`;
   if(!keep) track.scrollLeft=0;
   update();
@@ -1460,18 +1459,16 @@ const NEWS_SNAPSHOT={"updated":"2026-11-18","tabs":[{"id":"ai","label":"AI뉴스
   $$('cn-count').textContent=vis>1?`${last} / ${CARDS.length}`:`${cur+1} / ${CARDS.length}`;
   $$('cn-prog').style.width=(last/CARDS.length*100)+'%';
   $$('cn-prev').disabled=track.scrollLeft<=2; $$('cn-next').disabled=end;
-  const sc=CARDS[cur].dataset.sec;
-  $$('cn-chips').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.sec===sc));
  }
  track.addEventListener('scroll',()=>requestAnimationFrame(update),{passive:true});
  addEventListener('resize',()=>requestAnimationFrame(update));
  $$('cn-prev').onclick=()=>go(base()-1); $$('cn-next').onclick=()=>go(base()+1);
  track.addEventListener('keydown',e=>{ if(e.key==='ArrowRight'){e.preventDefault();go(base()+1)} if(e.key==='ArrowLeft'){e.preventDefault();go(base()-1)} });
- $$('cn-chips').addEventListener('click',e=>{const b=e.target.closest('button'); if(b) go(+b.dataset.go)});
+ $$('cn-chips').addEventListener('click',e=>{const b=e.target.closest('button'); if(!b||b.dataset.sec===SEL) return; SEL=b.dataset.sec; draw()});
 
- /* 공유·복사 글: 전체 카드면 탭마다 TOP3, 분류 카드면 그 분류 TOP5 */
+ /* 공유·복사 글: 전체면 분류마다 TOP3, 분류를 고르면 그 분류 TOP5 */
  function shareText(){
-  const sc=CARDS[cur]?CARDS[cur].dataset.sec:'all', all=sc==='all', n=all?3:5;
+  const sc=SEL, all=sc==='all', n=all?3:5;
   const tabs=all?TABS:TABS.filter(t=>t.id===sc);
   return `📰 ${shortD(D.updated)} 카드뉴스\n\n`+tabs.map(t=>`[${t.label} TOP${n}]\n`+t.items.slice(0,n).map((it,i)=>`${i+1}. ${it.title}\n- ${it.summary}\n${it.url}`).join('\n\n')).join('\n\n');
  }
