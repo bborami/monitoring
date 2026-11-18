@@ -387,32 +387,80 @@ mark{background:#f9e79f;color:#1a1a1a}
  .side-col .bcard.dl .bnr-tag{top:7px;right:7px;padding:2px 6px;font-size:.66rem;gap:3px}
  .side-col .bcard.dl{padding-top:30px}
 }
-/* Insurance news TOP5 panel */
 .ncol{display:grid;gap:8px;align-content:start;min-width:0}
-.news{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;display:flex;flex-direction:column;min-width:0}
-.news-hd{display:flex;align-items:center;gap:8px;margin-bottom:6px}
-.news-hd h3{margin:0;font-size:1rem;font-weight:600;letter-spacing:-.3px;flex:1}
-.news-hd .tag{font-size:.7rem;font-weight:600;padding:2px 7px;border-radius:6px;background:var(--accent-soft);color:var(--must-ink)}
-.news-hd .when{font-size:.72rem;color:var(--muted);font-variant-numeric:tabular-nums}
-.news ol{list-style:none;margin:0;padding:0;display:grid}
-.news li{border-top:1px solid var(--line)}
-.news li:first-child{border-top:0}
-.news li a{display:grid;grid-template-columns:22px minmax(0,1fr);gap:8px;padding:9px 0;color:var(--fg);text-decoration:none;align-items:start}
-.news li a:hover .nt{text-decoration:underline}
-.news .rk{font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums;text-align:center}
-.news .nt{font-size:.88rem;font-weight:500;line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;word-break:keep-all}
-.news .cb{display:inline-block;margin-right:6px;padding:1px 7px;border-radius:6px;font-size:.7rem;font-weight:600;vertical-align:1px}
-.news .cb.c1{background:var(--accent-soft);color:var(--must-ink)}.news .cb.c2{background:var(--tint-mint);color:#1a7a35}.news .cb.c3{background:var(--tint-peach);color:#793400}.news .cb.c4{background:var(--sunk);color:var(--slate)}
-.news-chips{display:flex;flex-wrap:wrap;gap:6px;padding:2px 0 8px;margin-bottom:2px}
-.news-chips::-webkit-scrollbar{display:none}
-.nchip{flex:none;border:1px solid var(--line);background:var(--bg);color:var(--slate);border-radius:999px;padding:4px 10px;font-size:.75rem;font-weight:500;white-space:nowrap}
-.nchip[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
-.news .cb.c5{background:var(--tint-yellow);color:#6b5400}.news .cb.c6{background:var(--tint-sky);color:#004d8f}.news .cb.c7{background:var(--card-rose,#fde0ec);color:#a02e6d}
-.news .ns{display:block;margin-top:2px;font-size:.72rem;color:var(--muted)}
-.news .msg{margin:8px 0 0;font-size:.82rem;color:var(--muted)}
-.news .msg a{color:#0075de}
-.news-ft{margin-top:auto;padding-top:8px;display:flex;justify-content:space-between;align-items:center;font-size:.72rem;color:var(--muted)}
-.news-ft button{border:0;background:none;color:var(--muted);font-size:.72rem;padding:2px 0;text-decoration:underline}
+/* 오늘의 카드뉴스 (리리 오피스 news.json) — 모니터링 사이트 톤: 흰 패널 + 파스텔 카드 */
+.news{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;display:flex;flex-direction:column;gap:10px;min-width:0;
+ --cn-cover:#ece6ff;--cn-cover-ink:#2a1f66;--cn-cover-ac:#5645d4;
+ --cn-insurance:#e6eaff;--cn-insurance-ink:#1f2a6b;--cn-insurance-ac:#3f51c8;
+ --cn-finance:#e0f4e8;--cn-finance-ink:#123f27;--cn-finance-ac:#1f8a4c;
+ --cn-stock:#ffeadb;--cn-stock-ink:#55270a;--cn-stock-ac:#c4570f;
+ --cn-ai:#e0edfb;--cn-ai-ink:#10345e;--cn-ai-ac:#2a6fbf;--cn-chip:#ffffffd9}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .news{
+ --cn-cover:#2a2447;--cn-cover-ink:#ece8ff;--cn-cover-ac:#a99cff;--cn-insurance:#222a4d;--cn-insurance-ink:#e4e8ff;--cn-insurance-ac:#9aa8ff;
+ --cn-finance:#18342a;--cn-finance-ink:#dff3e7;--cn-finance-ac:#6fd39b;--cn-stock:#3a2517;--cn-stock-ink:#ffe9da;--cn-stock-ac:#ffa767;
+ --cn-ai:#18304a;--cn-ai-ink:#e0edfb;--cn-ai-ac:#86bdf5;--cn-chip:#ffffff1f}}
+:root[data-theme="dark"] .news{
+ --cn-cover:#2a2447;--cn-cover-ink:#ece8ff;--cn-cover-ac:#a99cff;--cn-insurance:#222a4d;--cn-insurance-ink:#e4e8ff;--cn-insurance-ac:#9aa8ff;
+ --cn-finance:#18342a;--cn-finance-ink:#dff3e7;--cn-finance-ac:#6fd39b;--cn-stock:#3a2517;--cn-stock-ink:#ffe9da;--cn-stock-ac:#ffa767;
+ --cn-ai:#18304a;--cn-ai-ink:#e0edfb;--cn-ai-ac:#86bdf5;--cn-chip:#ffffff1f}
+.cn-hd{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap}
+.cn-hd h3{margin:0;font-size:1rem;font-weight:600;letter-spacing:-.3px}
+.cn-hd .when{display:block;font-size:.72rem;color:var(--muted);margin-top:1px}
+.cn-act{display:flex;gap:6px}
+.cn-act button{display:inline-flex;align-items:center;gap:5px;border-radius:999px;padding:7px 12px;font-size:.8rem;font-weight:600;white-space:nowrap;cursor:pointer;line-height:1}
+.cn-act svg{width:15px;height:15px;flex:none}
+.cn-share{border:0;background:#FEE500;color:#191600}
+.cn-copy{border:1px solid var(--line);background:var(--surface);color:var(--fg)}
+.cn-act button:hover{filter:brightness(.97)}
+.cn-chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;padding:1px}
+.cn-chips::-webkit-scrollbar{display:none}
+.cn-chips button{flex:none;border:1px solid var(--line);background:var(--bg);color:var(--slate);border-radius:999px;padding:5px 12px;font-size:.78rem;font-weight:500;white-space:nowrap;cursor:pointer}
+.cn-chips button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#fff;font-weight:600}
+.cn-view{position:relative}
+.cn-track{display:flex;gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;outline:none;border-radius:16px}
+.cn-track::-webkit-scrollbar{display:none}
+.cn-track:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.cn-card{--bg:var(--cn-cover);--ink:var(--cn-cover-ink);--ac:var(--cn-cover-ac);
+ flex:0 0 86%;min-height:min(112vw,440px);scroll-snap-align:start;box-sizing:border-box;border-radius:16px;padding:20px 20px 16px;display:flex;flex-direction:column;position:relative;background:var(--bg);color:var(--ink);border:1px solid color-mix(in srgb,var(--ac) 14%,transparent)}
+.cn-card.insurance{--bg:var(--cn-insurance);--ink:var(--cn-insurance-ink);--ac:var(--cn-insurance-ac)}
+.cn-card.finance{--bg:var(--cn-finance);--ink:var(--cn-finance-ink);--ac:var(--cn-finance-ac)}
+.cn-card.stock{--bg:var(--cn-stock);--ink:var(--cn-stock-ink);--ac:var(--cn-stock-ac)}
+.cn-card.ai{--bg:var(--cn-ai);--ink:var(--cn-ai-ink);--ac:var(--cn-ai-ac)}
+.cn-tag{align-self:flex-start;font-size:.72rem;font-weight:700;color:var(--ac);background:var(--cn-chip);padding:4px 10px;border-radius:999px}
+.cn-no{position:absolute;right:18px;top:10px;font-family:var(--font-display);font-size:3.4rem;font-weight:800;line-height:1;color:var(--ac);opacity:.22}
+.cn-card h4{margin:16px 0 0;font-family:var(--font-display);font-size:1.2rem;font-weight:800;line-height:1.4;letter-spacing:-.4px;word-break:keep-all}
+.cn-card p{margin:12px 0 0;font-size:.9rem;line-height:1.7;word-break:keep-all;opacity:.88}
+.cn-foot{margin-top:auto;padding-top:14px;display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:.74rem}
+.cn-stars{color:#f5b400;letter-spacing:1px;font-size:.85rem}
+.cn-foot a{color:var(--ac);background:var(--cn-chip);text-decoration:none;padding:6px 10px;border-radius:999px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:70%}
+.cn-foot a:hover{text-decoration:underline}
+.cn-cover .d{font-size:.8rem;font-weight:600;color:var(--ac)}
+.cn-cover h4{font-size:1.6rem;margin-top:6px}
+.cn-cover ul,.cn-intro ol{list-style:none;margin:14px 0 0;padding:0;display:flex;flex-direction:column;gap:7px}
+.cn-cover li{background:var(--cn-chip);border-radius:10px;padding:8px 11px;font-size:.82rem;line-height:1.45;word-break:keep-all}
+.cn-cover li b{display:block;font-size:.7rem;color:var(--ac);margin-bottom:1px}
+.cn-cover .hint{margin-top:auto;padding-top:12px;font-size:.74rem;opacity:.7}
+.cn-intro h4{font-size:1.45rem;margin-top:auto}
+.cn-intro .sub{font-size:.8rem;opacity:.75;margin-top:4px}
+.cn-intro ol{margin-bottom:auto;counter-reset:n}
+.cn-intro li{counter-increment:n;display:flex;gap:9px;font-size:.85rem;line-height:1.45;word-break:keep-all}
+.cn-intro li::before{content:counter(n);flex:none;display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--ac);color:#fff;font-size:.7rem;font-weight:700;margin-top:1px}
+.cn-nav{position:absolute;top:50%;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;border:1px solid var(--line);background:var(--surface);color:var(--fg);box-shadow:var(--sh2);font-size:20px;line-height:1;cursor:pointer;display:none}
+.cn-prev{left:-12px}.cn-next{right:-12px}
+.cn-nav:disabled{opacity:0;pointer-events:none}
+.cn-bar{display:flex;align-items:center;gap:10px}
+.cn-prog{flex:1;height:4px;background:var(--sunk);border-radius:4px;overflow:hidden}
+.cn-prog i{display:block;height:100%;width:0;background:var(--accent);transition:width .25s}
+.cn-count{font-size:.72rem;color:var(--muted);min-width:44px;text-align:right;font-variant-numeric:tabular-nums}
+.news-ft{display:flex;justify-content:space-between;align-items:center;font-size:.72rem;color:var(--muted)}
+.news-ft .sync-err{color:#e5243b;font-weight:700;margin-left:6px}
+.cn-copybox{width:100%;min-height:140px;box-sizing:border-box;font-size:.8rem;border:1px solid var(--line);border-radius:10px;padding:10px;background:var(--bg);color:var(--fg)}
+@media (min-width:768px){
+ .cn-card{flex-basis:calc((100% - 24px)/3);min-height:400px}
+ .cn-nav{display:block}
+}
+@media (max-width:360px){.cn-act button{padding:7px 10px}.cn-card h4{font-size:1.1rem}}
+@media (prefers-reduced-motion:reduce){.cn-prog i{transition:none}}
 @media (max-width:767px){.news{margin-top:2px}}
 @media (min-width:768px){
  .notices{grid-template-columns:minmax(0,1fr) minmax(0,1fr)!important;align-items:stretch!important;column-gap:12px;row-gap:8px}
@@ -422,25 +470,12 @@ mark{background:#f9e79f;color:#1a1a1a}
 
  .side-col{grid-column:1 / -1;grid-row:auto;grid-template-columns:repeat(4,minmax(0,1fr));grid-auto-rows:minmax(140px,auto);margin-top:4px}
 }
-.news .tabs2{display:flex;gap:2px;border-bottom:1px solid var(--line);margin:0 -2px 10px;overflow-x:auto;scrollbar-width:none}
-.news .tabs2::-webkit-scrollbar{display:none}
-.ntab{flex:none;border:0;background:none;padding:8px 12px;font-size:.88rem;font-weight:500;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-1px}
-.ntab[aria-selected="true"]{color:var(--fg);font-weight:600;border-bottom-color:var(--fg)}
-.news .rank{font-size:.72rem;color:var(--muted)}
-.news .sm{display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-top:3px;font-size:.78rem;line-height:1.45;color:var(--slate);word-break:keep-all}
-.news li a{grid-template-columns:22px minmax(0,1fr) auto}
-.news .st{position:relative;display:inline-block;font-size:.8rem;line-height:1;letter-spacing:0;white-space:nowrap;margin-top:3px}
-.news .st .stb{color:var(--line)}
-.news .st .stf{position:absolute;left:0;top:0;overflow:hidden;color:#f5b400}
-.news .rk{display:grid;place-items:center;width:20px;height:20px;border-radius:50%;background:var(--accent);color:#fff;font-size:.72rem;margin-top:1px}
 /* news below the tiles */
 @media (min-width:768px){
  .notices{grid-template-columns:minmax(0,1fr)!important}
  .ncol{grid-column:1;grid-row:auto}
  .side-col{grid-column:1;grid-row:auto}
  .news{grid-column:1;grid-row:auto;margin-top:4px}
- .news ol{grid-template-columns:repeat(2,minmax(0,1fr));column-gap:28px}
- .news li:nth-child(2){border-top:0}
 }
 </style>
 <style id="v4-additions">
@@ -519,7 +554,6 @@ mark{background:#f9e79f;color:#1a1a1a}
 .contact .txt.nocall svg{opacity:.45}
 
 
-.news-ft .sync-err{color:#e5243b;font-weight:700;margin-left:6px}
 
 /* 카카오톡 채널 타일 */
 .bcard.kakao{background:var(--tint-yellow)}
@@ -1351,48 +1385,122 @@ render();
 <script>
 /* 뉴스 섹션 — 리리 오피스 대시보드의 news.json (AI·금융·주식·보험, 탭마다 TOP5)
    index.html 옆에 news.json이 있으면 그 파일을 읽고, 없으면(내 PC에서 파일로 열 때 등) 아래 저장본을 보여줍니다. */
-const NEWS_SNAPSHOT={"updated":"2026-11-08","tabs":[{"id":"ai","label":"AI뉴스","insight":"오늘의 AI 인사이트 TOP5","rank":"업무활용도 순","cats":["서비스","일자리","기업·투자","보안","정책"],"items":[{"cat":"서비스","title":"메타 '뮤즈 스페이스' 출시…말로 설명하면 맞춤 앱 생성","summary":"원하는 기능을 말하면 일정 추적기·여행 계획표 같은 작업 공간을 만들어 주고, 지메일·구글 캘린더·노션과 연동해 자동으로 갱신된대요. 업무 일정·체크리스트를 AI로 관리하는 흐름으로 참고해 두세요.","stars":4.5,"source":"AI타임스","date":"2026-11-07","url":"https://www.aitimes.com/news/articleView.html?idxno=217128"},{"cat":"서비스","title":"예진, 한국어 특화 8B 모델 공개…법령 안내 서비스 탑재","summary":"해외 모델 없이 사전학습부터 직접 만든 '예진 8B v3'를 아파치 2.0으로 공개했고, '젤리법령 도우미'에 들어갔대요. 법령·약관을 찾아볼 때 이런 한국어 특화 AI가 점점 쓸 만해지고 있어요.","stars":4,"source":"AI타임스","date":"2026-11-07","url":"https://www.aitimes.com/news/articleView.html?idxno=217114"},{"cat":"서비스","title":"삼성 첫 AI 안경, 12일 예약 시작…젠틀몬스터·워비파커 디자인","summary":"구글 제미나이를 탑재해 실시간 번역·길 안내·사진 촬영을 지원하고, 12월 정식 출시된대요. 가격은 아직 공개되지 않았어요.","stars":4,"source":"AI타임스","date":"2026-11-07","url":"https://www.aitimes.com/news/articleView.html?idxno=217133"},{"cat":"정책","title":"미 민주당 압승…빅테크 조사·AI 규제 입법 추진","summary":"데이터센터 전기요금 상승 방지, AI 모델 독립 안전성 평가, 개발사 법적 책임 강화가 과제로 꼽혀요. 5일 나스닥100이 6.4% 떨어질 만큼 시장이 민감하게 반응했으니 AI 관련 투자 상품 문의 때 참고하세요.","stars":4,"source":"AI타임스","date":"2026-11-07","url":"https://www.aitimes.com/news/articleView.html?idxno=217130"},{"cat":"기업·투자","title":"오픈AI, 기업가치 1.25조달러에 110억달러 유치…목표는 하향","summary":"당초 300억달러 이상을 노렸던 투자 라운드가 AI 투자심리 악화로 최대 200억달러로 줄었대요. AI 기업 몸값이 조정받는 흐름으로 봐 두세요.","stars":3.5,"source":"AI타임스","date":"2026-11-07","url":"https://www.aitimes.com/news/articleView.html?idxno=217117"},{"cat":"일자리","title":"오픈AI, '클로드 코드' 제품 책임자 캣 우 영입","summary":"앤트로픽에서 클로드 코드 제품을 이끌던 캣 우가 오픈AI 핵심 제품 조직의 제품 관리를 총괄한대요. AI 기업 간 인재 영입 경쟁이 치열하다는 소식이에요.","stars":3,"source":"AI타임스","date":"2026-11-07","url":"https://www.aitimes.com/news/articleView.html?idxno=217134"}]},{"id":"finance","label":"금융뉴스","insight":"오늘의 금융 인사이트 TOP5","rank":"생활·업무 활용도 순","cats":["금리","대출","일정","제도"],"items":[{"cat":"일정","title":"이번 주 금융일정…11일 10월 가계대출 동향 발표","summary":"10일 금통위 의사록 공개, 11일 가계대출 동향·건설노동자 금융 접근성 개선 방안, 12일 금융회사 지배구조 개선 방안, 13일 주택공급 정례브리핑이 있어요. 대출 상담 일정 잡을 때 11일 발표를 챙겨 보세요.","stars":4.5,"source":"뉴스핌","date":"2026-11-07","url":"https://www.newspim.com/news/view/20261106001172"},{"cat":"대출","title":"소액대출 금리 6.56%…15개월 만에 최고","summary":"3분기 말 500만원 이하 은행 소액대출 금리가 6.56%로 4개월 연속 올랐고, 주담대 금리는 4.88%였대요. 불법사금융예방대출 연체율은 44.3%라 급전이 필요한 고객 상담 땐 상환 계획부터 함께 보세요.","stars":4.5,"source":"재경일보","date":"2026-11-07","url":"https://news.jkn.co.kr/post/1077052"},{"cat":"금리","title":"美 10월 일자리 16.5만개 '깜짝'…12월 금리 인상 무게","summary":"전망치 5만9천개를 크게 웃돌았고 실업률은 4.1%로 내려갔어요. 연준이 12월에 금리를 올릴 수 있다는 전망이 커져 국내 대출금리에도 부담이 될 수 있어요.","stars":4,"source":"한국일보","date":"2026-11-07","url":"https://www.hankookilbo.com/news/article/A2026110623580004046"},{"cat":"대출","title":"신용대출 금리 5.98%로 상승…우대금리 효과는 약화","summary":"5대 은행 신용대출 평균금리가 6월 5.19%에서 9월 5.98%로 올랐고, 가감조정금리는 1.58%에서 1.45%로 줄었대요. 변동금리 비중이 큰 신용대출 이용 고객은 이자 부담이 더 커질 수 있어요.","stars":4,"source":"아주경제","date":"2026-11-06","url":"https://ajunews.com/view/20261106141609628"},{"cat":"제도","title":"반대매매 막으려 신용융자 담보비율 의무 3개월 면제","summary":"9일부터 3개월간 증권사의 담보비율 140% 유지 의무가 면제돼요. 신용거래융자 잔고는 4일 기준 28조6,446억원으로 6월 고점보다 25.9% 줄었대요.","stars":3.5,"source":"자본시장뉴스","date":"2026-11-07","url":"https://www.jabon.co.kr/news/articleView.html?idxno=8468"},{"cat":"금리","title":"美 고용 호조에 금값 4,100달러 아래로…전망 엇갈려","summary":"12월 금리 인상 가능성이 67%에서 77%로 높아지며 달러가 강해졌고, 금값은 온스당 약 4,069달러로 밀렸대요. 금 관련 상품 문의가 오면 금리 흐름과 함께 설명해 주세요.","stars":3,"source":"글로벌이코노믹","date":"2026-11-08","url":"https://www.g-enews.com/article/Global-Biz/2026/11/2026110722163329339a1f309431_1"}]},{"id":"stock","label":"주식뉴스","insight":"오늘의 주식 인사이트 TOP5","rank":"투자 참고도 순","cats":["국내증시","해외증시","종목","반도체·AI"],"items":[{"cat":"해외증시","title":"뉴욕증시 혼조 마감…나스닥 반등에도 4주 연속 하락","summary":"6일 나스닥 24,579.42(+1.09%), S&P500 7,376.86(+0.31%), 다우 51,285.73(-0.46%)로 마감했어요. 주간으로는 나스닥 -3.4%, S&P500 -2.7%였고 다음 주 CPI·PPI 발표가 관심이에요.","stars":5,"source":"더페어","date":"2026-11-07","url":"https://www.thefairnews.co.kr/news/articleView.html?idxno=93363"},{"cat":"국내증시","title":"최근 5년 코스피 5% 넘는 급락 25번, 10번은 아직 미회복","summary":"회복까지 다음 날부터 242거래일까지 걸렸고, 올해는 207거래일 중 75일이 3% 넘게 움직였대요. 펀드·변액보험 고객이 불안해할 때 과거 회복 기간이 제각각이었다는 사실로 설명할 수 있어요.","stars":4.5,"source":"자본시장뉴스","date":"2026-11-07","url":"https://www.jabon.co.kr/news/articleView.html?idxno=8509"},{"cat":"반도체·AI","title":"민주당 AI 법안 내년 1월…데이터센터 투자 흔들","summary":"5일 필라델피아 반도체지수가 12.25% 급락했고, NH투자증권은 2028년 계획된 미국 데이터센터 62.2GW 중 32~33GW가 규제 위험에 있다고 봤어요. 반도체주 변동성이 이어질 수 있는 변수예요.","stars":4.5,"source":"자본시장뉴스","date":"2026-11-07","url":"https://www.jabon.co.kr/news/articleView.html?idxno=8510"},{"cat":"반도체·AI","title":"앤트로픽 IPO 몸값 2조→1.1조달러…한 달 새 45%↓","summary":"투자자들은 기업가치를 1조1천억~1조3천억달러로 보고 있고, 회사는 16일 주간 상장과 최대 1,000억달러 조달을 추진한대요. AI 대형 상장이 시장 분위기를 가늠할 지표가 될 거예요.","stars":4,"source":"AI타임스","date":"2026-11-07","url":"https://www.aitimes.com/news/articleView.html?idxno=217122"},{"cat":"종목","title":"삼양식품 3분기 영업익 1,962억 최대…순이익은 18.9%↓","summary":"매출 7,918억원(+25.3%), 영업이익 1,962억원(+49.9%)으로 분기 최대였지만, 영업외 손실로 순이익은 892억원에 그쳤대요.","stars":3.5,"source":"자본시장뉴스","date":"2026-11-07","url":"https://www.jabon.co.kr/news/articleView.html?idxno=8484"},{"cat":"종목","title":"제이알글로벌리츠, 상환 앞당기고 배당 중단","summary":"원금 40%는 2027년 말, 60%는 2028년 말까지 갚고 변제가 끝날 때까지 배당을 멈춘대요. 배당 목적 리츠 투자 문의가 오면 이런 사례도 함께 안내해 주세요.","stars":3.5,"source":"자본시장뉴스","date":"2026-11-07","url":"https://www.jabon.co.kr/news/articleView.html?idxno=8482"}]},{"id":"insurance","label":"보험뉴스","insight":"오늘의 영업 인사이트 TOP5","rank":"영업활용도 순","cats":["건강","법인·상속","상품","생명보험","소비자","손해보험","경제·시장","제도"],"items":[{"cat":"제도","title":"보험사 경영평가에 GA 관리 반영…2027년부터 시행","summary":"보험업감독규정 개정으로 경영실태평가에 'GA 운영위험 관리 적정성' 항목이 생기고 2027년 1월 1일부터 적용돼요. 원수사의 GA 점검·자료 요청이 늘어날 수 있으니 사무 쪽에서 대비해 두세요.","stars":5,"source":"보험매일","date":"2026-11-05","url":"https://www.fins.co.kr/news/articleView.html?idxno=110435"},{"cat":"손해보험","title":"직업 정보 다르면 신규 청약 제한…내년 1월부터","summary":"일부 손보사가 2027년 1월 1일부터 피보험자 직업정보가 기존 계약과 다르면 신규 청약을 막는대요. 직업이 바뀐 고객은 기존 계약 직업정보부터 정정하도록 미리 안내하세요.","stars":5,"source":"보험매일","date":"2026-11-05","url":"https://www.fins.co.kr/news/articleView.html?idxno=110434"},{"cat":"소비자","title":"금융권 해킹 37곳·47만건…GA까지 보안 규율 확대","summary":"9월 30일 이후 금융회사 37곳에서 40건의 침해사고가 신고됐고 보험사 3곳도 포함됐대요. 당국이 GA까지 포함하는 '디지털금융 안전법'을 내년 1분기 마련할 예정이라 사무실 보안 점검을 챙겨 두세요.","stars":4.5,"source":"보험매일","date":"2026-11-07","url":"https://www.fins.co.kr/news/articleView.html?idxno=110451"},{"cat":"생명보험","title":"1200%룰 확대 후 설계사 증가 둔화…초회보험료는 253.9%↑","summary":"8월 말 생보 설계사는 10만2,916명으로 순증 폭이 전년보다 51.7% 줄었지만, 7~8월 설계사 채널 초회보험료는 1조1,195억원으로 급증했대요. 수수료 규제 이후 영업 흐름을 볼 때 참고하세요.","stars":4,"source":"보험매일","date":"2026-11-06","url":"https://www.fins.co.kr/news/articleView.html?idxno=110442"},{"cat":"경제·시장","title":"GA 정착지원금 40~50% 감소…설계사 이동도 줄어","summary":"금감원은 1200%룰이 GA에도 적용된 뒤 7~8월 정착지원금이 상반기보다 40~50% 줄고 설계사 이동도 줄었다고 밝혔어요. 다만 두 달 통계라 추이를 더 봐야 한대요.","stars":4,"source":"보험매일","date":"2026-11-05","url":"https://www.fins.co.kr/news/articleView.html?idxno=110436"},{"cat":"제도","title":"보험사 계리가정 감독 강화…금감원 정기 보고 의무화","summary":"보험사가 계리가정보고서를 정기적으로 내야 하는 등 건전성 감독이 강화돼요. 상품 개정·보험료 조정 소식이 나올 수 있으니 흐름을 봐 두세요.","stars":3.5,"source":"한국보험신문","date":"2026-11-04","url":"https://www.insnews.co.kr/news/articleView.html?idxno=93686"}]}]};
+const NEWS_SNAPSHOT={"updated":"2026-11-18","tabs":[{"id":"ai","label":"AI뉴스","insight":"오늘의 AI 인사이트 TOP5","rank":"업무활용도 순","cats":["서비스","일자리","기업·투자","보안","정책"],"items":[{"cat":"서비스","title":"MS 오피스선 코파일럿 압도적…클로드 사용자 10분의 1","summary":"워드·엑셀 안에서 클로드를 쓰는 주간 사용자가 유료 코파일럿의 10분의 1도 안 된대요. 사무실에서 오피스를 쓴다면 코파일럿 기능부터 익혀 두는 게 실용적이에요.","stars":4.5,"source":"AI타임스","date":"2026-11-17","url":"https://www.aitimes.com/news/articleView.html?idxno=217491"},{"cat":"서비스","title":"MS 365 대규모 장애 원인은 4개월 전 버그","summary":"7월에 적용한 소프트웨어 결함 때문에 아웃룩 핵심 서버 80% 이상이 멈췄고, 최종 보고서는 20일에 나온대요. 메일·팀즈가 멈출 때 쓸 비상 연락 방법을 사무실에서 정해 두세요.","stars":4.5,"source":"AI타임스","date":"2026-11-17","url":"https://www.aitimes.com/news/articleView.html?idxno=217485"},{"cat":"보안","title":"구글, 보안 패치 분석해 공격코드 만드는 AI 해킹도구 발견","summary":"패치 전후 코드를 비교해 취약점을 찾고 공격 코드를 사람 없이 만들어 실행하는 도구래요. 패치가 나오자마자 공격이 시작될 수 있으니 PC·프로그램 업데이트를 미루지 마세요.","stars":4,"source":"AI타임스","date":"2026-11-17","url":"https://www.aitimes.com/news/articleView.html?idxno=217493"},{"cat":"서비스","title":"MS 'MAI 코드 2' 출시…클로드급 성능에 비용 5%","summary":"MS 자체 평가로 클로드 오퍼스 5.5 성능의 약 96%를 비용 약 5%로 낸다고 해요(프로모션 가격 기준). AI 도구 값이 빠르게 내려가는 흐름이에요.","stars":4,"source":"AI타임스","date":"2026-11-18","url":"https://www.aitimes.com/news/articleView.html?idxno=217511"},{"cat":"일자리","title":"미 연준, AI가 바꿀 경제·고용 시나리오 점검","summary":"워시 의장이 생산성 성장, 자동화로 실업 증가, 투자 실패로 경기 둔화 등 시나리오를 분석 중이라고 했대요. 바 이사는 AI 에이전트가 예금 인출을 빠르게 만들 수 있다고 경고했어요.","stars":4,"source":"AI타임스","date":"2026-11-17","url":"https://www.aitimes.com/news/articleView.html?idxno=217490"},{"cat":"기업·투자","title":"젠슨 황 \"이사회가 원하면 CEO 복귀\"…엔비디아는 검토 안 해","summary":"사임 후 첫 공식 입장으로 독립 조사에 협조하겠다고 했대요. 엔비디아 시가총액은 10월 고점 이후 약 2조달러 줄었어요.","stars":3.5,"source":"AI타임스","date":"2026-11-18","url":"https://www.aitimes.com/news/articleView.html?idxno=217512"}]},{"id":"finance","label":"금융뉴스","insight":"오늘의 금융 인사이트 TOP5","rank":"생활·업무 활용도 순","cats":["금리","대출","일정","제도"],"items":[{"cat":"대출","title":"코픽스 3.62%…17일부터 주담대 변동금리 0.19%p↑","summary":"10월 신규 코픽스가 7개월째 올라 국민 4.85~6.25%, 농협 4.51~6.51%로 변동금리가 올랐대요. 대출 상담 때 고정·변동 금리 비교를 꼭 짚어 주세요.","stars":5,"source":"한국경제","date":"2026-11-16","url":"https://www.hankyung.com/article/2026111601631"},{"cat":"대출","title":"9월 은행 연체율 0.59%…1년 전보다는 올라","summary":"분기말 상각 효과로 한 달 새 0.10%p 내렸지만 작년보다 0.07%p 높고, 금감원은 반등 가능성을 경고했대요. 신용대출 등 가계 연체율은 0.79%예요.","stars":4.5,"source":"뉴스핌","date":"2026-11-17","url":"https://www.newspim.com/news/view/20261117000828"},{"cat":"일정","title":"이번 주 금융일정…19일 실손보험 점검회의","summary":"19일 실손보험 점검회의와 저축성보험 연금전환 안내가 예정돼 있대요. 선택형 실손 출시와 맞물려 문의가 늘 수 있으니 발표를 챙겨 보세요.","stars":4.5,"source":"뉴스핌","date":"2026-11-13","url":"https://www.newspim.com/news/view/20261113001372"},{"cat":"금리","title":"국고채 금리 일제히 상승…3년물 장중 3.757%","summary":"17일 오전 3년물 3.757%, 10년물 3.997%로 전 구간이 올랐대요. 시장금리가 오르면 대출금리도 따라 오르기 쉬워요.","stars":4,"source":"보험매일","date":"2026-11-17","url":"https://www.fins.co.kr/news/articleView.html?idxno=110590"},{"cat":"대출","title":"은행 가계대출 사상 첫 1,200조원 돌파","summary":"10월 말 잔액이 1,203.9조원으로 한 달 새 5조원 늘었고, 주담대가 3.3조원 늘었대요. 대출 규제가 더 세질 수 있어 상담 때 참고하세요.","stars":4,"source":"서플(SBS Biz)","date":"2026-11-11","url":"https://supple.kr/news/cmwbj6seoth5wal9plb7ctjo2"},{"cat":"제도","title":"퇴직연금 2억 넣어도 운용 따라 20년 뒤 1.5억 차이","summary":"금감원 가이드북 예시로 원리금보장형만 두면 2억7,220만원, 분산하면 4억2,948만원이래요. 연금 상담과 AFPK 은퇴설계 공부에 바로 쓸 수 있어요.","stars":4,"source":"세계일보","date":"2026-11-16","url":"https://www.segye.com/newsView/20261116515048"},{"cat":"금리","title":"저축은행 예금 평균 3.90%…4%대 상품 154개","summary":"13일 기준 1년 만기 평균이 두 달 새 0.17%p 올랐대요. 목돈 굴릴 곳을 묻는 고객에게 예금자보호 한도와 함께 안내해 보세요.","stars":3.5,"source":"서울경제TV","date":"2026-11-15","url":"https://www.sentv.co.kr/article/view/sentv202611150005"}]},{"id":"stock","label":"주식뉴스","insight":"오늘의 주식 인사이트 TOP5","rank":"투자 참고도 순","cats":["국내증시","해외증시","종목","반도체·AI"],"items":[{"cat":"국내증시","title":"코스피 2.59% 내려 4,968.48…5000선 붕괴","summary":"17일 코스피는 4,968.48, 코스닥은 650.06으로 마쳤고 외국인이 약 1.45조원 순매도했대요. 반도체에 이어 은행·보험주와 조선주도 약세였어요.","stars":5,"source":"한국경제","date":"2026-11-17","url":"https://www.hankyung.com/article/202611172322i"},{"cat":"해외증시","title":"뉴욕증시 이틀째 하락…다우 1.64%↓","summary":"17일(현지시간) 다우는 50,759.42(-1.64%), S&P500은 7,340.53(-1.03%), 나스닥은 24,328.38(-0.74%)로 마쳤대요.","stars":5,"source":"이투데이","date":"2026-11-18","url":"https://www.etoday.co.kr/news/view/2649476"},{"cat":"반도체·AI","title":"젠슨 황 없는 엔비디아 첫 실적…매출 1,091억달러 전망","summary":"17일(현지시간) 장 마감 뒤 발표로, 매출 약 1,091억달러·EPS 2.47달러가 예상치래요. 후계 일정과 중국 수출 규제 영향이 관전 포인트예요.","stars":4.5,"source":"뉴스1","date":"2026-11-17","url":"https://www.news1.kr/world/international-economy/6356474"},{"cat":"해외증시","title":"앤트로픽 19일 나스닥 상장…공모가 70~78달러","summary":"18일 공모가를 정하고 19일 거래를 시작한대요. 시장은 12월 연준 0.25%p 인상 확률을 95.4%로 보고 있어요.","stars":4.5,"source":"뉴스핌","date":"2026-11-17","url":"https://www.newspim.com/news/view/20261117001375"},{"cat":"종목","title":"주요 손보사 3분기 보험손익 24.7%↑…신계약 CSM은 주춤","summary":"5개사 누적 보험손익은 5조4,152억원이지만 신계약 CSM은 10.4% 줄었고 메리츠만 늘었대요. 보험사별 실적 흐름으로 알아 두세요.","stars":4,"source":"보험매일","date":"2026-11-17","url":"https://www.fins.co.kr/news/articleView.html?idxno=110594"},{"cat":"종목","title":"현대해상 3분기 순익 1,657억…컨센서스 22.9% 하회","summary":"보험손익은 63.0% 늘었지만 투자손익이 278억원 적자였대요. KB증권은 목표주가를 5만3천원으로 낮췄어요.","stars":3.5,"source":"보험매일","date":"2026-11-16","url":"https://www.fins.co.kr/news/articleView.html?idxno=110571"}]},{"id":"insurance","label":"보험뉴스","insight":"오늘의 영업 인사이트 TOP5","rank":"영업활용도 순","cats":["건강","법인·상속","상품","생명보험","소비자","손해보험","경제·시장","제도"],"items":[{"cat":"건강","title":"1·2세대 '선택형 실손' 이달 중 출시…최대 40%대 할인","summary":"2013년 3월 이전 가입자가 도수치료·주사·MRI 등 비급여 보장을 빼면 1세대 40%대, 2세대 30%대 보험료를 아낄 수 있대요. 고객의 몇 년치 청구 이력을 보고 유불리를 안내해 주세요.","stars":5,"source":"보험매일","date":"2026-11-17","url":"https://www.fins.co.kr/news/articleView.html?idxno=110589"},{"cat":"제도","title":"판매수수료 개편 FAQ 설명회 연기…GA 정산 차질 우려","summary":"16일 예정이던 3차 설명회가 이달 중으로 밀렸대요. 2027년 1월 4년 분급제 시행 전 지점 지급표·설계사 안내를 준비해야 하니 일정을 챙겨 두세요.","stars":5,"source":"보험매일","date":"2026-11-17","url":"https://www.fins.co.kr/news/articleView.html?idxno=110585"},{"cat":"손해보험","title":"차보험 할인 특약 잇따라 하향…보험료 인상 변수","summary":"현대해상은 12월 26일 책임개시부터 커넥티드카 안전운전 할인을 최대 3.0%p 낮추고, DB손보는 이달 6일부터 일부 특약을 최대 5.8%p 내렸대요. 갱신 상담 때 할인율 변화를 꼭 알려 주세요.","stars":4.5,"source":"보험매일","date":"2026-11-18","url":"https://www.fins.co.kr/news/articleView.html?idxno=110593"},{"cat":"제도","title":"한국보험금융 등록취소 사전통지…설계사 6천명 계약관리 변수","summary":"확정되면 소속 설계사의 잔여수수료·고객 보상 지원에 영향이 있지만, 기존 보험계약 자체는 유지되고 보장은 보험사가 책임진대요. 이적 과정의 부당승환 문의에 대비해 두세요.","stars":4.5,"source":"보험매일","date":"2026-11-17","url":"https://www.fins.co.kr/news/articleView.html?idxno=110588"},{"cat":"법인·상속","title":"3040 부자들, 부동산보다 금융자산 물려준다","summary":"한화생명 보고서로 자녀에게 줄 자산 1순위는 금융상품(38.4%)이고, 자녀 있는 가구 26.7%가 상속세 재원으로 종신보험을 고려한대요. 상속·증여 상담 자료로 쓰기 좋아요.","stars":4.5,"source":"보험매일","date":"2026-11-17","url":"https://www.fins.co.kr/news/articleView.html?idxno=110591"},{"cat":"경제·시장","title":"보험사 손해율 104%→89% 전망…낙관적 계리가정 논란","summary":"36개 보험사가 2025년 말 실제 103.8%였던 손해율을 2026년 말 88.5%로 가정했대요. 금감원은 올해 결산부터 부채 산출을 집중 점검한대요.","stars":3.5,"source":"보험매일","date":"2026-11-17","url":"https://www.fins.co.kr/news/articleView.html?idxno=110598"},{"cat":"제도","title":"사무장병원 보험사기에도…건보공단 특사경 도입 또 보류","summary":"한 사무장병원은 허위 입원확인서로 466명이 민간보험금 약 50억원을 타게 했대요. 법사위가 16일 의결을 미뤄 보험사기 대응은 당분간 그대로예요.","stars":3.5,"source":"보험매일","date":"2026-11-17","url":"https://www.fins.co.kr/news/articleView.html?idxno=110584"}]}]};
 (()=>{
  const box=document.getElementById('notices'); if(!box) return;
- const sec=document.createElement('section'); sec.className='news'; sec.setAttribute('aria-label','오늘의 뉴스');
+ const sec=document.createElement('section'); sec.className='news'; sec.setAttribute('aria-label','오늘의 카드뉴스');
  const ncol=document.createElement('div'); ncol.className='ncol';
  box.querySelectorAll(':scope > .notice').forEach(n=>ncol.appendChild(n));
  box.prepend(ncol);
  box.appendChild(sec);
+ sec.addEventListener('click',e=>e.stopPropagation()); /* 공지 접기/펴기 클릭 처리(#notices)로 번지지 않게 */
  const ORDER=['insurance','finance','stock','ai'];
- const CLS={'제도':'c1','법인·상속':'c5','건강':'c2','상품':'c6','생명보험':'c2','소비자':'c7','손해보험':'c3','경제·시장':'c4'};
+ const DOW='일월화수목금토';
+ const ICON={"건강":"🩺","법인·상속":"💼","상품":"📦","생명보험":"🛡️","소비자":"🙋","손해보험":"🚗","경제·시장":"📈","제도":"🏛️",
+  "서비스":"🤖","일자리":"👩‍💼","기업·투자":"🏢","보안":"🔒","정책":"📜","금리":"💹","대출":"🏦","일정":"🗓️","증시":"📊","국내증시":"🇰🇷","해외증시":"🌎","종목":"🏷️","반도체·AI":"💾"};
+ const KAKAO='<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3C6.5 3 2 6.6 2 11c0 2.8 1.9 5.3 4.7 6.7l-1 3.6c-.1.3.3.6.6.4l4.2-2.8c.5.1 1 .1 1.5.1 5.5 0 10-3.6 10-8S17.5 3 12 3z"/></svg>';
+ const COPY='<svg viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15H4a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h10a1 1 0 0 1 1 1v1"/></svg>';
  const esc=t=>String(t??'').replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
- const stars=n=>{n=Math.max(0,Math.min(5,+n||0));return `<span class="stb">★★★★★</span><span class="stf" style="width:${n*20}%">★★★★★</span>`};
- let D=null,TAB='insurance',CAT='전체',SYNCERR=false;
- function draw(){
-  const tabs=ORDER.map(id=>D.tabs.find(t=>t.id===id)).filter(Boolean).concat(D.tabs.filter(t=>!ORDER.includes(t.id)));
-  const t=tabs.find(x=>x.id===TAB)||tabs[0]; TAB=t.id;
-  const items=[...t.items].sort((a,b)=>(b.stars||0)-(a.stars||0));
-  const have=new Set(items.map(i=>i.cat));
-  const cats=['전체',...(t.cats||[]).filter(c=>have.has(c))];
-  if(!cats.includes(CAT))CAT='전체';
-  const N=4; const list=(CAT==='전체'?items:items.filter(i=>i.cat===CAT)).slice(0,N);
-  sec.innerHTML=
-   `<div class="tabs2" role="tablist">${tabs.map(x=>`<button type="button" class="ntab${x.id==='insurance'?' main':''}" role="tab" data-t="${esc(x.id)}" aria-selected="${x.id===TAB}">${esc(x.label)}</button>`).join('')}</div>`+
-   `<div class="news-hd"><h3>${esc(String(t.insight||t.label).replace(/TOP\s*\d+/i,'TOP'+N))}</h3><span class="rank">${esc(t.rank||'')}</span></div>`+
-   `<div class="news-chips">${cats.map(c=>`<button type="button" class="nchip" data-c="${esc(c)}" aria-pressed="${c===CAT}">${esc(c)}</button>`).join('')}</div>`+
-   '<ol>'+list.map((it,i)=>`<li><a href="${esc(it.url)}" target="_blank" rel="noopener"><span class="rk">${i+1}</span><span><span class="nt"><span class="cb ${CLS[it.cat]||'c4'}">${esc(it.cat)}</span>${esc(it.title)}</span><span class="sm">${esc(it.summary)}</span><span class="ns">${esc(it.source)} · ${esc(it.date)}</span></span><span class="st" aria-label="별점 ${esc(it.stars)}">${stars(it.stars)}</span></a></li>`).join('')+'</ol>'+
-   `<div class="news-ft"><span>${esc(D.updated)} 업데이트${SYNCERR?' <b class="sync-err" role="alert">동기화오류</b>':''}</span><span>리리 오피스</span></div>`;
-  sec.querySelectorAll('.ntab').forEach(b=>b.onclick=()=>{TAB=b.dataset.t;CAT='전체';draw()});
-  sec.querySelectorAll('.nchip').forEach(b=>b.onclick=()=>{CAT=b.dataset.c;draw()});
+ const starTxt=n=>{n=Math.max(0,Math.min(5,+n||0));return '★'.repeat(Math.floor(n))+(n%1?'½':'')};
+ const ymd=s=>{const[y,m,d]=String(s).split('-').map(Number);return new Date(Date.UTC(y,(m||1)-1,d||1))};
+ const shortD=s=>{const x=ymd(s);return (x.getUTCMonth()+1)+'/'+x.getUTCDate()};
+ const longD=s=>{const x=ymd(s);return `${x.getUTCMonth()+1}월 ${x.getUTCDate()}일 ${DOW[x.getUTCDay()]}요일`};
+ const short=l=>String(l||'').replace('뉴스','');
+ let D=null,TABS=[],CARDS=[],STARTS={},cur=0,pending=null,pt,SYNCERR=false;
+ const say=m=>{ if(typeof toast==='function') toast(m); };
+
+ sec.innerHTML=
+  `<div class="cn-hd"><div><h3>오늘의 카드뉴스</h3><span class="when" id="cn-when"></span></div>
+   <div class="cn-act"><button type="button" class="cn-share" id="cn-share">${KAKAO}카톡 공유</button><button type="button" class="cn-copy" id="cn-copy">${COPY}복사</button></div></div>
+  <div class="cn-chips" id="cn-chips" aria-label="뉴스 분류"></div>
+  <div class="cn-view"><div class="cn-track" id="cn-track" tabindex="0" aria-roledescription="carousel" aria-label="카드뉴스, 옆으로 넘겨 보세요"></div>
+   <button type="button" class="cn-nav cn-prev" id="cn-prev" aria-label="이전 카드">‹</button><button type="button" class="cn-nav cn-next" id="cn-next" aria-label="다음 카드">›</button></div>
+  <div class="cn-bar"><div class="cn-prog"><i id="cn-prog"></i></div><div class="cn-count" id="cn-count"></div></div>
+  <div class="news-ft" id="cn-ft"></div>`;
+ const $$=id=>sec.querySelector('#'+id);
+ const track=$$('cn-track');
+
+ function draw(keep){
+  TABS=ORDER.map(id=>D.tabs.find(t=>t.id===id)).filter(Boolean).concat(D.tabs.filter(t=>!ORDER.includes(t.id)));
+  TABS.forEach(t=>t.items=[...(t.items||[])].sort((a,b)=>(b.stars||0)-(a.stars||0)).slice(0,5));
+  $$('cn-when').textContent=longD(D.updated)+' 아침 정리';
+  let h=`<section class="cn-card cn-cover" data-sec="all"><div class="d">${esc(longD(D.updated))}</div><h4>오늘의<br>카드뉴스</h4>
+   <ul>${TABS.map(t=>`<li><b>${esc(short(t.label))} 1위</b>${esc(t.items[0]?t.items[0].title:'')}</li>`).join('')}</ul>
+   <div class="hint">옆으로 넘겨 보세요 ›</div></section>`;
+  let i=1; STARTS={};
+  TABS.forEach(t=>{
+   const cls=esc(t.id);
+   STARTS[t.id]=i++;
+   h+=`<section class="cn-card cn-intro ${cls}" data-sec="${cls}"><span class="cn-tag">${esc(short(t.label))} TOP${t.items.length}</span>
+    <h4>${esc(String(t.insight||t.label).replace(/\s*TOP\s*\d+/i,''))}</h4><div class="sub">${esc(t.rank||'')}</div>
+    <ol>${t.items.map(n=>`<li>${esc(n.title)}</li>`).join('')}</ol></section>`;
+   t.items.forEach((n,k)=>{ i++;
+    h+=`<section class="cn-card ${cls}" data-sec="${cls}"><span class="cn-tag">${esc(short(t.label))} · ${ICON[n.cat]||''} ${esc(n.cat)}</span>
+     <div class="cn-no">${k+1}</div><h4>${esc(n.title)}</h4><p>${esc(n.summary)}</p>
+     <div class="cn-foot"><span class="cn-stars" role="img" aria-label="활용도 별 ${esc(n.stars)}개">${starTxt(n.stars)}</span>
+     <a href="${esc(n.url)}" target="_blank" rel="noopener">${esc(n.source)}${n.date?' · '+esc(shortD(n.date)):''} 원문 ›</a></div></section>`;
+   });
+  });
+  track.innerHTML=h; CARDS=[...track.children];
+  $$('cn-chips').innerHTML=`<button type="button" data-sec="all" data-go="0" aria-pressed="true">전체</button>`+
+   TABS.map(t=>`<button type="button" data-sec="${esc(t.id)}" data-go="${STARTS[t.id]}" aria-pressed="false">${esc(short(t.label))}</button>`).join('');
+  $$('cn-ft').innerHTML=`<span>${esc(D.updated)} 업데이트${SYNCERR?' <b class="sync-err" role="alert">동기화오류</b>':''}</span><span>리리 오피스</span>`;
+  if(!keep) track.scrollLeft=0;
+  update();
  }
+ const step=()=>CARDS.length>1?CARDS[1].offsetLeft-CARDS[0].offsetLeft:track.clientWidth||1;
+ const base=()=>pending??cur;
+ function go(i){ i=Math.max(0,Math.min(CARDS.length-1,i)); pending=i; clearTimeout(pt); pt=setTimeout(()=>pending=null,600);
+  track.scrollTo({left:i*step(),behavior:'smooth'}); }
+ function update(){
+  if(!CARDS.length) return;
+  const s=step(), vis=Math.max(1,Math.round((track.clientWidth+12)/s)), max=track.scrollWidth-track.clientWidth;
+  cur=Math.max(0,Math.min(CARDS.length-1,Math.round(track.scrollLeft/s)));
+  const end=track.scrollLeft>=max-2, last=end?CARDS.length:Math.min(CARDS.length,cur+vis);
+  $$('cn-count').textContent=vis>1?`${last} / ${CARDS.length}`:`${cur+1} / ${CARDS.length}`;
+  $$('cn-prog').style.width=(last/CARDS.length*100)+'%';
+  $$('cn-prev').disabled=track.scrollLeft<=2; $$('cn-next').disabled=end;
+  const sc=CARDS[cur].dataset.sec;
+  $$('cn-chips').querySelectorAll('button').forEach(b=>b.setAttribute('aria-pressed',b.dataset.sec===sc));
+ }
+ track.addEventListener('scroll',()=>requestAnimationFrame(update),{passive:true});
+ addEventListener('resize',()=>requestAnimationFrame(update));
+ $$('cn-prev').onclick=()=>go(base()-1); $$('cn-next').onclick=()=>go(base()+1);
+ track.addEventListener('keydown',e=>{ if(e.key==='ArrowRight'){e.preventDefault();go(base()+1)} if(e.key==='ArrowLeft'){e.preventDefault();go(base()-1)} });
+ $$('cn-chips').addEventListener('click',e=>{const b=e.target.closest('button'); if(b) go(+b.dataset.go)});
+
+ /* 공유·복사 글: 전체 카드면 탭마다 TOP3, 분류 카드면 그 분류 TOP5 */
+ function shareText(){
+  const sc=CARDS[cur]?CARDS[cur].dataset.sec:'all', all=sc==='all', n=all?3:5;
+  const tabs=all?TABS:TABS.filter(t=>t.id===sc);
+  return `📰 ${shortD(D.updated)} 카드뉴스\n\n`+tabs.map(t=>`[${t.label} TOP${n}]\n`+t.items.slice(0,n).map((it,i)=>`${i+1}. ${it.title}\n- ${it.summary}\n${it.url}`).join('\n\n')).join('\n\n');
+ }
+ async function copyText(text,okMsg){
+  try{ await navigator.clipboard.writeText(text); say(okMsg); return true; }catch(e){}
+  try{ const ta=document.createElement('textarea'); ta.value=text; ta.setAttribute('readonly',''); ta.style.cssText='position:fixed;left:-9999px;top:0';
+   document.body.appendChild(ta); ta.select(); const ok=document.execCommand('copy'); ta.remove(); if(ok){ say(okMsg); return true; } }catch(e){}
+  let bx=sec.querySelector('.cn-copybox'); if(!bx){ bx=document.createElement('textarea'); bx.className='cn-copybox'; bx.readOnly=true; sec.appendChild(bx); }
+  bx.value=text; bx.focus(); bx.select(); say('아래 글을 길게 눌러 복사해 주세요'); return false;
+ }
+ $$('cn-share').onclick=async()=>{
+  if(!D) return; const text=shareText();
+  try{ if(navigator.share){ await navigator.share({text}); return; } }catch(e){ if(e&&e.name==='AbortError') return; }
+  copyText(text,'복사했어요. 카톡 대화창에 붙여넣기 하세요');
+ };
+ $$('cn-copy').onclick=()=>{ if(D) copyText(shareText(),'카드뉴스 내용을 복사했어요'); };
+
  /* 동기화 오류 판단: 서버(홈페이지)에서 열었을 때만. news.json을 못 읽었거나,
     한국시간 오전 8시가 지났는데 오늘 날짜가 아니면(동기화는 매일 07:23) 빨간 글씨로 표시 */
  const LIVE=/^https?:$/.test(location.protocol);
  function stale(u){
-  const k=new Date(Date.now()+9*3600e3), ymd=d=>d.toISOString().slice(0,10);
-  const today=ymd(k), yday=ymd(new Date(k-864e5));
+  const k=new Date(Date.now()+9*3600e3), ymd2=d=>d.toISOString().slice(0,10);
+  const today=ymd2(k), yday=ymd2(new Date(k-864e5));
   return u<yday || (u<today && k.getUTCHours()>=8);
  }
  D=NEWS_SNAPSHOT; draw();
  if(LIVE) fetch('news.json',{cache:'no-store'}).then(r=>r.ok?r.json():null).then(j=>{
-   if(j&&Array.isArray(j.tabs)&&j.tabs.length){D=j;SYNCERR=stale(String(j.updated||''))}else SYNCERR=true; draw()
- }).catch(()=>{SYNCERR=true;draw()});
+   if(j&&Array.isArray(j.tabs)&&j.tabs.length){D=j;SYNCERR=stale(String(j.updated||''))}else SYNCERR=true; draw(true)
+ }).catch(()=>{SYNCERR=true;draw(true)});
 })();
 </script>
 </body>
