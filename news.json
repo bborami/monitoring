@@ -1,54 +1,51 @@
 {
- "updated": "2026-11-18",
+ "updated": "2026-11-19",
  "tabs": [
   {
    "id": "ai", "label": "AI뉴스", "insight": "오늘의 AI 인사이트 TOP5", "rank": "업무활용도 순",
    "cats": ["서비스","일자리","기업·투자","보안","정책"],
    "items": [
-    {"cat":"서비스","title":"MS 오피스선 코파일럿 압도적…클로드 사용자 10분의 1","summary":"워드·엑셀 안에서 클로드를 쓰는 주간 사용자가 유료 코파일럿의 10분의 1도 안 된대요. 사무실에서 오피스를 쓴다면 코파일럿 기능부터 익혀 두는 게 실용적이에요.","stars":4.5,"source":"AI타임스","date":"2026-11-17","url":"https://www.aitimes.com/news/articleView.html?idxno=217491"},
-    {"cat":"서비스","title":"MS 365 대규모 장애 원인은 4개월 전 버그","summary":"7월에 적용한 소프트웨어 결함 때문에 아웃룩 핵심 서버 80% 이상이 멈췄고, 최종 보고서는 20일에 나온대요. 메일·팀즈가 멈출 때 쓸 비상 연락 방법을 사무실에서 정해 두세요.","stars":4.5,"source":"AI타임스","date":"2026-11-17","url":"https://www.aitimes.com/news/articleView.html?idxno=217485"},
-    {"cat":"보안","title":"구글, 보안 패치 분석해 공격코드 만드는 AI 해킹도구 발견","summary":"패치 전후 코드를 비교해 취약점을 찾고 공격 코드를 사람 없이 만들어 실행하는 도구래요. 패치가 나오자마자 공격이 시작될 수 있으니 PC·프로그램 업데이트를 미루지 마세요.","stars":4,"source":"AI타임스","date":"2026-11-17","url":"https://www.aitimes.com/news/articleView.html?idxno=217493"},
-    {"cat":"서비스","title":"MS 'MAI 코드 2' 출시…클로드급 성능에 비용 5%","summary":"MS 자체 평가로 클로드 오퍼스 5.5 성능의 약 96%를 비용 약 5%로 낸다고 해요(프로모션 가격 기준). AI 도구 값이 빠르게 내려가는 흐름이에요.","stars":4,"source":"AI타임스","date":"2026-11-18","url":"https://www.aitimes.com/news/articleView.html?idxno=217511"},
-    {"cat":"일자리","title":"미 연준, AI가 바꿀 경제·고용 시나리오 점검","summary":"워시 의장이 생산성 성장, 자동화로 실업 증가, 투자 실패로 경기 둔화 등 시나리오를 분석 중이라고 했대요. 바 이사는 AI 에이전트가 예금 인출을 빠르게 만들 수 있다고 경고했어요.","stars":4,"source":"AI타임스","date":"2026-11-17","url":"https://www.aitimes.com/news/articleView.html?idxno=217490"},
-    {"cat":"기업·투자","title":"젠슨 황 \"이사회가 원하면 CEO 복귀\"…엔비디아는 검토 안 해","summary":"사임 후 첫 공식 입장으로 독립 조사에 협조하겠다고 했대요. 엔비디아 시가총액은 10월 고점 이후 약 2조달러 줄었어요.","stars":3.5,"source":"AI타임스","date":"2026-11-18","url":"https://www.aitimes.com/news/articleView.html?idxno=217512"}
+    {"cat":"서비스","title":"MS 코파일럿에 알아서 일하는 AI '오토파일럿' 도입","summary":"반복 지시 없이 업무를 수행하는 에이전트를 일부 기업 고객에게 제공하기 시작했고, 자연어로 업무용 앱을 만드는 '코파일럿 코드'도 몇 주 내 정식 출시된대요. 사무실 오피스 업무 자동화가 한 단계 가까워졌어요.","stars":4.5,"source":"AI타임스","date":"2026-11-18","url":"https://www.aitimes.com/news/articleView.html?idxno=217532"},
+    {"cat":"서비스","title":"구글 제미나이 '태스크 모드' 한국에도 무료 제공","summary":"메일·캘린더·파일을 활용해 예약·쇼핑·결제 같은 여러 단계 작업을 대신 처리하고, 결제는 미리 지출 한도를 정할 수 있대요. 전화 예약 등 일부 기능은 미국부터예요.","stars":4.5,"source":"AI타임스","date":"2026-11-18","url":"https://www.aitimes.com/news/articleView.html?idxno=217531"},
+    {"cat":"보안","title":"오픈AI \"사이버 보안, 코딩보다 큰 사업 될 것\"","summary":"보안 특화 모델로 기업·정부·NATO까지 고객을 넓히고 있대요. AI가 공격과 방어 모두에 쓰이는 만큼 사무실 보안 업데이트를 더 꼼꼼히 챙겨야 해요.","stars":4,"source":"AI타임스","date":"2026-11-18","url":"https://www.aitimes.com/news/articleView.html?idxno=217542"},
+    {"cat":"기업·투자","title":"앤트로픽, IPO 공모가 80달러 이상으로 인상 검토","summary":"기관 수요가 몰려 기존 70~78달러보다 올릴 수 있다는 보도가 나왔고, 공모가는 18일 확정, 19일 나스닥 상장(ANT) 예정이래요. 오늘 AI 관련주 흐름의 변수예요.","stars":4,"source":"AI타임스","date":"2026-11-18","url":"https://www.aitimes.com/news/articleView.html?idxno=217526"},
+    {"cat":"서비스","title":"퍼플렉시티, AI 에이전트 16개가 서로 검증하는 기능 출시","summary":"주도 에이전트가 최대 16개 보조 에이전트를 함께 돌려 서로 오류를 짚어 준대요. 금융 분석·실사처럼 정확성이 중요한 작업용이고 맥스 구독자 대상이에요.","stars":3.5,"source":"AI타임스","date":"2026-11-18","url":"https://www.aitimes.com/news/articleView.html?idxno=217543"}
    ]
   },
   {
    "id": "finance", "label": "금융뉴스", "insight": "오늘의 금융 인사이트 TOP5", "rank": "생활·업무 활용도 순",
    "cats": ["금리","대출","일정","제도"],
    "items": [
-    {"cat":"대출","title":"코픽스 3.62%…17일부터 주담대 변동금리 0.19%p↑","summary":"10월 신규 코픽스가 7개월째 올라 국민 4.85~6.25%, 농협 4.51~6.51%로 변동금리가 올랐대요. 대출 상담 때 고정·변동 금리 비교를 꼭 짚어 주세요.","stars":5,"source":"한국경제","date":"2026-11-16","url":"https://www.hankyung.com/article/2026111601631"},
-    {"cat":"대출","title":"9월 은행 연체율 0.59%…1년 전보다는 올라","summary":"분기말 상각 효과로 한 달 새 0.10%p 내렸지만 작년보다 0.07%p 높고, 금감원은 반등 가능성을 경고했대요. 신용대출 등 가계 연체율은 0.79%예요.","stars":4.5,"source":"뉴스핌","date":"2026-11-17","url":"https://www.newspim.com/news/view/20261117000828"},
-    {"cat":"일정","title":"이번 주 금융일정…19일 실손보험 점검회의","summary":"19일 실손보험 점검회의와 저축성보험 연금전환 안내가 예정돼 있대요. 선택형 실손 출시와 맞물려 문의가 늘 수 있으니 발표를 챙겨 보세요.","stars":4.5,"source":"뉴스핌","date":"2026-11-13","url":"https://www.newspim.com/news/view/20261113001372"},
-    {"cat":"금리","title":"국고채 금리 일제히 상승…3년물 장중 3.757%","summary":"17일 오전 3년물 3.757%, 10년물 3.997%로 전 구간이 올랐대요. 시장금리가 오르면 대출금리도 따라 오르기 쉬워요.","stars":4,"source":"보험매일","date":"2026-11-17","url":"https://www.fins.co.kr/news/articleView.html?idxno=110590"},
-    {"cat":"대출","title":"은행 가계대출 사상 첫 1,200조원 돌파","summary":"10월 말 잔액이 1,203.9조원으로 한 달 새 5조원 늘었고, 주담대가 3.3조원 늘었대요. 대출 규제가 더 세질 수 있어 상담 때 참고하세요.","stars":4,"source":"서플(SBS Biz)","date":"2026-11-11","url":"https://supple.kr/news/cmwbj6seoth5wal9plb7ctjo2"},
-    {"cat":"제도","title":"퇴직연금 2억 넣어도 운용 따라 20년 뒤 1.5억 차이","summary":"금감원 가이드북 예시로 원리금보장형만 두면 2억7,220만원, 분산하면 4억2,948만원이래요. 연금 상담과 AFPK 은퇴설계 공부에 바로 쓸 수 있어요.","stars":4,"source":"세계일보","date":"2026-11-16","url":"https://www.segye.com/newsView/20261116515048"},
-    {"cat":"금리","title":"저축은행 예금 평균 3.90%…4%대 상품 154개","summary":"13일 기준 1년 만기 평균이 두 달 새 0.17%p 올랐대요. 목돈 굴릴 곳을 묻는 고객에게 예금자보호 한도와 함께 안내해 보세요.","stars":3.5,"source":"서울경제TV","date":"2026-11-15","url":"https://www.sentv.co.kr/article/view/sentv202611150005"}
+    {"cat":"대출","title":"변동형 주담대 5% 넘어…3억 대출 월 13만원 더 낸다","summary":"코픽스가 3.62%로 오르며 국민 4.85~6.25%, 우리 5.04~6.24%가 됐고, 3억원(30년) 기준 월 상환액이 약 143만원에서 156만원으로 늘 수 있대요. 12월·1월 금리 재산정 고객도 오를 수 있어요.","stars":5,"source":"글로벌이코노믹","date":"2026-11-18","url":"https://www.g-enews.com/article/Finance/2026/11/202611181638001188e30fcb1ba8_1"},
+    {"cat":"금리","title":"5대은행 예금 3.60~3.65%…변동금리가 고정보다 높아","summary":"7월보다 예금금리가 최대 0.70%p 올랐고, 우리·국민은행은 6개월 변동형이 5년 고정형보다 높대요. 대출 상담 때 고정형도 꼭 비교해 보세요.","stars":4.5,"source":"파이낸셜뉴스","date":"2026-11-18","url":"https://www.fnnews.com/news/202611180701562964"},
+    {"cat":"대출","title":"3분기 가계빚 2,030.5조원 역대 최대…증가폭은 둔화","summary":"한 분기 9.8조원 늘었고 주택관련대출은 처음 1,200조원을 넘었대요. 카드 등 판매신용도 5조원 늘어 133.7조원이에요.","stars":4.5,"source":"이투데이","date":"2026-11-18","url":"https://www.etoday.co.kr/news/view/2649607"},
+    {"cat":"일정","title":"오늘(19일) 실손보험 점검회의…선택형 할인 계획 이달 발표","summary":"19일 금융당국 실손보험 점검회의가 열리고, 실손 계약전환·선택형 할인 제도의 구체적 계획도 이달 중 나온대요. 고객 문의에 대비해 발표를 챙겨 보세요.","stars":4.5,"source":"한국센터뉴스(연합)","date":"2026-11-14","url":"https://www.koreancenter.or.kr/news/articleView.html?idxno=1439327"},
+    {"cat":"금리","title":"국고채 3년 3.736%·환율 1,333원으로 5.2원 하락","summary":"18일 국고채 3년물은 1bp 오르고, CD 91일물은 3.370%였대요. 시장금리가 높게 유지되면 대출금리 부담도 이어져요.","stars":4,"source":"데일리팝","date":"2026-11-18","url":"http://www.dailypop.kr/news/articleView.html?idxno=104751"},
+    {"cat":"대출","title":"보험·연금기금 가계대출 3분기 1,000억 증가에 그쳐","summary":"9월 말 잔액은 154조3,000억원으로 2분기 2조3,000억원 증가에서 크게 줄었대요. 보험계약대출 등 보험권 대출 흐름으로 알아 두세요.","stars":3.5,"source":"보험매일","date":"2026-11-18","url":"https://www.fins.co.kr/news/articleView.html?idxno=110615"}
    ]
   },
   {
    "id": "stock", "label": "주식뉴스", "insight": "오늘의 주식 인사이트 TOP5", "rank": "투자 참고도 순",
    "cats": ["국내증시","해외증시","종목","반도체·AI"],
    "items": [
-    {"cat":"국내증시","title":"코스피 2.59% 내려 4,968.48…5000선 붕괴","summary":"17일 코스피는 4,968.48, 코스닥은 650.06으로 마쳤고 외국인이 약 1.45조원 순매도했대요. 반도체에 이어 은행·보험주와 조선주도 약세였어요.","stars":5,"source":"한국경제","date":"2026-11-17","url":"https://www.hankyung.com/article/202611172322i"},
-    {"cat":"해외증시","title":"뉴욕증시 이틀째 하락…다우 1.64%↓","summary":"17일(현지시간) 다우는 50,759.42(-1.64%), S&P500은 7,340.53(-1.03%), 나스닥은 24,328.38(-0.74%)로 마쳤대요.","stars":5,"source":"이투데이","date":"2026-11-18","url":"https://www.etoday.co.kr/news/view/2649476"},
-    {"cat":"반도체·AI","title":"젠슨 황 없는 엔비디아 첫 실적…매출 1,091억달러 전망","summary":"17일(현지시간) 장 마감 뒤 발표로, 매출 약 1,091억달러·EPS 2.47달러가 예상치래요. 후계 일정과 중국 수출 규제 영향이 관전 포인트예요.","stars":4.5,"source":"뉴스1","date":"2026-11-17","url":"https://www.news1.kr/world/international-economy/6356474"},
-    {"cat":"해외증시","title":"앤트로픽 19일 나스닥 상장…공모가 70~78달러","summary":"18일 공모가를 정하고 19일 거래를 시작한대요. 시장은 12월 연준 0.25%p 인상 확률을 95.4%로 보고 있어요.","stars":4.5,"source":"뉴스핌","date":"2026-11-17","url":"https://www.newspim.com/news/view/20261117001375"},
-    {"cat":"종목","title":"주요 손보사 3분기 보험손익 24.7%↑…신계약 CSM은 주춤","summary":"5개사 누적 보험손익은 5조4,152억원이지만 신계약 CSM은 10.4% 줄었고 메리츠만 늘었대요. 보험사별 실적 흐름으로 알아 두세요.","stars":4,"source":"보험매일","date":"2026-11-17","url":"https://www.fins.co.kr/news/articleView.html?idxno=110594"},
-    {"cat":"종목","title":"현대해상 3분기 순익 1,657억…컨센서스 22.9% 하회","summary":"보험손익은 63.0% 늘었지만 투자손익이 278억원 적자였대요. KB증권은 목표주가를 5만3천원으로 낮췄어요.","stars":3.5,"source":"보험매일","date":"2026-11-16","url":"https://www.fins.co.kr/news/articleView.html?idxno=110571"}
+    {"cat":"국내증시","title":"코스피 1.99% 올라 5,067.44…4거래일 만에 반등","summary":"18일 코스피는 5,067.44, 코스닥은 662.81로 마쳤대요. 외국인은 3,280억원 순매도했지만 기관이 5,050억원 사들였어요.","stars":5,"source":"인더스트리뉴스","date":"2026-11-18","url":"https://www.industrynews.co.kr/news/articleView.html?idxno=89803"},
+    {"cat":"해외증시","title":"뉴욕증시 혼조…다우 1.11%↓·나스닥 0.42%↑","summary":"18일(현지시간) 다우 50,198.17(-1.11%), S&P500 7,323.63(-0.23%), 나스닥 24,429.89(+0.42%)로 마쳤대요.","stars":5,"source":"이투데이","date":"2026-11-19","url":"https://www.etoday.co.kr/news/view/2650047"},
+    {"cat":"반도체·AI","title":"엔비디아 3분기 매출 1,158억달러…예상치 상회","summary":"매출은 103% 늘어 전망치 1,091억달러를 넘었고, 4분기 매출 전망은 1,300억달러래요. 젠슨 황 없이 치른 첫 실적 발표였어요.","stars":4.5,"source":"이투데이","date":"2026-11-18","url":"https://www.etoday.co.kr/news/view/2649489"},
+    {"cat":"반도체·AI","title":"엔비디아가 되돌린 '오천피'…삼성전자·SK하이닉스 상승","summary":"삼성전자 2.31%, SK하이닉스 4.19% 올라 코스피 시총 증가분의 약 70%를 차지했대요. 반등이 이어질지는 외국인 수급과 앤트로픽 공모가가 변수래요.","stars":4.5,"source":"서플(이투데이)","date":"2026-11-18","url":"https://supple.kr/news/cmwlucfkd1zqqtevdvg3y7xkq"},
+    {"cat":"종목","title":"증시 급락에 보험사 주식위험액 축소…K-ICS 부담 완화?","summary":"3분기 코스피가 19.33% 내리면서 보험사 주식위험액이 줄었대요. 삼성생명 K-ICS 비율은 208%에서 209%로 올랐어요.","stars":3.5,"source":"보험매일","date":"2026-11-18","url":"https://www.fins.co.kr/news/articleView.html?idxno=110613"}
    ]
   },
   {
    "id": "insurance", "label": "보험뉴스", "insight": "오늘의 영업 인사이트 TOP5", "rank": "영업활용도 순",
    "cats": ["건강","법인·상속","상품","생명보험","소비자","손해보험","경제·시장","제도"],
    "items": [
-    {"cat":"건강","title":"1·2세대 '선택형 실손' 이달 중 출시…최대 40%대 할인","summary":"2013년 3월 이전 가입자가 도수치료·주사·MRI 등 비급여 보장을 빼면 1세대 40%대, 2세대 30%대 보험료를 아낄 수 있대요. 고객의 몇 년치 청구 이력을 보고 유불리를 안내해 주세요.","stars":5,"source":"보험매일","date":"2026-11-17","url":"https://www.fins.co.kr/news/articleView.html?idxno=110589"},
-    {"cat":"제도","title":"판매수수료 개편 FAQ 설명회 연기…GA 정산 차질 우려","summary":"16일 예정이던 3차 설명회가 이달 중으로 밀렸대요. 2027년 1월 4년 분급제 시행 전 지점 지급표·설계사 안내를 준비해야 하니 일정을 챙겨 두세요.","stars":5,"source":"보험매일","date":"2026-11-17","url":"https://www.fins.co.kr/news/articleView.html?idxno=110585"},
-    {"cat":"손해보험","title":"차보험 할인 특약 잇따라 하향…보험료 인상 변수","summary":"현대해상은 12월 26일 책임개시부터 커넥티드카 안전운전 할인을 최대 3.0%p 낮추고, DB손보는 이달 6일부터 일부 특약을 최대 5.8%p 내렸대요. 갱신 상담 때 할인율 변화를 꼭 알려 주세요.","stars":4.5,"source":"보험매일","date":"2026-11-18","url":"https://www.fins.co.kr/news/articleView.html?idxno=110593"},
-    {"cat":"제도","title":"한국보험금융 등록취소 사전통지…설계사 6천명 계약관리 변수","summary":"확정되면 소속 설계사의 잔여수수료·고객 보상 지원에 영향이 있지만, 기존 보험계약 자체는 유지되고 보장은 보험사가 책임진대요. 이적 과정의 부당승환 문의에 대비해 두세요.","stars":4.5,"source":"보험매일","date":"2026-11-17","url":"https://www.fins.co.kr/news/articleView.html?idxno=110588"},
-    {"cat":"법인·상속","title":"3040 부자들, 부동산보다 금융자산 물려준다","summary":"한화생명 보고서로 자녀에게 줄 자산 1순위는 금융상품(38.4%)이고, 자녀 있는 가구 26.7%가 상속세 재원으로 종신보험을 고려한대요. 상속·증여 상담 자료로 쓰기 좋아요.","stars":4.5,"source":"보험매일","date":"2026-11-17","url":"https://www.fins.co.kr/news/articleView.html?idxno=110591"},
-    {"cat":"경제·시장","title":"보험사 손해율 104%→89% 전망…낙관적 계리가정 논란","summary":"36개 보험사가 2025년 말 실제 103.8%였던 손해율을 2026년 말 88.5%로 가정했대요. 금감원은 올해 결산부터 부채 산출을 집중 점검한대요.","stars":3.5,"source":"보험매일","date":"2026-11-17","url":"https://www.fins.co.kr/news/articleView.html?idxno=110598"},
-    {"cat":"제도","title":"사무장병원 보험사기에도…건보공단 특사경 도입 또 보류","summary":"한 사무장병원은 허위 입원확인서로 466명이 민간보험금 약 50억원을 타게 했대요. 법사위가 16일 의결을 미뤄 보험사기 대응은 당분간 그대로예요.","stars":3.5,"source":"보험매일","date":"2026-11-17","url":"https://www.fins.co.kr/news/articleView.html?idxno=110584"}
+    {"cat":"제도","title":"설계사 근로자성 논란…GA 위촉계약 시험대","summary":"근로자추정제 개정안이 국회에 계류 중이고 경총은 신중론을 냈대요. 분급제와 맞물려 대형 GA의 위촉·계약관리 서류 부담이 커질 수 있으니 흐름을 챙겨 두세요.","stars":5,"source":"보험매일","date":"2026-11-19","url":"https://www.fins.co.kr/news/articleView.html?idxno=110624"},
+    {"cat":"경제·시장","title":"계약은 손보, 수수료는 생보…GA 수익구조 엇갈려","summary":"대형 GA 73곳의 설계사 1인당 월 신계약은 손보 2.7건·생보 1.7건, 수수료는 생보 341만원·손보 286만원이래요. 지점 실적 분석 때 참고하기 좋아요.","stars":4.5,"source":"보험매일","date":"2026-11-19","url":"https://www.fins.co.kr/news/articleView.html?idxno=110625"},
+    {"cat":"소비자","title":"킥보드로 80차례 고의사고…車보험사기 수법 교묘","summary":"입원 중 대리운전·택시영업을 한 사례도 적발됐고, 보험사기는 10년 이하 징역 또는 5천만원 이하 벌금이래요. 고의사고가 의심되면 현장 합의 말고 블랙박스부터 확보하라고 안내해 주세요.","stars":4.5,"source":"보험매일","date":"2026-11-18","url":"https://www.fins.co.kr/news/articleView.html?idxno=110612"},
+    {"cat":"생명보험","title":"연말 퇴직연금 유치전…보험사 GIC 3.9%로 은행 앞질러","summary":"1년 만기 퇴직연금 상품 금리가 은행 예금 3.7%, 보험사 GIC 3.9%, 증권사 ELB 4.2%래요. 연말 DB형 자금 상담과 AFPK 은퇴설계 공부에 쓰기 좋아요.","stars":4.5,"source":"보험매일","date":"2026-11-18","url":"https://www.fins.co.kr/news/articleView.html?idxno=110611"},
+    {"cat":"제도","title":"대형 보험사 보안점검 연 2회로…주변 전산망까지","summary":"30일부터 행정지도로 점검 주기가 연 1회에서 2회로 늘고, 연결된 주변 시스템도 점검 대상이 된대요. GA도 고객 DB·제휴 전산 관리 점검이 이어질 수 있어요.","stars":4,"source":"보험매일","date":"2026-11-18","url":"https://www.fins.co.kr/news/articleView.html?idxno=110606"},
+    {"cat":"경제·시장","title":"토스인슈, 무경력 신인 설계사에 500만원 지원","summary":"10~12월 교육 수료 후 내년 1월까지 위촉되면 500만원을 주고, 상담 신청 고객도 연결해 준대요. GA 간 신인 확보 경쟁이 세지고 있어요.","stars":3.5,"source":"보험매일","date":"2026-11-19","url":"https://www.fins.co.kr/news/articleView.html?idxno=110623"},
+    {"cat":"생명보험","title":"한투, KDB생명 접고 카디프생명 인수 추진","summary":"자본확충 부담을 두고 이견을 좁히지 못해 KDB생명 매각 협상이 끝났대요. 한투는 우선협상대상자 지위를 잃고 카디프생명으로 방향을 틀었어요.","stars":3.5,"source":"보험매일","date":"2026-11-18","url":"https://www.fins.co.kr/news/articleView.html?idxno=110622"}
    ]
   }
  ]
