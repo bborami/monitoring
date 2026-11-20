@@ -1,52 +1,53 @@
 {
- "updated": "2026-11-20",
+ "updated": "2026-11-21",
  "tabs": [
   {
    "id": "ai", "label": "AI뉴스", "insight": "오늘의 AI 인사이트 TOP5", "rank": "업무활용도 순",
    "cats": ["서비스","일자리","기업·투자","보안","정책"],
    "items": [
-    {"cat":"서비스","title":"챗GPT 음성 받아쓰기 개선…10분 녹음 제한 폐지","summary":"말하는 동안 바로 글자로 바뀌는 '라이브 받아쓰기'가 모든 요금제에 순차 배포되고, 10분 녹음 제한도 없어졌대요. 회의 메모나 고객 통화 요약 정리에 바로 써 볼 만해요.","stars":4.5,"source":"AI타임스","date":"2026-11-19","url":"https://www.aitimes.com/news/articleView.html?idxno=217580"},
-    {"cat":"기업·투자","title":"앤트로픽 나스닥 상장 첫날 기업가치 2조달러","summary":"19일(현지시간) 'ANT'로 상장해 시초가 111.50달러로 공모가 83달러보다 34.3% 높게 출발했고, 공모로 813억달러를 모았대요. 오늘 AI·반도체주 흐름의 큰 변수예요.","stars":4.5,"source":"AI타임스","date":"2026-11-20","url":"https://www.aitimes.com/news/articleView.html?idxno=217594"},
-    {"cat":"보안","title":"구글 AI 모드에 '임시 대화'…기록·개인화 제외","summary":"임시 대화는 검색·AI 모드 기록에 남지 않고 개인화에도 쓰이지 않는대요. 고객 정보가 섞인 질문을 할 땐 이런 기록 안 남는 모드를 쓰는 습관이 좋아요.","stars":4,"source":"AI타임스","date":"2026-11-19","url":"https://www.aitimes.com/news/articleView.html?idxno=217572"},
-    {"cat":"기업·투자","title":"내년 세계 AI 인프라 지출 3200조…53% 증가","summary":"가트너는 2027년 AI 인프라 지출을 2조4000억달러, 전체 AI 지출을 4조달러로 내다봤대요. 메모리 가격 상승('멤플레이션')이 지출을 더 키운다는 분석이에요.","stars":3.5,"source":"AI타임스","date":"2026-11-19","url":"https://www.aitimes.com/news/articleView.html?idxno=217566"},
-    {"cat":"정책","title":"미국, 기업에 중국산 AI 사용 공개 의무화 검토","summary":"재무부와 백악관이 기업이 중국산 AI 모델을 쓰면 웹사이트에 알리게 하는 방안을 논의했대요. 아직 정식 규정이 될지는 정해지지 않았어요.","stars":3.5,"source":"AI타임스","date":"2026-11-19","url":"https://www.aitimes.com/news/articleView.html?idxno=217577"},
-    {"cat":"서비스","title":"엔비디아 소형 AI PC 'RTX 스파크' 국내 사전예약","summary":"최대 128GB 메모리로 1200억 매개변수 AI를 PC에서 직접 돌릴 수 있고, 국내는 19일부터 에이수스 제품 사전예약이 시작됐대요.","stars":3,"source":"AI타임스","date":"2026-11-19","url":"https://www.aitimes.com/news/articleView.html?idxno=217579"},
-    {"cat":"기업·투자","title":"오픈AI, AI로 AMD GPU 설계 개선…최대 14%","summary":"AI 모델로 GPU 설계 블록을 최적화해 전력·성능·면적 지표를 최대 14% 개선했대요. GPU 전체 성능이 아니라 설계 블록 기준이에요.","stars":3,"source":"AI타임스","date":"2026-11-19","url":"https://www.aitimes.com/news/articleView.html?idxno=217562"}
+    {"cat":"보안","title":"스팸 데이터 개방 효과…AI가 악성문자 5억건 미리 차단","summary":"KISA 신고 데이터를 쓴 삼성 AI 차단 서비스가 악성문자 약 5억건을, LG유플러스 익시오는 스팸전화 약 1,200만건을 수신 전에 막았대요. 보험·금융 사칭 피싱이 늘고 있으니 고객에게 이런 차단 기능을 켜 두라고 안내해요.","stars":4.5,"source":"AI타임스","date":"2026-11-20","url":"https://www.aitimes.com/news/articleView.html?idxno=217628"},
+    {"cat":"서비스","title":"AI 수능 대결…GPT-6.2·제미나이 4 만점, 국산 1위 LG","summary":"35개 모델 중 2개가 전 과목 만점을 받았고, 국산 1위는 LG 엑사원(450점 만점에 414.7점)이었대요. 업무용 AI를 고를 때 한국어 실력 비교 자료로 참고할 만해요.","stars":4,"source":"AI타임스","date":"2026-11-20","url":"https://www.aitimes.com/news/articleView.html?idxno=217604"},
+    {"cat":"서비스","title":"오픈AI, 답을 늦게 받으면 API 요금 최대 40% 할인","summary":"2시간 안 응답은 30%, 8시간 안 응답은 40% 싸지는 옵션이 베타로 나왔대요. 급하지 않은 대량 문서 정리처럼 기다려도 되는 일엔 비용을 아끼는 방식이에요.","stars":3.5,"source":"AI타임스","date":"2026-11-20","url":"https://www.aitimes.com/news/articleView.html?idxno=217632"},
+    {"cat":"일자리","title":"오픈AI, 코덱스로 챗GPT 성능 문제 1,700건 자동 조사","summary":"석 달 동안 1,700건 넘게 조사해 600여 개 원인을 찾았지만, AI가 쓴 코드를 그대로 배포한 건 15건뿐이고 최종 승인은 사람이 했대요. AI는 조사·초안, 판단은 사람이라는 업무 분담의 좋은 예예요.","stars":3.5,"source":"AI타임스","date":"2026-11-20","url":"https://www.aitimes.com/news/articleView.html?idxno=217626"},
+    {"cat":"정책","title":"미 상무부, 중국군 연계 기업에 AI칩 27만개 수출 허가","summary":"하원 자료에 따르면 지난해 12월~올해 5월 중국 기업에 약 87만9천 개 AI칩이 허가됐고 그중 약 27만2천 개가 군 연계 기업 몫이었대요. 반도체 수출 규제 논란이 이번 주 증시 급락 배경 중 하나예요.","stars":3.5,"source":"AI타임스","date":"2026-11-20","url":"https://www.aitimes.com/news/articleView.html?idxno=217634"},
+    {"cat":"서비스","title":"정체불명 AI '게슈탈트', 디자인 평가서 사람 제쳐","summary":"블라인드 투표 4,311건으로 매긴 디자인 벤치마크에서 승률 90%로 1위를 했고, 개발사는 공개되지 않았대요. 안내문·포스터 디자인도 AI 도움을 받기 쉬워지고 있어요.","stars":3,"source":"AI타임스","date":"2026-11-20","url":"https://www.aitimes.com/news/articleView.html?idxno=217630"},
+    {"cat":"기업·투자","title":"메타, AI가 기억하는 방법도 스스로 개선","summary":"AI가 직접 고친 기억 관리 지침이 평균 56.0점으로 사람이 쓴 최선의 지침(44.6점)보다 높았대요. AI가 스스로 나아지는 연구가 이어지고 있어요.","stars":2.5,"source":"AI타임스","date":"2026-11-20","url":"https://www.aitimes.com/news/articleView.html?idxno=217629"}
    ]
   },
   {
    "id": "finance", "label": "금융뉴스", "insight": "오늘의 금융 인사이트 TOP5", "rank": "생활·업무 활용도 순",
    "cats": ["금리","대출","일정","제도"],
    "items": [
-    {"cat":"일정","title":"26일 올해 마지막 금통위…기준금리 3.25% 인상 무게","summary":"현재 연 3.00%인 기준금리를 26일 결정하는데, 하나증권은 0.25%p 인상을 예상했대요. 오르면 변동금리 대출 이자도 따라 오를 수 있으니 고객 상담 때 미리 알려 주세요.","stars":5,"source":"글로벌경제신문","date":"2026-11-19","url":"https://www.getnews.co.kr/news/articleView.html?idxno=887777"},
-    {"cat":"금리","title":"저축은행 6개월 예금 연 3.11%…1년11개월 만 최고","summary":"79개 저축은행 6개월 정기예금 평균이 3.11%이고, 1년 만기 상품 절반은 연 4%를 넘었대요. 목돈 굴릴 곳을 찾는 분께 비교해 보라고 권하기 좋아요.","stars":4.5,"source":"한국경제","date":"2026-11-19","url":"https://www.hankyung.com/article/202611184381i"},
-    {"cat":"제도","title":"금감원, 퇴직연금 연말 '변칙 고금리' 엄정 대응","summary":"14개 사업자가 연금저축펀드 순입금 시 1만~300만원 이익을 주는 등 연말 유치 경쟁이 과열돼 점검에 나선대요. 퇴직연금 이전 상담 때 이벤트보다 수익률·수수료를 보라고 안내해요.","stars":4.5,"source":"보험매일","date":"2026-11-20","url":"https://www.fins.co.kr/news/articleView.html?idxno=110641"},
-    {"cat":"금리","title":"씨티 \"한은 11월 만장일치 25bp 인상…최종 3.5%\"","summary":"씨티는 11월과 내년 2월에 0.25%p씩 올려 3.5%까지 갈 것으로 봤고, 올해 성장률은 3.8%로 높여 잡았대요. 대출 고정·변동 선택 상담 때 참고해요.","stars":4,"source":"KB의 생각(연합인포맥스)","date":"2026-11-17","url":"https://kbthink.com/news-list/view.html?newsId=20261117140648813"},
-    {"cat":"금리","title":"원·달러 1,330.0원 마감…하루 3원 하락","summary":"19일 서울 외환시장 종가는 1,330.0원이고 100엔은 835원대였대요. 해외여행·해외결제 계획이 있다면 환율 흐름을 챙겨 보세요.","stars":3.5,"source":"코리안투데이","date":"2026-11-19","url":"https://www.thekorean.today/61902"}
+    {"cat":"일정","title":"다음 주 26일 금통위…기준금리 3.00%→3.25% 인상 예상","summary":"26일 올해 마지막 금통위에서 인상이 예상되고, 23일 수출입 잠정치, 25일 미국 PCE 물가도 나온대요. 대출 이자 문의가 늘 수 있으니 날짜를 기억해 두세요.","stars":5,"source":"서플(이투데이)","date":"2026-11-21","url":"https://supple.kr/news/cmwph375jcjdokwp8oo32xrc5"},
+    {"cat":"대출","title":"변동형 주담대 금리 5% 넘어…3억 대출 월 13만원 더","summary":"KB·우리은행이 6개월 변동금리를 0.19%p 올렸고, 10월 코픽스는 3.62%로 2024년 2월 이후 최고래요. 변동금리 대출이 있다면 금리 바뀌는 날짜를 꼭 확인해요.","stars":4.5,"source":"글로벌이코노믹","date":"2026-11-18","url":"https://www.g-enews.com/article/Finance/2026/11/202611181638001188e30fcb1ba8_1"},
+    {"cat":"제도","title":"12월부터 저축성보험 만기 3년 지나도 연금 전환","summary":"만기금을 안 찾았으면 만기 후 3년까지 연금 전환을 신청할 수 있고, 만기 1년 전 미리 예약도 된대요. 기존 특약이 새 연금보험보다 월 수령액이 2.8% 많다는 예시도 있어 노후 상담에 좋아요.","stars":4.5,"source":"보험매일","date":"2026-11-20","url":"https://www.fins.co.kr/news/articleView.html?idxno=110647"},
+    {"cat":"금리","title":"원·달러 1,336.2원 마감…국고채 3년 3.642%","summary":"20일 환율은 6.2원 올랐고, 국고채 3년은 0.07%p 내려 3.642%, CD 91일물은 3.390%였대요. 해외결제·예금 금리 흐름을 볼 때 참고해요.","stars":4,"source":"데일리팝","date":"2026-11-20","url":"http://www.dailypop.kr/news/articleView.html?idxno=104854"},
+    {"cat":"제도","title":"금감원, 퇴직연금 연말 '변칙 고금리' 엄정 대응","summary":"연말 퇴직연금 유치 경쟁이 과열돼 변칙 고금리·특별이익 제공을 점검한대요. 퇴직연금 옮기기 상담 때 이벤트보다 수익률·수수료를 보라고 안내해요.","stars":4,"source":"보험매일","date":"2026-11-20","url":"https://www.fins.co.kr/news/articleView.html?idxno=110641"}
    ]
   },
   {
    "id": "stock", "label": "주식뉴스", "insight": "오늘의 주식 인사이트 TOP5", "rank": "투자 참고도 순",
    "cats": ["국내증시","해외증시","종목","반도체·AI"],
    "items": [
-    {"cat":"국내증시","title":"코스피 1.39% 올라 5,137.89…기관 순매수 전환","summary":"19일 코스피는 5,137.89, 코스닥은 3.32% 오른 684.81로 마쳤대요. 외국인은 4,036억원 팔았고 기관이 194억원 사들였어요.","stars":5,"source":"아시아경제","date":"2026-11-19","url":"https://view.asiae.co.kr/article/2026111916492474833"},
-    {"cat":"반도체·AI","title":"앤트로픽 상장 첫날 97.17달러 마감…공모가 대비 17%↑","summary":"시초가 111.50달러로 출발해 115달러를 넘었다가 상승 폭을 줄였고, 종가 기준 기업가치는 약 1조7500억달러래요.","stars":5,"source":"아주경제","date":"2026-11-20","url":"https://www.ajunews.com/view/20261120061024707"},
-    {"cat":"해외증시","title":"앤트로픽 상장에도 뉴욕증시 장중 하락…나스닥 1.55%↓","summary":"19일(현지시간) 오후 3대 지수가 1.55~2.03% 내리는 중이었대요(장중 기준, 종가 아님). AI 투자심리 회복엔 역부족이었다는 평가예요.","stars":4.5,"source":"뉴스1","date":"2026-11-20","url":"https://www.news1.kr/world/usa-canada/6360293"},
-    {"cat":"종목","title":"SK텔레콤, 앤트로픽 지분 가치 4조3000억원","summary":"2023년부터 2억400만달러를 투자해 공모가 기준 원금의 15.7배가 됐대요. 다만 19일 주가는 2.91% 내린 8만200원이었어요.","stars":4,"source":"서플(이투데이)","date":"2026-11-19","url":"https://supple.kr/news/cmwnauw2s87u0kwp8g5re7scd"},
-    {"cat":"반도체·AI","title":"삼성전자 19만6900원·SK하이닉스 118만3천원 마감","summary":"삼성전자 1.1%, SK하이닉스 3.4% 올랐고 외국인은 5거래일 연속 순매도했대요. 원·달러는 1,330원으로 3원 내렸어요.","stars":4,"source":"코리아리포트","date":"2026-11-19","url":"https://www.koreareport.co.kr/news/articleView.html?idxno=54937"}
+    {"cat":"국내증시","title":"'검은 금요일' 코스피 5.21% 급락…4,869.96 마감","summary":"20일 코스피는 267.93포인트 내린 4,869.96, 코스닥은 645.66으로 마쳤고 두 시장 모두 매도 사이드카가 걸렸대요. 외국인은 1조2,682억원어치를 팔아 6거래일 연속 순매도예요.","stars":5,"source":"한국경제","date":"2026-11-20","url":"https://www.hankyung.com/article/202611200429i"},
+    {"cat":"국내증시","title":"다음 주 증시, 美 PCE 물가·한은 금통위 '변동성 주의'","summary":"이번 주 코스피는 7.95% 내렸고, 다음 주엔 25일 미국 PCE·GDP, 26일 금통위가 있대요. 26일 미국 추수감사절 휴장, 27일 조기 폐장도 챙겨 두세요.","stars":4.5,"source":"서플(이투데이)","date":"2026-11-21","url":"https://supple.kr/news/cmwph375jcjdokwp8oo32xrc5"},
+    {"cat":"반도체·AI","title":"삼성전자 7.01%·SK하이닉스 5.92% 급락","summary":"삼성전자 18만3,100원, SK하이닉스 111만3,000원으로 마쳤고 삼성전기는 12.54% 내렸대요. 상장 첫날 하나에어로다이내믹스만 6.14% 올랐어요.","stars":4.5,"source":"시사저널e","date":"2026-11-20","url":"https://www.sisajournal-e.com/news/articleView.html?idxno=425214"},
+    {"cat":"해외증시","title":"뉴욕증시 19일 급락 마감…다우 5만선 아래로","summary":"19일(현지시간) 다우 49,097.06(-2.19%), S&P500 7,175.83(-2.02%), 나스닥 23,879.20(-2.25%)으로 마쳤대요. 20일(현지시간) 마감 기사는 아직 나오지 않았어요.","stars":4,"source":"서울신문","date":"2026-11-20","url":"https://www.seoul.co.kr/news/international/2026/11/20/20261120500007"},
+    {"cat":"국내증시","title":"코스피 5000선 회복할까…NH \"다음 주 5,000~6,100\"","summary":"NH투자증권이 다음 주 코스피 밴드를 5,000~6,100으로 제시했고, 엔비디아 3분기 매출은 1,158억달러(+103%)였대요. 실적은 견조하지만 수급이 관건이라는 분석이에요.","stars":4,"source":"아주경제","date":"2026-11-21","url":"https://www.ajunews.com/view/20261120164429410"}
    ]
   },
   {
    "id": "insurance", "label": "보험뉴스", "insight": "오늘의 영업 인사이트 TOP5", "rank": "영업활용도 순",
    "cats": ["건강","법인·상속","상품","생명보험","소비자","손해보험","경제·시장","제도"],
    "items": [
-    {"cat":"제도","title":"23일부터 1·2세대 실손 5세대 전환 시 3년간 50% 할인","summary":"2013년 3월 이전 재가입 조건 없는 실손 가입자 약 1,630만명이 대상이고, 내년 5월 22일까지 무심사 전환에 최대 6개월 철회가 가능해요. 설계사의 선제적 아웃바운드 영업은 금지되니 고객 문의 응대 위주로 준비해요.","stars":5,"source":"시선뉴스","date":"2026-11-19","url":"http://www.sisunnews.co.kr/news/articleView.html?idxno=250100"},
-    {"cat":"소비자","title":"3년간 안 찾은 실손보험금 1조…내년 '실손24'서 조회","summary":"미청구 실손보험금이 최근 3년 약 1조원으로 추산돼 내년 1분기부터 실손24에서 확인·청구할 수 있대요. 병원 연계율은 54.2%로 연말 80~90%가 목표예요.","stars":4.5,"source":"서울신문","date":"2026-11-19","url":"https://seoul.co.kr/news/economy/finance/2026/11/20/20261120031005"},
-    {"cat":"건강","title":"60대 여성 1세대 실손 월 17.7만원→2.2만원","summary":"전환 할인 시 87.8% 줄고, 선택형 할인 세 가지를 모두 적용하면 1세대 약 37% 줄어든대요. 대신 비중증 비급여 자기부담 50%, 연 한도 1000만원이라 병원 이용이 잦은 고객은 꼼꼼히 비교해야 해요.","stars":4.5,"source":"아주경제","date":"2026-11-19","url":"https://ajunews.com/view/20261119143647150"},
-    {"cat":"제도","title":"금융위 \"실손 전환 후 최대 6개월 철회 허용\"","summary":"신진창 부위원장이 19일 점검회의에서 계약전환·선택형 할인 시행을 밝혔고, 가입자 65%는 보험금 없이 보험료만 낸대요. 전환 상담 자료로 쓰기 좋아요.","stars":4,"source":"데일리안","date":"2026-11-19","url":"https://www.dailian.co.kr/news/view/1717077/%EC%8B%A0%EC%A7%84%EC%B0%BD-12%EC%84%B8%EB%8C%80-%EC%A0%84%ED%99%98-%EC%8B%9C-3%EB%85%84%EA%B0%84-%EB%B3%B4%ED%97%98-2026"},
-    {"cat":"생명보험","title":"퇴직연금 연말 유치전에 금감원 경고…공시 오류도 302건","summary":"변칙 고금리·특별이익 제공을 엄정 대응하고, 최근 5년 연금 공시 오류가 302건이었대요. 연말 퇴직연금 상담 때 과한 이벤트 상품은 조심하라고 안내해요.","stars":4,"source":"보험매일","date":"2026-11-20","url":"https://www.fins.co.kr/news/articleView.html?idxno=110641"},
-    {"cat":"제도","title":"오늘(20일) GA협회 '보험판매전문회사' 입법토론회","summary":"오전 9시30분 국회에서 열리고, 설계사 71.8%가 제도 도입이 필요하다고 답했대요. 2027년부터 보험사 경영평가에 'GA 운영위험 관리' 지표도 생겨요.","stars":4,"source":"보험저널","date":"2026-11-02","url":"https://www.insjournal.co.kr/news/articleView.html?idxno=33747"},
-    {"cat":"생명보험","title":"15세 미만 시민안전보험 사망보장 사각지대 해소 추진","summary":"상법 732조 때문에 15세 미만은 시민안전보험 사망보험금을 못 받았는데, 이번 정기국회 개정을 추진한대요. 자녀 보험 상담 때 알아 두면 좋아요.","stars":3.5,"source":"보험매일","date":"2026-11-19","url":"https://www.fins.co.kr/news/articleView.html?idxno=110637"}
+    {"cat":"제도","title":"모레(23일)부터 초기 실손 5세대 전환 시 3년 반값","summary":"2013년 3월 이전 1·2세대 실손을 5세대로 바꾸면 3년간 보험료 50% 할인이고, 내년 5월 22일까지 신청할 수 있대요. 월요일부터 문의가 몰릴 수 있으니 안내 자료를 준비해 두세요.","stars":5,"source":"핀포인트뉴스","date":"2026-11-20","url":"https://www.pinpointnews.co.kr/news/articleView.html?idxno=506329"},
+    {"cat":"제도","title":"\"대형 GA, 보험판매전문회사 의무 전환해야\"","summary":"20일 국회 토론회에서 대형 GA는 자본금 30억원 이상 보험판매전문회사로 의무 전환하자는 제안이 나왔대요. GA 사무 업무와 책임 범위가 바뀔 수 있는 이슈예요.","stars":4.5,"source":"머니투데이방송","date":"2026-11-20","url":"https://news.mtn.co.kr/article/2026112014505270175"},
+    {"cat":"생명보험","title":"저축성보험 만기 지나도 3년 안에 연금 전환","summary":"12월 1일부터 만기 후 3년까지 연금 전환을 신청할 수 있고, 저축성보험 약 202만건 중 79.3%에 전환 특약이 있대요. 만기 고객 관리 때 연금 전환 안내를 해 보세요.","stars":4.5,"source":"보험매일","date":"2026-11-20","url":"https://www.fins.co.kr/news/articleView.html?idxno=110647"},
+    {"cat":"경제·시장","title":"GA 시장 양극화…매각 앞두고 '유령 설계사'까지","summary":"7월 1200%룰이 GA에 확대됐고 내년엔 4년 분급제가 시행돼 중소 GA가 흔들린대요. 수수료 지급 구조 변화를 미리 챙겨 두면 좋아요.","stars":4,"source":"중앙이코노미뉴스","date":"2026-11-20","url":"https://www.joongangenews.com/news/articleView.html?idxno=565474"},
+    {"cat":"소비자","title":"설계사 낀 간병보험 사기 15억…16명 송치","summary":"휠체어·기저귀로 인지장애를 꾸며 장기요양 보험금 약 15억원을 받았고, 30대 설계사가 구속됐대요. 면책기간 직후 청구가 몰리는 계약은 내부 점검이 필요해요.","stars":4,"source":"보험매일","date":"2026-11-20","url":"https://www.fins.co.kr/news/articleView.html?idxno=110648"},
+    {"cat":"소비자","title":"실손 비급여 누수 막고 약관에 '핵심설명서'","summary":"금융당국이 도수치료 등 비급여 과잉을 막고, 상품 첫 장 핵심설명서와 고령자용 큰 글씨 요약본을 도입한대요. 고객 설명 자료가 바뀔 수 있어요.","stars":3.5,"source":"위클리서울","date":"2026-11-20","url":"https://www.weeklyseoul.net/news/articleView.html?idxno=87642"},
+    {"cat":"건강","title":"푸본현대생명, 암 전 단계부터 항암치료까지 보장","summary":"TM 전용 '100세까지 암케어보험'으로 20세 남성 기준 월 2만8,530원부터래요. 암보험 비교 상담 때 참고해요.","stars":3,"source":"보험매일","date":"2026-11-20","url":"https://www.fins.co.kr/news/articleView.html?idxno=110644"},
+    {"cat":"손해보험","title":"삼성화재, 겨울 긴급출동 인력 4,300명으로 확대","summary":"평소 약 3,200명에서 34.4% 늘리고 공항·역 주변 출동 거점을 넓힌대요. 겨울철 자동차보험 긴급출동 안내 때 참고해요.","stars":3,"source":"보험매일","date":"2026-11-20","url":"https://www.fins.co.kr/news/articleView.html?idxno=110646"}
    ]
   }
  ]
