@@ -1,53 +1,57 @@
 {
- "updated": "2026-11-26",
+ "updated": "2026-11-27",
  "tabs": [
   {
    "id": "ai", "label": "AI뉴스", "insight": "오늘의 AI 인사이트 TOP5", "rank": "업무활용도 순",
    "cats": ["서비스","일자리","기업·투자","보안","정책"],
    "items": [
-    {"cat":"보안","title":"최첨단 AI, 글 하나로 작성자 실명까지 알아내","summary":"공동 연구에서 AI가 레딧에 글을 많이 쓴 이용자의 계정을 댓글 하나만으로 69% 맞혔대요. 고객 상담 후기나 온라인 글에 개인 정보가 드러나지 않게 더 조심해야 해요.","stars":4.5,"source":"AI타임스","date":"2026-11-25","url":"https://www.aitimes.com/news/articleView.html?idxno=217785"},
-    {"cat":"서비스","title":"오픈AI, 기업용 에이전트 정확도 높일 '아테나' 개발","summary":"회사 데이터의 의미와 업무 지침을 AI에 알려 주는 도구로, 기능·출시일·가격은 아직 공개되지 않았대요. 사무 자동화 AI가 회사 규칙을 더 잘 따르게 되는 흐름이에요.","stars":4,"source":"AI타임스","date":"2026-11-25","url":"https://www.aitimes.com/news/articleView.html?idxno=217778"},
-    {"cat":"정책","title":"오픈AI·앤트로픽 내부서 \"최고 모델 통제 어렵다\"","summary":"악시오스가 24명 넘는 관계자를 인용해, 두 회사 직원 상당수가 최고 성능 모델을 안전하게 내놓기 어렵다고 본다고 전했대요. AI 규제 논의가 더 빨라질 수 있어요.","stars":3.5,"source":"AI타임스","date":"2026-11-25","url":"https://www.aitimes.com/news/articleView.html?idxno=217755"},
-    {"cat":"기업·투자","title":"xAI 창립 멤버들, 미래 예측 AI '에포칼' 출범","summary":"30년간 1조 개 넘는 웹페이지를 색인해 예측 능력을 훈련한다고 했고, 첫 제품 '타임 포털'을 공개했대요. 예측 AI가 금융 전망에도 쓰일 수 있어 지켜볼 만해요.","stars":3.5,"source":"AI타임스","date":"2026-11-25","url":"https://www.aitimes.com/news/articleView.html?idxno=217779"},
-    {"cat":"서비스","title":"KT·LG전자, 업로드 최대 4.9배 6G 기술 검증","summary":"5G보다 업로드 용량을 최대 4.9배 높이는 기술을 확인했대요. 대용량 서류·영상 전송이 빨라질 미래 통신 이야기예요.","stars":3,"source":"AI타임스","date":"2026-11-25","url":"https://www.aitimes.com/news/articleView.html?idxno=217772"},
-    {"cat":"서비스","title":"오픈AI \"GPT-6, 전문 모델 없이 단백질 설계\"","summary":"GPT-6.2가 설계한 후보 322개 중 35개(10.9%)가 실험에서 표적과 결합했대요. 다만 일부 과정엔 전문 모델도 썼다고 해요.","stars":3,"source":"AI타임스","date":"2026-11-25","url":"https://www.aitimes.com/news/articleView.html?idxno=217758"},
-    {"cat":"기업·투자","title":"의료영상 AI 뉴로핏, 서틀메디컬과 북미 공략","summary":"PET 영상 분석 소프트웨어를 미국 서틀메디컬 플랫폼에 연동하는 공급 계약을 맺었대요. 의료 AI가 진단 현장에 퍼지는 사례예요.","stars":2.5,"source":"AI타임스","date":"2026-11-25","url":"https://www.aitimes.com/news/articleView.html?idxno=217767"}
+    {"cat":"일자리","title":"중소기업도 AI로 업무 자동화…25분 작업이 46초로","summary":"광림마린테크는 도면 1장 자재 명세서 등록이 25.1분에서 0.77분으로 줄고 오타율도 5.34%에서 0.065%로 낮아졌대요. 반복 서류 입력을 AI로 줄이는 좋은 예예요.","stars":4.5,"source":"AI타임스","date":"2026-11-26","url":"https://www.aitimes.com/news/articleView.html?idxno=217812"},
+    {"cat":"서비스","title":"오픈AI, 챗GPT·코덱스 사용량 12월부터 통합","summary":"플러스·프로·비즈니스 구독자는 12월부터 두 서비스 한도를 같이 쓰게 되고, 많이 쓰면 한도가 일찍 찰 수 있대요. 업무에 챗GPT를 자주 쓴다면 사용량을 확인해 두세요.","stars":4,"source":"AI타임스","date":"2026-11-26","url":"https://www.aitimes.com/news/articleView.html?idxno=217800"},
+    {"cat":"보안","title":"오픈AI, 기업 데이터 보호 '프라이빗 추론' 테스트","summary":"처리 중에도 오픈AI 운영자가 데이터에 접근하지 못하게 하는 기능을 소수 고객에게 시험 중이래요. 고객 정보를 다루는 회사의 AI 도입 걱정을 덜어 줄 기술이에요.","stars":4,"source":"AI타임스","date":"2026-11-26","url":"https://www.aitimes.com/news/articleView.html?idxno=217828"},
+    {"cat":"일자리","title":"AI가 짠 코드, AI가 검토…개발 조직 47% 활용","summary":"리드데브 조사에서 응답자 377명 중 47%가 코드 검토까지 AI 에이전트에 맡긴대요. 다만 검토가 느려졌다는 답도 38%라 사람 확인은 여전히 중요해요.","stars":3.5,"source":"AI타임스","date":"2026-11-26","url":"https://www.aitimes.com/news/articleView.html?idxno=217834"},
+    {"cat":"서비스","title":"인천공항, AI 에이전트 운영 검증…대응 시간 최대 65%↓","summary":"6개월간 기상 악화·회항 같은 상황 대응을 AI로 검증했고, 대응 시간을 최대 65% 줄일 것으로 기대한대요(예상치). 현장 업무에 AI 비서가 들어오는 흐름이에요.","stars":3.5,"source":"AI타임스","date":"2026-11-26","url":"https://www.aitimes.com/news/articleView.html?idxno=217802"},
+    {"cat":"정책","title":"중국 AI 기업, 미국과 격차 최대 9개월 전망","summary":"딥시크 연구진은 격차가 3~6개월에서 최대 9개월로 벌어질 수 있다고 봤고, 문샷 AI는 GPU 확보 계약을 취소했대요. AI 패권 경쟁 흐름을 보여 줘요.","stars":3,"source":"AI타임스","date":"2026-11-26","url":"https://www.aitimes.com/news/articleView.html?idxno=217798"},
+    {"cat":"기업·투자","title":"아마존·메타, AI 에이전트 '뮤즈' 차단 해제 협상","summary":"아마존이 9월 막았던 메타의 쇼핑 에이전트 접근을 두 달 만에 다시 협상 중이래요. AI가 대신 쇼핑하는 시대의 주도권 싸움이에요.","stars":3,"source":"AI타임스","date":"2026-11-26","url":"https://www.aitimes.com/news/articleView.html?idxno=217831"},
+    {"cat":"서비스","title":"구글, 내가 주인공인 맞춤형 AI TV 채널 구상","summary":"시청 기록으로 개인별 AI 영상을 만드는 특허가 공개됐지만 심사에선 최종 거절됐고 출시 계획도 없대요. 가볍게 알아 둘 소식이에요.","stars":2.5,"source":"AI타임스","date":"2026-11-26","url":"https://www.aitimes.com/news/articleView.html?idxno=217825"}
    ]
   },
   {
    "id": "finance", "label": "금융뉴스", "insight": "오늘의 금융 인사이트 TOP5", "rank": "생활·업무 활용도 순",
    "cats": ["금리","대출","일정","제도"],
    "items": [
-    {"cat":"일정","title":"오늘 올해 마지막 금통위…3.25% 인상 전망","summary":"현재 3.00%인 기준금리를 0.25%p 올릴 거란 전망이 많고, 이투데이 조사 전문가 14명 전원이 인상을 예상했대요. 오후 결과에 따라 대출·예금 문의가 늘 수 있어요.","stars":5,"source":"이투데이","date":"2026-11-26","url":"https://etoday.co.kr/news/view/2652820"},
-    {"cat":"대출","title":"은행 가계대출 금리 5.02%…주담대 14년 만에 최고","summary":"10월 신규 가계대출 금리가 5.02%, 주담대는 4.98%로 2012년 3월 이후 가장 높대요. 고정형 5.13%, 변동형 4.90%라 대출 갈아타기 상담 때 참고해요.","stars":5,"source":"이투데이","date":"2026-11-25","url":"https://www.etoday.co.kr/news/view/2652598"},
-    {"cat":"대출","title":"5% 넘는 금리 대출 비중 40.1%로 늘어","summary":"연 5% 이상 금리가 붙은 신규 가계대출 비중이 9월 31.6%에서 10월 40.1%로 커졌대요. 이자 부담이 커진 고객이 많아질 수 있어요.","stars":4,"source":"뉴스웨이","date":"2026-11-25","url":"https://newsway.co.kr/news/view?ud=2026112510312061637"},
-    {"cat":"금리","title":"국고채 3년 연 3.583%…금리 일제히 하락","summary":"25일 국고채 3년물이 5.7bp 내린 연 3.583%로 마쳤고, 20년물은 3.962%로 4% 아래로 내려왔대요. 금통위 직전 시장 금리 흐름이에요.","stars":4,"source":"재경일보","date":"2026-11-25","url":"https://news.jkn.co.kr/post/1121897"},
-    {"cat":"금리","title":"금통위 점도표 중간값 3.50%로 오를까","summary":"증권사 10곳 모두 3.25% 인상을 예상했고, 금통위원 점도표 중간값도 8월 3.25%에서 3.50%로 높아질 거란 전망이 우세하대요. 내년 추가 인상 가능성을 보여 줘요.","stars":3.5,"source":"시대일보","date":"2026-11-26","url":"https://www.sidae.com/article/2026112513140591244"},
-    {"cat":"금리","title":"원·달러 환율 0.8원 오른 1,343.2원 마감","summary":"25일 환율이 1,343.2원으로 마쳤고, 삼성전자 배당의 외국인 몫 역송금이 변수로 꼽혔대요. 달러보험·해외여행 상담 때 참고해요.","stars":3.5,"source":"미디어데일","date":"2026-11-25","url":"http://www.mediadale.com/news/articleView.html?idxno=297665"}
+    {"cat":"금리","title":"한은, 기준금리 3.25%로 인상…올해 세 번째","summary":"26일 금통위가 기준금리를 3.00%에서 3.25%로 0.25%p 올렸고, 다음 회의는 1월이래요. 대출·예금 금리 문의가 늘 테니 고객 상담 때 먼저 짚어 주세요.","stars":5,"source":"이투데이","date":"2026-11-26","url":"https://www.etoday.co.kr/news/view/2652786"},
+    {"cat":"대출","title":"5억 주담대, 연 이자 375만원 더 낼 판","summary":"올해 누적 0.75%p 인상이 모두 반영되면 5억원 대출 이자가 연 375만원 늘어난대요. 신규 주담대 65.8%가 변동금리라 이자 부담 상담 때 참고해요.","stars":5,"source":"아이뉴스24","date":"2026-11-26","url":"https://m.inews24.com/v/2030925"},
+    {"cat":"금리","title":"점도표 중간값 3.50%로…내년 추가 인상 신호","summary":"금통위원 점 21개 중 15개가 3.25%보다 위에 있고, 성장률 전망은 올해 3.9%, 내년 4.1%로 크게 올렸대요. 내년에도 금리가 더 오를 수 있다는 뜻이에요.","stars":4.5,"source":"노컷뉴스","date":"2026-11-26","url":"https://nocutnews.co.kr/news/6612991"},
+    {"cat":"금리","title":"예금 4%·주담대 7% 시대 오나","summary":"5대 은행 1년 정기예금 최고금리는 3.60~3.65%, 변동형 주담대는 4.51~6.51%래요. 목돈 굴리는 고객에게 예금·저축성보험 비교 안내할 때 좋아요.","stars":4.5,"source":"아시아투데이","date":"2026-11-26","url":"https://www.asiatoday.co.kr/kn/view.php?key=20261126010010529"},
+    {"cat":"대출","title":"금리 재산정 앞둔 차주들 '전전긍긍'","summary":"5대 은행 변동형 주담대가 4.52~6.59%이고, 10월 코픽스는 3.62%로 두 달 새 0.44%p 올랐대요. 변동금리 대출 고객은 재산정 시기를 확인해 보세요.","stars":4,"source":"서울파이낸스","date":"2026-11-26","url":"https://www.seoulfn.com/news/articleView.html?idxno=644028"},
+    {"cat":"금리","title":"금리 인상에도 환율 1342.7원 보합 마감","summary":"원·달러 환율은 0.5원 내린 1,342.7원, 국고채 3년물은 3.622%로 올랐대요. 달러보험·해외여행 상담 때 참고해요.","stars":3.5,"source":"서울경제","date":"2026-11-26","url":"https://m.sedaily.com/article/20119477"},
+    {"cat":"대출","title":"주담대 상단 7%대 진입 가능성","summary":"5억원 30년 원리금균등 대출은 금리가 3%에서 5%로 오르면 월 상환액이 약 211만원에서 268만원으로 늘어난대요. 가계 예산 짤 때 감 잡기 좋은 숫자예요.","stars":3.5,"source":"재경일보","date":"2026-11-26","url":"https://news.jkn.co.kr/post/1125878"}
    ]
   },
   {
    "id": "stock", "label": "주식뉴스", "insight": "오늘의 주식 인사이트 TOP5", "rank": "투자 참고도 순",
    "cats": ["국내증시","해외증시","종목","반도체·AI"],
    "items": [
-    {"cat":"국내증시","title":"코스피 6.16% 급락, 4697.49 마감…하루 만에 5000 내줘","summary":"25일 코스피는 308.54포인트(-6.16%) 내린 4697.49, 코스닥은 650.64(-2.29%)로 마쳤고 외국인이 1조8993억원 순매도했대요. 개장 8분 만에 매도 사이드카도 걸렸어요.","stars":5,"source":"라이센스뉴스","date":"2026-11-25","url":"https://www.lcnews.co.kr/news/articleView.html?idxno=212012"},
-    {"cat":"해외증시","title":"뉴욕증시 혼조 마감…다우 0.33%↑, 나스닥 0.62%↓","summary":"25일(현지시간) 다우 50,182.90(+0.33%), S&P500 7,182.78(-0.25%), 나스닥 23,585.80(-0.62%)으로 마쳤대요. 장 초반 큰 폭으로 빠졌다가 낙폭을 줄였어요.","stars":5,"source":"블록미디어","date":"2026-11-26","url":"https://www.blockmedia.co.kr/archives/1170757"},
-    {"cat":"종목","title":"삼성전자 9.87%↓·SK하이닉스 11.05%↓","summary":"삼성전자 170,700원, SK하이닉스 1,030,000원으로 마쳤고 삼성바이오로직스(+5.66%)·셀트리온(+3.83%)은 올랐대요. '젠슨 황 랠리'가 하루 만에 꺼진 모습이에요.","stars":4.5,"source":"비즈니스코리아","date":"2026-11-25","url":"https://www.businesskorea.co.kr/news/articleView.html?idxno=282198"},
-    {"cat":"반도체·AI","title":"엔비디아 5% 가까이↓…AI 우려·물가 부담","summary":"엔비디아·마이크론이 약 5% 내렸고, 10월 PCE는 전년 대비 3.8%, 근원 PCE는 3.3%였대요. 오늘 국내 반도체주 흐름에 영향을 줄 수 있어요.","stars":4,"source":"블록미디어","date":"2026-11-26","url":"https://www.blockmedia.co.kr/archives/1170757"},
-    {"cat":"국내증시","title":"코스피 212거래일 만에 4600대…1월 수준으로","summary":"4600대 마감은 1월 13일 이후 212거래일 만이고, 삼성생명도 10%대 내렸대요. 보험주까지 흔들린 날이라 고객 변액 상담 때 참고해요.","stars":4,"source":"서플","date":"2026-11-25","url":"https://supple.kr/news/cmwvsaabi0qhikwp8mkwjghxi"},
-    {"cat":"국내증시","title":"증안펀드 10조7600억원, 투입 시점은 불투명","summary":"코스피 급락에도 증시안정펀드는 가동 준비 중일 뿐 실제 투입 시점은 정해지지 않았대요. 변동성이 이어질 수 있다는 뜻이에요.","stars":3.5,"source":"이뉴스투데이","date":"2026-11-25","url":"http://www.enewstoday.co.kr/news/articleView.html?idxno=2497088"}
+    {"cat":"국내증시","title":"코스피 0.29% 반등, 4711.21 마감…상승폭 반납","summary":"26일 코스피는 13.70포인트(0.29%) 오른 4711.21, 코스닥은 655.71(+0.78%)로 마쳤대요. 기관 7508억원 순매수, 개인 1조438억원·외국인 1137억원 순매도였어요.","stars":5,"source":"서울신문","date":"2026-11-26","url":"https://seoul.co.kr/news/economy/securities/2026/11/26/20261126500256"},
+    {"cat":"해외증시","title":"뉴욕증시 26일 추수감사절 휴장, 27일 조기폐장","summary":"미국 시장은 26일(현지시간) 쉬고, 27일은 오후 1시(한국시간 28일 새벽 3시)에 일찍 닫는대요. 그래서 오늘 아침엔 새 뉴욕 마감 기사가 없어요.","stars":4.5,"source":"톱스타뉴스","date":"2026-11-26","url":"https://www.topstarnews.net/news/articleView.html?idxno=16287337"},
+    {"cat":"종목","title":"SK하이닉스 2.23%↑·현대차 3.90%↓","summary":"삼성전자 17만1300원(+0.35%), SK하이닉스 105만3000원(+2.23%)으로 마쳤고 현대차·기아·KB금융은 내렸대요. 장중 4800선을 찍고 힘이 빠진 하루예요.","stars":4.5,"source":"헤럴드경제","date":"2026-11-26","url":"https://biz.heraldcorp.com/article/10950782"},
+    {"cat":"해외증시","title":"휴장일 나스닥100 선물 0.6%↑, 유럽·아시아 반등","summary":"미 동부 오전 8시께 나스닥100 선물 +0.64%, S&P500 선물 +0.61%였고 독일 DAX도 1.8% 올랐대요. 휴장 중 분위기를 보여 주는 장중 수치예요.","stars":4,"source":"더페어","date":"2026-11-26","url":"https://www.thefairnews.co.kr/news/articleView.html?idxno=95675"},
+    {"cat":"반도체·AI","title":"엔비디아 3.91%↓…AI주, 27일 단축장 시험대","summary":"25일 엔비디아는 3.91%, 마이크론은 약 4.5% 내렸고 10월 근원 PCE는 3.3%였대요. 27일 단축장 흐름이 국내 반도체주에도 영향을 줄 수 있어요.","stars":4,"source":"톱스타뉴스","date":"2026-11-26","url":"https://www.topstarnews.net/news/articleView.html?idxno=16287337"},
+    {"cat":"국내증시","title":"'매수 주체 실종' 코스피 4700선 턱걸이","summary":"금리 인상 발표 뒤 장중 외국인 매도가 커지면서 상승폭이 줄었고, 개인은 1조원 넘게 팔았대요. 변액보험 고객 문의 때 시장 분위기로 참고해요.","stars":3.5,"source":"뉴스1","date":"2026-11-26","url":"https://www.news1.kr/finance/market-exr/6367384"}
    ]
   },
   {
    "id": "insurance", "label": "보험뉴스", "insight": "오늘의 영업 인사이트 TOP5", "rank": "영업활용도 순",
    "cats": ["건강","법인·상속","상품","생명보험","소비자","손해보험","경제·시장","제도"],
    "items": [
-    {"cat":"제도","title":"계약체결비용 '표준해약공제액 이내'로 제동","summary":"2027년 1월 수수료 4년 분급제를 앞두고 당국이 계약체결비용을 표준해약공제액 이내로 맞추는 방향이고, 25일 생보 22곳·손보 16곳 임원이 간담회에 모였대요. 내년 상품 한도·수수료가 바뀔 수 있어요.","stars":5,"source":"보험저널","date":"2026-11-24","url":"https://www.insjournal.co.kr/news/articleView.html?idxno=34068"},
-    {"cat":"제도","title":"GA업계 '문제 설계사 폭탄 돌리기' 경계령","summary":"금감원 검사가 세지면서 불완전판매·부당승환 이력 설계사가 낮은 조건으로 GA를 옮기는 사례가 늘고 있대요. 위촉 때 이력 확인을 꼼꼼히 해요.","stars":5,"source":"보험저널","date":"2026-11-25","url":"https://www.insjournal.co.kr/news/articleView.html?idxno=34086"},
-    {"cat":"건강","title":"12월부터 희귀·중증난치질환 본인부담 10%→7%","summary":"12월 1일 진료분부터 약 136만명의 본인부담률이 낮아져 1인당 연 75만원에서 53만원으로 줄 거래요. 실손·건강보험 상담 때 함께 안내해요.","stars":4.5,"source":"보험저널","date":"2026-11-24","url":"https://www.insjournal.co.kr/news/articleView.html?idxno=34064"},
-    {"cat":"경제·시장","title":"보험사 1~9월 순익 10.4조, 7.8% 감소","summary":"생보 순익은 3조8879억원으로 19.5% 줄고, 손보는 6조5209억원으로 0.9% 늘었대요. 수입보험료는 212조원으로 15.6% 증가했어요.","stars":4,"source":"이코노믹리뷰","date":"2026-11-25","url":"https://www.econovill.com/news/articleView.html?idxno=758416"},
-    {"cat":"생명보험","title":"한화생명, IRP 매도 없이 받는 '라이프핏 연금'","summary":"만 55세 이상 IRP 고객은 상품을 팔지 않고 최소 5년에 걸쳐 연금을 받을 수 있대요. 퇴직연금 상담 때 소개할 만해요.","stars":4,"source":"보험저널","date":"2026-11-24","url":"https://www.insjournal.co.kr/news/articleView.html?idxno=34054"},
-    {"cat":"제도","title":"분급 시대 GA, '스카우트'보다 '신인 육성'","summary":"2027년 4년 분급, 2029년 7년 분급이 다가오자 KGA에셋은 교육홍보센터와 4단계 신인 양성 체계를 꾸렸대요. 지점 교육 계획 세울 때 참고해요.","stars":3.5,"source":"보험저널","date":"2026-11-24","url":"https://www.insjournal.co.kr/news/articleView.html?idxno=34060"}
+    {"cat":"제도","title":"금융당국, 보험 판매수수료 과당경쟁 제동","summary":"판매수수료가 3년 새 70.6% 늘어 27조3000억원이 됐고, 2027년 1월부터 지급한도 규제가 적용된대요. 내년 수수료 체계 바뀌는 걸 미리 챙겨 두세요.","stars":5,"source":"보험매일","date":"2026-11-26","url":"https://www.fins.co.kr/news/articleView.html?idxno=110722"},
+    {"cat":"제도","title":"GA 업무정지 대신 과징금…본사 책임 커진다","summary":"가담 설계사가 150명 이하거나 15% 이하면 업무정지 대신 과징금(상한 6개월분)을 매기는 안이 1월 4일까지 의견을 받고 3월 9일 시행 예정이래요. 내부통제 점검이 더 중요해져요.","stars":5,"source":"보험매일","date":"2026-11-26","url":"https://www.fins.co.kr/news/articleView.html?idxno=110717"},
+    {"cat":"제도","title":"보험사기 전력자, 설계사 등록 못 한다","summary":"보험사기방지 특별법 등 65개 법령 위반자를 결격사유로 넣는 시행령 개정안이 나왔대요. 신규 위촉 때 결격 여부 확인 기준이 넓어져요.","stars":4.5,"source":"헤럴드경제","date":"2026-11-24","url":"https://biz.heraldcorp.com/article/10947556"},
+    {"cat":"건강","title":"할인해도 5세대 실손 전환 저조…13.3%","summary":"손보사 9곳의 지난달 5세대 실손 가입 9만4237건 중 자발적 전환은 1만2542건뿐이래요. 23일부터 할인이 시작돼 갈아타기 상담 수요가 생길 수 있어요.","stars":4.5,"source":"한국경제","date":"2026-11-26","url":"https://www.hankyung.com/article/2026112632381"},
+    {"cat":"경제·시장","title":"기준금리 인상, 보험업계엔 '양날의 검'","summary":"시장금리 1%p 오르면 21개 생보사 지급여력금액이 7조8000억원 줄어드는 구조로 바뀌었대요. 금리 인상기 보험사 건전성 이야기를 이해하는 데 좋아요.","stars":4,"source":"보험매일","date":"2026-11-26","url":"https://www.fins.co.kr/news/articleView.html?idxno=110721"},
+    {"cat":"손해보험","title":"車보험 손해율 80.5%, 10월 기준 역대 최저","summary":"대형 4개사 10월 손해율이 전년 87.4%에서 80.5%로 낮아졌지만 건당 보험금은 늘고 있대요. 자동차보험 갱신 상담 때 참고해요.","stars":3.5,"source":"보험저널","date":"2026-11-25","url":"https://www.insjournal.co.kr/news/articleView.html?idxno=34080"},
+    {"cat":"생명보험","title":"환매중단펀드 퇴직연금, 1월 18일부터 갈아타기","summary":"128억원 펀드 때문에 묶였던 퇴직연금 7835억원이 1월 18일부터 같은 펀드를 판 사업자 사이에서 실물이전이 가능해진대요. 퇴직연금 상담 때 안내해요.","stars":3.5,"source":"보험저널","date":"2026-11-25","url":"https://www.insjournal.co.kr/news/articleView.html?idxno=34083"},
+    {"cat":"상품","title":"흥국화재, 5대질병 진단비 통합 담보로 차별화","summary":"암·뇌혈관·허혈성심질환·재진단암·말기질환을 하나로 묶어 순서와 관계없이 보장하고, 10월엔 배타적사용권도 받았대요. 상품 비교 자료로 좋아요.","stars":3,"source":"보험매일","date":"2026-11-26","url":"https://www.fins.co.kr/news/articleView.html?idxno=110723"}
    ]
   }
  ]
