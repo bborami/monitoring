@@ -555,24 +555,11 @@ mark{background:#f9e79f;color:#1a1a1a}
 
 
 
-/* 가상계좌·증권발급 타일 (경로 비노출 — 카카오톡 문의로 연결) */
-.bcard.acct{background:var(--tint-yellow)}
-.bcard.acct .bcard-ic{color:#8a6d1c}
-:root[data-theme="dark"] .bcard.acct .bcard-ic{color:#f0d27a}
-@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .bcard.acct .bcard-ic{color:#f0d27a}}
-/* 카카오톡 문의 — 오른쪽 아래 플로팅 버튼 (PC·모바일) */
-.kakao-fab{position:fixed;right:calc(18px + env(safe-area-inset-right,0px));bottom:calc(20px + env(safe-area-inset-bottom,0px));z-index:15;display:flex;align-items:center;gap:7px;padding:12px 18px 12px 14px;border-radius:999px;background:#FEE500;color:#3C1E1E;text-decoration:none;font-weight:700;font-size:.92rem;letter-spacing:-.2px;box-shadow:0 6px 18px rgba(0,0,0,.18),0 2px 4px rgba(0,0,0,.08);transition:transform .15s,box-shadow .15s}
-.kakao-fab:hover{transform:translateY(-2px);box-shadow:0 10px 24px rgba(0,0,0,.22),0 2px 6px rgba(0,0,0,.1)}
-.kakao-fab:focus-visible{outline:3px solid #3C1E1E;outline-offset:2px}
-.kakao-fab svg{width:24px;height:24px;flex:none}
-@media (max-width:767px){
- .kakao-fab{right:calc(14px + env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));width:58px;height:58px;padding:0;flex-direction:column;justify-content:center;gap:1px;font-size:.66rem}
- .kakao-fab svg{width:26px;height:26px}
-}
-@media print{.kakao-fab{display:none}}
-/* 가상계좌·증권발급 타일 — 카카오톡 문의 칩 */
-.bcard.acct .acct-kakao{display:inline-flex;align-items:center;gap:4px;margin-top:4px;padding:3px 9px 3px 7px;border-radius:999px;background:#FEE500;color:#3C1E1E;font-weight:700;font-size:.78rem;line-height:1.3}
-.bcard.acct .acct-kakao svg{width:14px;height:14px;flex:none}
+/* 카카오톡 문의하기 타일 (4번째) */
+.bcard.kakao{background:#FEE500;color:#3C1E1E}
+.bcard.kakao .bnr-t,.bcard.kakao .bnr-d,.bcard.kakao .short{color:#3C1E1E}
+.bcard.kakao .bnr-d{opacity:.75}
+.bcard.kakao .bcard-ic{color:#3C1E1E}
 /* 메가전산 시트 — 링크 아래 설명 */
 .fdesc{margin:6px 2px 0;font-size:.8rem;line-height:1.5;color:var(--muted);word-break:keep-all}
 </style>
@@ -1132,9 +1119,8 @@ $("#notices").innerHTML = NOTICES.map((n,i)=> !n.body.length ? `
       <span class="date">${n.date}</span>
     </div>
   </div>`).join("");
-/* 카카오톡 비즈니스 채널 주소 (오른쪽 플로팅 버튼) */
+/* 카카오톡 비즈니스 채널 주소 (4번째 타일 '카카오톡 문의하기') */
 const KAKAO_CH = "https://pf.kakao.com/_xnhINX";
-document.body.insertAdjacentHTML("beforeend",`<a class="kakao-fab" id="kakaoFab" href="${KAKAO_CH}" target="_blank" rel="noopener" aria-label="카카오톡 문의 (새 창)" title="카카오톡 채널로 문의하기"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3.5C6.8 3.5 2.6 6.8 2.6 10.9c0 2.6 1.7 4.9 4.3 6.2l-1.1 4c-.1.3.3.6.6.4l4.7-3.1c.3 0 .6.1.9.1 5.2 0 9.4-3.3 9.4-7.4S17.2 3.5 12 3.5z"/></svg><span>카톡 문의</span></a>`);
 $("#notices").insertAdjacentHTML("beforeend",`
   <div class="side-col">
   <a class="bcard" href="https://bborami.github.io/BusinessCard/" target="_blank" rel="noopener">
@@ -1144,10 +1130,10 @@ $("#notices").insertAdjacentHTML("beforeend",`
       <span><strong class="bnr-t">무료 디지털 명함 만들기</strong><span class="bnr-d">나만의 모바일 명함을 무료로 만들고 고객에게 공유해 보세요</span></span>
     </span>
   </a>
-  <a class="bcard acct" id="bnrAcct" href="${KAKAO_CH}" target="_blank" rel="noopener" aria-label="가상계좌·증권발급 카카오톡 문의 (새 창)">
+  <a class="bcard kakao" id="bnrKakao" href="${KAKAO_CH}" target="_blank" rel="noopener">
     <span class="bcard-row">
-      <svg class="bcard-ic" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9.5 12 4l9 5.5M4.5 9.5v8M9 9.5v8M15 9.5v8M19.5 9.5v8M3 20h18"/></svg>
-      <span><strong class="bnr-t">가상계좌·증권발급</strong><span class="bnr-d"><span class="acct-kakao"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3.5C6.8 3.5 2.6 6.8 2.6 10.9c0 2.6 1.7 4.9 4.3 6.2l-1.1 4c-.1.3.3.6.6.4l4.7-3.1c.3 0 .6.1.9.1 5.2 0 9.4-3.3 9.4-7.4S17.2 3.5 12 3.5z"/></svg>카카오톡 문의하기</span></span></span>
+      <svg class="bcard-ic" width="30" height="30" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3.5C6.8 3.5 2.6 6.8 2.6 10.9c0 2.6 1.7 4.9 4.3 6.2l-1.1 4c-.1.3.3.6.6.4l4.7-3.1c.3 0 .6.1.9.1 5.2 0 9.4-3.3 9.4-7.4S17.2 3.5 12 3.5z"/></svg>
+      <span><strong class="bnr-t">카카오톡 문의하기</strong><span class="bnr-d">카카오톡 채널 바로가기</span></span>
     </span>
   </a>
   </div>`);
@@ -1389,7 +1375,7 @@ render();
 <script>
 (()=>{const col=document.querySelector('.side-col');if(!col)return;
  ['#bnrCard','#bnrCar'].forEach(id=>{const a=document.querySelector(id);if(a)col.appendChild(a)});
- const order=[['BusinessCard','디지털 명함'],['#bnrCard','카드사 무이자'],['#bnrCar','자동차 무이자'],['#bnrAcct','가상계좌·증권발급']];
+ const order=[['BusinessCard','디지털 명함'],['#bnrCard','카드사 무이자'],['#bnrCar','자동차 무이자'],['#bnrKakao','카카오톡 문의하기']];
  const tiles=[...col.children];
  order.forEach(([key,label])=>{const t=tiles.find(el=>key[0]==='#'?el.matches(key):(el.getAttribute('href')||'').includes(key));
   if(!t)return;const full=t.querySelector('.bnr-t');t.title=full?full.textContent:label;t.setAttribute('aria-label',t.title);
