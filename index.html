@@ -555,7 +555,7 @@ mark{background:#f9e79f;color:#1a1a1a}
 
 
 
-/* 가상계좌·증권발급 타일 (예전 카카오 문의 자리) */
+/* 가상계좌·증권발급 타일 (경로 비노출 — 카카오톡 문의로 연결) */
 .bcard.acct{background:var(--tint-yellow)}
 .bcard.acct .bcard-ic{color:#8a6d1c}
 :root[data-theme="dark"] .bcard.acct .bcard-ic{color:#f0d27a}
@@ -570,6 +570,9 @@ mark{background:#f9e79f;color:#1a1a1a}
  .kakao-fab svg{width:26px;height:26px}
 }
 @media print{.kakao-fab{display:none}}
+/* 가상계좌·증권발급 타일 — 카카오톡 문의 칩 */
+.bcard.acct .acct-kakao{display:inline-flex;align-items:center;gap:4px;margin-top:4px;padding:3px 9px 3px 7px;border-radius:999px;background:#FEE500;color:#3C1E1E;font-weight:700;font-size:.78rem;line-height:1.3}
+.bcard.acct .acct-kakao svg{width:14px;height:14px;flex:none}
 /* 메가전산 시트 — 링크 아래 설명 */
 .fdesc{margin:6px 2px 0;font-size:.8rem;line-height:1.5;color:var(--muted);word-break:keep-all}
 </style>
@@ -1131,8 +1134,6 @@ $("#notices").innerHTML = NOTICES.map((n,i)=> !n.body.length ? `
   </div>`).join("");
 /* 카카오톡 비즈니스 채널 주소 (오른쪽 플로팅 버튼) */
 const KAKAO_CH = "https://pf.kakao.com/_xnhINX";
-/* 가상계좌·증권발급 안내 (4번째 타일) */
-const ACCT_URL = "https://bborami.github.io/account-policy/";
 document.body.insertAdjacentHTML("beforeend",`<a class="kakao-fab" id="kakaoFab" href="${KAKAO_CH}" target="_blank" rel="noopener" aria-label="카카오톡 문의 (새 창)" title="카카오톡 채널로 문의하기"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3.5C6.8 3.5 2.6 6.8 2.6 10.9c0 2.6 1.7 4.9 4.3 6.2l-1.1 4c-.1.3.3.6.6.4l4.7-3.1c.3 0 .6.1.9.1 5.2 0 9.4-3.3 9.4-7.4S17.2 3.5 12 3.5z"/></svg><span>카톡 문의</span></a>`);
 $("#notices").insertAdjacentHTML("beforeend",`
   <div class="side-col">
@@ -1143,10 +1144,10 @@ $("#notices").insertAdjacentHTML("beforeend",`
       <span><strong class="bnr-t">무료 디지털 명함 만들기</strong><span class="bnr-d">나만의 모바일 명함을 무료로 만들고 고객에게 공유해 보세요</span></span>
     </span>
   </a>
-  <a class="bcard acct" id="bnrAcct" href="${ACCT_URL}" target="_blank" rel="noopener">
+  <a class="bcard acct" id="bnrAcct" href="${KAKAO_CH}" target="_blank" rel="noopener" aria-label="가상계좌·증권발급 카카오톡 문의 (새 창)">
     <span class="bcard-row">
       <svg class="bcard-ic" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 9.5 12 4l9 5.5M4.5 9.5v8M9 9.5v8M15 9.5v8M19.5 9.5v8M3 20h18"/></svg>
-      <span><strong class="bnr-t">가상계좌·증권발급</strong><span class="bnr-d">가상계좌 · 증권발급 안내 바로가기</span></span>
+      <span><strong class="bnr-t">가상계좌·증권발급</strong><span class="bnr-d"><span class="acct-kakao"><svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3.5C6.8 3.5 2.6 6.8 2.6 10.9c0 2.6 1.7 4.9 4.3 6.2l-1.1 4c-.1.3.3.6.6.4l4.7-3.1c.3 0 .6.1.9.1 5.2 0 9.4-3.3 9.4-7.4S17.2 3.5 12 3.5z"/></svg>카카오톡 문의하기</span></span></span>
     </span>
   </a>
   </div>`);
